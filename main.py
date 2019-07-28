@@ -4,6 +4,7 @@ import jinja2
 import os
 from google.appengine.ext import ndb
 from google.appengine.api import users
+from datetime import date
 
 jinja_env = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__))
@@ -63,6 +64,16 @@ class Linkup(webapp2.RequestHandler):
         template = jinja_env.get_template('templates/linkup.html')
         self.response.write(template.render(template_vars))
 
+class populateDatabase(webapp2.RequestHandler):
+    def get(self):
+        Alexa = User(
+            name = 'Alexa',
+            email = 'alexa@gmail.com',
+            dates_free = [date(2019, 11, 30), date(2019, 12, 12)]
+        )
+
+        self.redirect("/home")
+
 app=webapp2.WSGIApplication([
     ('/', Login),
     ('/home', Home),
@@ -70,4 +81,5 @@ app=webapp2.WSGIApplication([
     ('/friends', Friends),
     ('/schedule', Schedule),
     ('/linkup', Linkup),
+    ('/populateDatabase', populateDatabase),
 ], debug=True)
