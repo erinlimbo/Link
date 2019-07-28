@@ -33,9 +33,13 @@ class Home(webapp2.RequestHandler):
 
 class Profile(webapp2.RequestHandler):
     def get(self):
+        current_user = users.get_current_user()
+        # first_name = users.name.familyName()
         template_vars = {
-
+            'current_user': current_user,
+            # 'first_name' : first_name
         }
+
         template = jinja_env.get_template('templates/profile.html')
         self.response.write(template.render(template_vars))
 
