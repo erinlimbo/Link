@@ -5,6 +5,8 @@ threadsafe: true
 handlers:
 - url: /stylesheets
   static_dir: stylesheets
+- url: /images
+  static_dir: images
 - url: /scripts
   static_dir: /scripts
 - url: /.*
