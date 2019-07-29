@@ -21,7 +21,6 @@ class User(ndb.Model):
 class Login(webapp2.RequestHandler):
     def get(self):
         login_url = users.create_login_url('/')
-
         template_vars = {
             "login_url": login_url
          }
