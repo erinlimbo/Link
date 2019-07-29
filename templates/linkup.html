@@ -5,6 +5,20 @@
     <title>Link</title>
   </head>
   <body>
-    Hello this is linkup
+    <h3>Hello this is linkup.</h3>
+    <p>Current User is: {{current_user}}</p>
+
+    <ul>
+      {% for user in linkup %}
+      <li>{{current.user}}</li>
+      <ul>
+          {% for alexa_key in ashlee.linkup_keys %}
+          <li>Friends: {{alexa_key.get().name}}</li>
+
+          {% endfor %}
+    </ul>
+    {% endfor %}
+    </ul>
+
   </body>
 </html>

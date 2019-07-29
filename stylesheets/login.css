@@ -9,16 +9,23 @@
    flex-grow: 1.7;
    border: 1px solid black;
    height: 100vmin;
+   display: flex;
+   flex-direction: column;
 }
 #leftLogo img {
   height: 500px;
   width: 500px
 }
 
+#leftLogo #biography {
+  width: 400px;
+  padding-left: 30px;
+}
+
 #rightLogin{
   border: 1px solid black;
   height: 100vmin;
-  width: 30%;
+  width: 29%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,13 +34,24 @@
 #login{
   font-size: 60px;
 }
+#formContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
 #password, #username {
   width: 200px;
   height: 30px;
 }
 
+
+#submit {
+  height: 50px;
+  width: 100px;
+  border-radius: 30px;
+  background-color: transparent;
+}
+
 input {
   font-size: 15px;
-  color: grey;
-
 }
