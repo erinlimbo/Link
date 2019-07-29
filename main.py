@@ -34,6 +34,8 @@ class Home(webapp2.RequestHandler):
 
 class Profile(webapp2.RequestHandler):
     def get(self):
+        friends_query = User.query()
+        friends_list = friends_query.fetch()
         current_user = users.get_current_user()
         # first_name = users.name.familyName()
         template_vars = {
@@ -43,6 +45,7 @@ class Profile(webapp2.RequestHandler):
 
         template = jinja_env.get_template('templates/profile.html')
         self.response.write(template.render(template_vars))
+
 
 class Friends(webapp2.RequestHandler):
     def get(self):
@@ -54,8 +57,12 @@ class Friends(webapp2.RequestHandler):
 
 class Schedule(webapp2.RequestHandler):
     def get(self):
+        friends_query = User.query()
+        friends_list = friends_query.fetch()
+        current_user = users.get_current_user()
+        # first_name = users.name.familyName()
         template_vars = {
-
+            "current_user": current_user,
         }
         template = jinja_env.get_template('templates/schedule.html')
         self.response.write(template.render(template_vars))
@@ -65,6 +72,19 @@ class Schedule(webapp2.RequestHandler):
             "date": date(int(self.request.get("year")),
             int(self.request.get("month")),
             int(self.request.get("day")))
+
+        }
+        template = jinja_env.get_template('templates/linkup.html')
+        self.response.write(template.render(template_vars))
+
+class Linkup(webapp2.RequestHandler):
+    def get(self):
+        friends_query = User.query()
+        friends_list = friends_query.fetch()
+        current_user = users.get_current_user()
+        # first_name = users.name.familyName()
+        template_vars = {
+            "current_user": current_user,
         }
         template = jinja_env.get_template('templates/linkup.html')
         self.response.write(template.render(template_vars))
