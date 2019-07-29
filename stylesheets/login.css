@@ -1,0 +1,21 @@
+#container {
+  border: 2px solid black;
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+}
+#leftLogo {
+   flex-grow: 1.7;
+   border: 1px solid black;
+   height: 100vmin;
+}
+#leftLogo img {
+  height: 500px;
+  width: 500px
+}
+
+#rightLogin{
+  border: 1px solid black;
+  height: 100vmin;
+  width: 30%;
+}
