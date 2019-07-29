@@ -8,15 +8,24 @@
   <body>
     <div id="container">
       <div id="leftLogo">
-        <img src="images/linklogo.png" alt="CSGO Howl">
+        <img src="images/linklogo.png" alt="Link Logo">
+        <div id="biography"> <h1>Biography</h1>
+          <br>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+          ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         </div>
       </div>
       <div id="rightLogin">
         <div id="login">
           <h2>Login<h2>
-            <form action="/home" method="POST">
-              <input type="text" id="username" name="username" value="Username">
-              <input type="text" id="password" name="password" value="Password">  
+            <div id="formContainer">
+            <form action="/login" method="POST">
+              <div><input type="text" id="username" name="username" placeholder="Username"></div>
+              <div><input type="text" id="password" name="password" placeholder="Password"></div>
+              <div><input type="submit" id="submit" name="submit" value="Login"></div>
             </form>
+          </div>
         </div>
       </div>
     </div>
