@@ -45,29 +45,16 @@ class Home(webapp2.RequestHandler):
           email_address = user.nickname()
           logout_link_html = '<a href="%s">sign out</a>' % (users.create_logout_url('/login'))
           self.response.write(" You're logged in as " + email_address + ". " + logout_link_html)
+          current_user = User(
+              nickname=user.nickname(),
+              email=user.email(),)
+          current_user.put()
 
-          # current_user = User.query().filter(User.email == email_address).get()
-          # if current_user:
-            # self.response.write(" You're logged in as " + email_address + ". Looks like you're registered. Thanks for using our site! <br>" + logout_link_html)
-          # else:
-          #   self.response.write("Looks like you are signed in but aren't a registered Link user. Please sign up.")
-          #   self.response.write('''
-          #   <br>
-          #   <form method="post" action="/">
-          #   <input type="text" name="first_name">
-          #   <input type="text" name="last_name">
-          #   <input type="submit">
-          #   </form><br> %s <br>
-          #   ''' % (logout_link_html))
 
         else:
           self.redirect("/login")
-          # login_url = users.create_login_url('/')
-          # login_html_element = '<a href="%s">Sign in</a>' % login_url
-          # self.response.write('Please log in.<b>' + login_html_element)
 
         template_vars = {
-            # "login_url": login_url
         }
         template = jinja_env.get_template('templates/home.html')
         self.response.write(template.render(template_vars))
@@ -75,10 +62,9 @@ class Home(webapp2.RequestHandler):
     def post(self):
         current_user = users.get_current_user()
         user = User(
-            # first_name=self.request.get('first_name'),
-            # last_name=self.request.get('last_name'),
             nickname=current_user.nickname(),
-            email=current_user.email(),)
+            email=current_user.email(),
+        )
         user.put()
         self.response.write('Thanks for signing up, %s! <br><a href="/">Home</a>' %
             user.first_name)
