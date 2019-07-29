@@ -23,6 +23,13 @@ class Login(webapp2.RequestHandler):
         }
         template = jinja_env.get_template('templates/login.html')
         self.response.write(template.render(template_vars))
+    def post(self):
+        template_vars = {
+            'username' : self.request.get('username'),
+            'password': self.request.get('password'),
+        }
+        template = jinja_env.get_template('templates/login.html')
+        self.response.write(template.render(template_vars))
 
 class Home(webapp2.RequestHandler):
     def get(self):
