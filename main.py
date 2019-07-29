@@ -85,5 +85,6 @@ app=webapp2.WSGIApplication([
     ('/friends', Friends),
     ('/schedule', Schedule),
     ('/linkup', Linkup),
+    ('/login', Login),
     ('/populateDatabase', populateDatabase),
 ], debug=True)
