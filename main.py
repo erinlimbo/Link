@@ -43,9 +43,7 @@ class Home(webapp2.RequestHandler):
           logout_link_html = '<a href="%s">sign out</a>' % (users.create_logout_url('/'))
           current_user = User.query().filter(User.email == email_address).get()
           if current_user:
-            self.response.write(
-              "Looks like you're registered. Thanks for using our site!")
-            self.response.write("You're logged in as " + email_address + "<br>" + logout_link_html)
+            self.response.write(" You're logged in as " + email_address + ". Looks like you're registered. Thanks for using our site! <br>" + logout_link_html)
           else:
             self.response.write("Looks like you are signed in but aren't a registered Link user. Please sign up.")
             self.response.write('''
@@ -58,7 +56,7 @@ class Home(webapp2.RequestHandler):
             ''' % (logout_link_html))
 
         else:
-          login_url = users.create_login_url('/login')
+          login_url = users.create_login_url('/')
           login_html_element = '<a href="%s">Sign in</a>' % login_url
           self.response.write('Please log in.<b>' + login_html_element)
 
