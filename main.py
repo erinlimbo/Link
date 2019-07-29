@@ -54,6 +54,8 @@ class Home(webapp2.RequestHandler):
           self.redirect("/login")
 
         template_vars = {
+            "email_address": email_address,
+            # "login_url": login_url
         }
         template = jinja_env.get_template('templates/home.html')
         self.response.write(template.render(template_vars))
@@ -72,7 +74,7 @@ class Home(webapp2.RequestHandler):
 class Profile(webapp2.RequestHandler):
     def get(self):
         current_user = users.get_current_user()
-        
+
         template_vars = {
             'current_user': current_user,
         }
