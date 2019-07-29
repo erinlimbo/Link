@@ -60,6 +60,15 @@ class Schedule(webapp2.RequestHandler):
         template = jinja_env.get_template('templates/schedule.html')
         self.response.write(template.render(template_vars))
 
+    def post(self):
+        template_vars = {
+            "date": date(int(self.request.get("year")),
+            int(self.request.get("month")),
+            int(self.request.get("day")))
+        }
+        template = jinja_env.get_template('templates/linkup.html')
+        self.response.write(template.render(template_vars))
+
 class Linkup(webapp2.RequestHandler):
     def get(self):
         template_vars = {

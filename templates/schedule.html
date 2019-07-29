@@ -5,6 +5,19 @@
     <title>Link</title>
   </head>
   <body>
-    Hello
+    <form method="POST" action="/linkup">
+      Schedule your next hangout!
+      <br>
+      Enter the year you want to hang out on:
+      <input type="text" name="year"/>
+      <br>
+      Enter the month you want to hang out on:
+      <input type="text" name="month"/>
+      <br>
+      Enter the day you want to hang out on:
+      <input type="text" name="day"/>
+      <br>
+      <input type="submit" name="submit" value="Generate a hangout!"/>
+    </form>
   </body>
 </html>
