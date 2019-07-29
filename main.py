@@ -67,6 +67,7 @@ class Home(webapp2.RequestHandler):
           # self.response.write('Please log in.<b>' + login_html_element)
 
         template_vars = {
+            "email_address": email_address,
             # "login_url": login_url
         }
         template = jinja_env.get_template('templates/home.html')
