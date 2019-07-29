@@ -9,24 +9,79 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Link Home Page</title>
+    <style>
+    .button {
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      padding: 16px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      font-family: "Roboto", sans-serif;
+      margin: 4px 2px;
+      -webkit-transition-duration: 0.4s; /* Safari */
+      transition-duration: 0.4s;
+      cursor: pointer;
+    }
+    .button1 {
+      background-color: white;
+      color: black;
+      border: 2px solid #FEB69E;
+    }
+
+    .button1:hover {
+      background-color: #FEB69E;
+      color: white;
+    }
+    /* Create three equal columns that floats next to each other */
+    .column {
+      float: left;
+      width: 33.33%;
+      padding: 15px;
+    }
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+  @media screen and (max-width:600px) {
+    .column {
+      width: 100%;
+  }
+}
+    </style>
   </head>
 
   <body>
-    <!-- Sidebar/menu -->
     <!-- Top header -->
     <header class="w3-container w3-xlarge">
       <img src="images/linklogo.png" alt="CSGO Howl" style="width:100px;height:100px;float:left";>
       <!-- <p class="w3-left">Insert Logo Here</p> -->
       <p class="w3-right">
-        <i <a href="main.html" a class="fa fa-smile-o w3-margin-right"</a></i>
+        <i <a href="home.html" a class="fa fa-smile-o w3-margin-right"</a></i>
       </p>
     </header>
-<!-- Grid -->
-<div class="w3-row w3-padding w3-border">
+    <div class="row">
+  <div class="column">
+    <h2>username</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <a href="http://linkwithfriends.appspot.com/schedule" class="button button1">Schedule</a>
+  </div>
 
-<!-- w3-content defines a container for fixed size centered content,
-and is wrapped around the whole page content, except for the footer in this example -->
-<div class="w3-content" style="max-width:1600px">
-    Hello
+  <div class="column">
+    <h2>your schedule</h2>
+    <p>Lorem ipsum dolor sit amet, </p>
+  </div>
+
+  <div class="column">
+    <h2>friends</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. </p>
+    <button class="button button1">LINKup</button>
+  </div>
   </body>
 </html>
