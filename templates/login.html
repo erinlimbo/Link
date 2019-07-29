@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../stylesheets/login.css">
   </head>
   <body>
+    <script src="../scripts/login.js" charset="utf-8"></script>
     <div id="container">
       <div id="leftLogo">
         <img src="images/linklogo.png" alt="Link Logo">
@@ -18,13 +19,15 @@
       </div>
       <div id="rightLogin">
         <div id="login">
-          <h2>Login<h2>
+          <!-- <h2>Login<h2> -->
             <div id="formContainer">
-            <form action="/login" method="POST">
+              <a href="{{login_url}}">Login</a>
+            <!-- <form action="/login" method="POST">
               <div><input type="text" id="username" name="username" placeholder="Username"></div>
               <div><input type="text" id="password" name="password" placeholder="Password"></div>
               <div><input type="submit" id="submit" name="submit" value="Login"></div>
-            </form>
+              <div class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
+            </form> -->
           </div>
         </div>
       </div>
