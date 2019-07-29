@@ -105,37 +105,33 @@ class Friends(webapp2.RequestHandler):
 
 class Schedule(webapp2.RequestHandler):
     def get(self):
-        friends_query = User.query()
-        friends_list = friends_query.fetch()
-        current_user = users.get_current_user()
+        # friends_query = User.query()
+        # friends_list = friends_query.fetch()
+        # current_user = users.get_current_user()
         # first_name = users.name.familyName()
         template_vars = {
-            "current_user": current_user,
+            # "current_user": current_user,
+
         }
         template = jinja_env.get_template('templates/schedule.html')
         self.response.write(template.render(template_vars))
 
     def post(self):
+        current_user = users.get_current_user()
+        print current_user.nickname()
+        get_current_user=User.query().filter(current_user.nickname() == User.email).fetch()
+
+
         template_vars = {
             "date": date(int(self.request.get("year")),
             int(self.request.get("month")),
-            int(self.request.get("day")))
+            int(self.request.get("day"))),
+            "get_current_user": get_current_user[0],
 
         }
         template = jinja_env.get_template('templates/linkup.html')
         self.response.write(template.render(template_vars))
 
-class Linkup(webapp2.RequestHandler):
-    def get(self):
-        friends_query = User.query()
-        friends_list = friends_query.fetch()
-        current_user = users.get_current_user()
-        # first_name = users.name.familyName()
-        template_vars = {
-            "current_user": current_user,
-        }
-        template = jinja_env.get_template('templates/linkup.html')
-        self.response.write(template.render(template_vars))
 
 class populateDatabase(webapp2.RequestHandler):
     def get(self):
