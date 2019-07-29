@@ -35,6 +35,18 @@
       background-color: #FEB69E;
       color: white;
     }
+    .button2 {
+      background-color: white;
+      color: black;
+      border: 2px solid #FEB69E;
+      font-size: 10px;
+      display: inline;
+    }
+
+    .button2:hover {
+      background-color: #FEB69E;
+      color: white;
+    }
     /* Create three equal columns that floats next to each other */
     .column {
       float: left;
@@ -68,20 +80,20 @@
     </header>
     <div class="row">
   <div class="column">
-    <h2>hello {{email_address}}</h2>
+     <h2>hello {{email_address}}</h2> <!-- it says email rn, but soon it will say users first name -->
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     <a href="http://linkwithfriends.appspot.com/schedule" class="button button1">schedule</a>
   </div>
 
   <div class="column">
-    <h2>your schedule</h2>
-    <p>Lorem ipsum dolor sit amet, </p>
+    <h2>your schedule</h2>your schedule will be dispplayed here. </p>
   </div>
 
   <div class="column">
     <h2>friends</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. </p>
-    <button class="button button1">link up</button>
+    <a href="http://linkwithfriends.appspot.com/friends" class="button button2">add new friends</a>
+    <p>list of friends wil be displayed here </p>
+    <a href="http://linkwithfriends.appspot.com/schedule" class="button button1">link up</a>
   </div>
   </body>
 </html>
