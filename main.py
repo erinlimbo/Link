@@ -22,7 +22,7 @@ class Login(webapp2.RequestHandler):
 
         }
         template = jinja_env.get_template('templates/login.html')
-        self.response.write(template.render(template_vars))
+        self.response.write(template.render(template_vars)) 
     def post(self):
         template_vars = {
             'username' : self.request.get('username'),
