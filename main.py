@@ -105,17 +105,19 @@ class Schedule(webapp2.RequestHandler):
 
     def post(self):
         current_user = users.get_current_user()
-        print current_user.nickname()
+        # print current_user.nickname()
         get_current_user=User.query().filter(current_user.nickname() == User.email).fetch()
 
 
         template_vars = {
-            "date": date(int(self.request.get("year")),
-            int(self.request.get("month")),
-            int(self.request.get("day"))),
+            # "date": date(int(self.request.get("year")),
+            # int(self.request.get("month")),
+            # int(self.request.get("day"))),
+            "hangout_date": self.request.get("hangout_date"),
             "get_current_user": get_current_user[0],
 
         }
+        print date
         template = jinja_env.get_template('templates/linkup.html')
         self.response.write(template.render(template_vars))
 

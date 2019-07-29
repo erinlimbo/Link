@@ -10,14 +10,11 @@
     <form method="POST" action="/schedule">
       <h3>Schedule your next hangout!</h3>
       <br>
-      Enter the year you want to hang out on:
-      <input type="text" name="year"/>
+      <label for="hangout_date">What date do you want to hang out on? </label>
+      <input type="date" name="hangout_date"/>
       <br>
-      Enter the month you want to hang out on:
-      <input type="text" name="month"/>
-      <br>
-      Enter the day you want to hang out on:
-      <input type="text" name="day"/>
+      Who do you want to hang out with?
+      <!-- TODO: add here the friends you want to hang out with. Or select all friends to start with? -->
       <br>
       <input type="submit" name="submit" value="Generate a hangout!"/>
     </form>
