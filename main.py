@@ -14,7 +14,7 @@ class User(ndb.Model):
     name = ndb.StringProperty(required=True)
     email = ndb.StringProperty(required=True)
     dates_free = ndb.DateProperty(repeated=True)
-    # friends = ndb.KeyProperty(repeated=True, kind=User) --> this is a many to many relationship
+    friends = ndb.KeyProperty(repeated=True, kind='User')
 
 class Login(webapp2.RequestHandler):
     def get(self):
@@ -69,21 +69,26 @@ class Schedule(webapp2.RequestHandler):
         template = jinja_env.get_template('templates/linkup.html')
         self.response.write(template.render(template_vars))
 
-class Linkup(webapp2.RequestHandler):
-    def get(self):
-        template_vars = {
-
-        }
-        template = jinja_env.get_template('templates/linkup.html')
-        self.response.write(template.render(template_vars))
-
 class populateDatabase(webapp2.RequestHandler):
     def get(self):
-        Alexa = User(
+        alexa = User(
             name = 'Alexa',
             email = 'alexa@gmail.com',
-            dates_free = [date(2019, 11, 30), date(2019, 12, 12)]
+            dates_free = [date(2019, 11, 30), date(2019, 12, 12)],
+            friends = []
         )
+        alexa_key = alexa.put()
+
+        ashlee = User(
+            name = 'Ashlee',
+            email = 'ashlee@gmail.com',
+            dates_free = [date(2019, 11, 30), date(2019, 12, 11)],
+            friends = []
+        )
+        ashlee_key = ashlee.put()
+
+        alexa.friends = [ashlee_key]
+        ashlee.friends = [alexa_key]
 
         self.redirect("/home")
 
@@ -93,7 +98,6 @@ app=webapp2.WSGIApplication([
     ('/profile', Profile),
     ('/friends', Friends),
     ('/schedule', Schedule),
-    ('/linkup', Linkup),
     ('/login', Login),
     ('/populateDatabase', populateDatabase),
 ], debug=True)
