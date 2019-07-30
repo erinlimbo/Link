@@ -5,6 +5,15 @@ import os
 from google.appengine.ext import ndb
 from google.appengine.api import users
 from datetime import date
+from google.appengine.api import search
+
+index = search.Index(name='friend_search')
+search.Document(
+    doc_id='documentId',
+    fields=[search.TextField(name='friends', value='search for friends'),
+
+            ],
+    language='en')
 
 jinja_env = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__))
@@ -87,6 +96,11 @@ class EditProfile(webapp2.RequestHandler):
         self.response.write(template.render(template_vars))
 
 class Friends(webapp2.RequestHandler):
+    doc = search.Document(
+        doc_id='documentId',
+        fields=[search.TextField(name='subject', value='going for dinner'),
+    ],
+    language='en')
     def get(self):
         all_users = Profile.query().fetch()
         template_vars = {
@@ -104,6 +118,7 @@ class Friends(webapp2.RequestHandler):
                 get_current_user.friends.append(person.key)
                 get_current_user.put()
 
+        
 class Schedule(webapp2.RequestHandler):
     def get(self):
         template_vars = {
