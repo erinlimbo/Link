@@ -99,7 +99,10 @@ class Friends(webapp2.RequestHandler):
         }
         template = jinja_env.get_template('templates/friends.html')
         self.response.write(template.render(template_vars))
-
+    def post(self):
+        template_vars = {
+            
+        }
 class Schedule(webapp2.RequestHandler):
     def get(self):
         template_vars = {

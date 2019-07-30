@@ -6,9 +6,14 @@
   </head>
   <body>
     <p> add friends here </p>
+    <form  action="/friends" method="POST">
+
+    </form>
     {% for user in all_users %}
-    <input type="checkbox" name="{{user.email}}"> {{user.email}} </input>
+    <input id="{{user.email}}"type="checkbox" name="{{user.email}}"> {{user.email}} </input>
+
     <br>
+    <input type="submit" name="submit" value="Add Friends!">
     {% endfor %}
 
   </body>
