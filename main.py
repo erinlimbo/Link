@@ -57,7 +57,7 @@ class Home(webapp2.RequestHandler):
         # get_current_user.
         template_vars = {
             "email_address": email_address,
-            "friends": get_current_user[0].friends,
+            "friends": get_current_user.friends,
         }
         template = jinja_env.get_template('templates/home.html')
         self.response.write(template.render(template_vars))
