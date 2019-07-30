@@ -49,6 +49,13 @@ class Home(webapp2.RequestHandler):
         else:
             self.redirect("/login")
 
+        current_user = users.get_current_user()
+        get_current_user=User.query().filter(current_user.nickname() == User.email).get()
+        # get_current_user.
+        template_vars = {
+            "email_address": email_address,
+            "friends": get_current_user.friends,
+        }
         template = jinja_env.get_template('templates/home.html')
         self.response.write(template.render(template_vars))
 
@@ -73,11 +80,12 @@ class Profile(webapp2.RequestHandler):
         self.response.write(template.render(template_vars))
     def post(self):
         current_user = users.get_current_user()
-        get_current_user = User.query().filter(current_user.nickname() == User.email).fetch()
+        get_current_user = User.query().filter(current_user.nickname() == User.email).get()
         user_free_date = self.request.get('user_free_date')
         # date_list = get_current_user[0].dates_free
-        get_current_user[0].dates_free.append(user_free_date)
-        print get_current_user[0].dates_free
+        get_current_user.dates_free.append(user_free_date)
+        get_current_user.put()
+        print get_current_user.dates_free
         print user_free_date
         print "hello"
 
