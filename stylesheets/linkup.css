@@ -1,0 +1,15 @@
+img {
+  flex-grow: 1.7;
+  height: 10vmin;
+  display: flex;
+  flex-direction: column;
+}
+
+h3 {
+  font-family: "Reboto", sans-serif;
+}
+
+
+body {
+  font-family: "Reboto", sans-serif;
+}
