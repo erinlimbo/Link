@@ -19,20 +19,22 @@ jinja_env = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__))
 )
 
-class User(ndb.Model):
+# def get_current_user:
+    #TODO
+
+class Profile(ndb.Model):
     first_name = ndb.StringProperty()
     last_name = ndb.StringProperty()
-    nickname = ndb.StringProperty()
     email = ndb.StringProperty()
     dates_free = ndb.StringProperty(repeated=True)
-    friends = ndb.KeyProperty(repeated=True, kind='User')
+    friends = ndb.KeyProperty(repeated=True, kind='Profile')
 
 class Login(webapp2.RequestHandler):
     def get(self):
         login_url = users.create_login_url('/')
         template_vars = {
             "login_url": login_url
-         }
+        }
         template = jinja_env.get_template('templates/login.html')
         self.response.write(template.render(template_vars))
     def post(self):
@@ -41,7 +43,7 @@ class Login(webapp2.RequestHandler):
 class Home(webapp2.RequestHandler):
     def get(self):
         current_user = users.get_current_user()
-        all_people = User.query().fetch()
+        all_people = Profile.query().fetch()
         if current_user:
             email_address = current_user.email()
             logout_link_html = '<a href="%s">sign out</a>' % (users.create_logout_url('/login'))
@@ -51,7 +53,7 @@ class Home(webapp2.RequestHandler):
                 if person.email == email_address:
                     is_existing_person = True
             if (is_existing_person == False):
-                new_user = User(
+                new_user = Profile(
                     email=current_user.email(),
                     friends = [],
                     dates_free = [],
@@ -70,7 +72,7 @@ class Home(webapp2.RequestHandler):
         template = jinja_env.get_template('templates/home.html')
         self.response.write(template.render(template_vars))
 
-class Profile(webapp2.RequestHandler):
+class EditProfile(webapp2.RequestHandler):
     def get(self):
         current_user = users.get_current_user()
         template_vars = {
@@ -80,7 +82,7 @@ class Profile(webapp2.RequestHandler):
         self.response.write(template.render(template_vars))
     def post(self):
         current_user = users.get_current_user()
-        get_current_user = User.query().filter(current_user.email() == User.email).get()
+        get_current_user = Profile.query().filter(current_user.email() == Profile.email).get()
         user_free_date = self.request.get('user_free_date')
         get_current_user.dates_free.append(user_free_date)
         get_current_user.put()
@@ -97,16 +99,24 @@ class Friends(webapp2.RequestHandler):
     ],
     language='en')
     def get(self):
-        all_users = User.query().fetch()
+        all_users = Profile.query().fetch()
+        print all_users
         template_vars = {
             "all_users": all_users
         }
         template = jinja_env.get_template('templates/friends.html')
         self.response.write(template.render(template_vars))
     def post(self):
-        template_vars = {
+        current_user = users.get_current_user()
+        get_current_user = Profile.query().filter(current_user.email() == Profile.email).get()
+        all_people = Profile.query().fetch()
+        for person in all_people:
+            if_checked_person = self.request.get(person.email)
+            if if_checked_person == "on":
+                get_current_user.friends.append(person.key)
+                get_current_user.put()
 
-        }
+        
 class Schedule(webapp2.RequestHandler):
     def get(self):
         template_vars = {
@@ -116,7 +126,7 @@ class Schedule(webapp2.RequestHandler):
 
     def post(self):
         current_user = users.get_current_user()
-        get_current_user=User.query().filter(current_user.email() == User.email).get()
+        get_current_user=Profile.query().filter(current_user.email() == Profile.email).get()
         hangout_date = self.request.get("hangout_date")
         friends_free = []
         if len(get_current_user.friends) != 0:
@@ -137,7 +147,7 @@ class Schedule(webapp2.RequestHandler):
 
 class populateDatabase(webapp2.RequestHandler):
     def get(self):
-        alexa = User(
+        alexa = Profile(
             first_name = 'Alexa',
             email = 'alexa@gmail.com',
             dates_free = ["2019-11-30", "2019-10-11", ],
@@ -145,7 +155,7 @@ class populateDatabase(webapp2.RequestHandler):
         )
         alexa_key = alexa.put()
 
-        ashlee = User(
+        ashlee = Profile(
             first_name = 'Ashlee',
             email = 'ashlee@example.com',
             dates_free = ["2019-11-30", "2019-12-11",],
@@ -164,7 +174,7 @@ class populateDatabase(webapp2.RequestHandler):
 app=webapp2.WSGIApplication([
     ('/login', Login),
     ('/', Home),
-    ('/profile', Profile),
+    ('/profile', EditProfile),
     ('/friends', Friends),
     ('/schedule', Schedule),
     ('/populateDatabase', populateDatabase),

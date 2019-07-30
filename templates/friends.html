@@ -5,15 +5,16 @@
     <title>Link</title>
   </head>
   <body>
-    <p> asandnandn </p>
     <form  action="/friends" method="POST">
+      <p> alsdasld </p>
+      {% for user in all_users %}
+      <input type="checkbox" name={{user.email}}> {{user.email}} </input>
+      <br>
+      {% endfor %}
+      <input type="submit" name="addFriends" Value = "Add Friends">
+
     </form>
-    {% for user in all_users %}
-    <input id="{{user.email}}"type="checkbox" name="{{user.email}}"> {{user.email}} </input>
 
-    <br>
-    <input type="submit" name="submit" value="Add Friends!">
-    {% endfor %}
-
+  <script type="text/javascript" src="../scripts/friends.js"></script>
   </body>
 </html>
