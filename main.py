@@ -13,7 +13,6 @@ jinja_env = jinja2.Environment(
 class User(ndb.Model):
     first_name = ndb.StringProperty()
     last_name = ndb.StringProperty()
-    nickname = ndb.StringProperty()
     email = ndb.StringProperty()
     dates_free = ndb.StringProperty(repeated=True)
     friends = ndb.KeyProperty(repeated=True, kind='User')
@@ -89,6 +88,15 @@ class Friends(webapp2.RequestHandler):
         }
         template = jinja_env.get_template('templates/friends.html')
         self.response.write(template.render(template_vars))
+    def post(self):
+        current_user = users.get_current_user()
+        get_current_user = User.query().filter(current_user.email() == User.email).get()
+        all_people = User.query().fetch()
+        for person in all_people:
+            if_checked_person = self.request.get(person.email)
+            if if_checked_person == "on":
+                get_current_user.friends.append(person.key)
+                get_current_user.put()
 
 class Schedule(webapp2.RequestHandler):
     def get(self):
