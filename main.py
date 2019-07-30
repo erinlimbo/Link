@@ -31,25 +31,30 @@ class Login(webapp2.RequestHandler):
 
 class Home(webapp2.RequestHandler):
     def get(self):
-        user = users.get_current_user()
-        if user:
-            email_address = user.nickname()
+        current_user = users.get_current_user()
+        all_people = User.query().fetch()
+        if current_user:
+            email_address = current_user.email()
             logout_link_html = '<a href="%s">sign out</a>' % (users.create_logout_url('/login'))
             self.response.write(" You're logged in as " + email_address + ". " + logout_link_html)
-            current_user = User(
-                nickname=user.nickname(),
-                email=user.email(),
+            is_existing_person = False
+            for person in all_people:
+                if person.email == email_address:
+                    is_existing_person = True
+            if (is_existing_person == False):
+                new_user = User(
+                    email=current_user.email(),
                 )
-            current_user.put()
-            get_current_user=User.query().filter(user.nickname() == User.email).get()
+                new_user.put()
+
+            # get_current_user=User.query().filter(user.nickname() == User.email).get()
             template_vars = {
                 "email_address": email_address,
-                "friends": current_user.friends,
+            #     "friends": current_user.friends,
             }
         else:
             self.redirect("/login")
-            template_vars = {
-            }
+            template_vars = {}
 
         template = jinja_env.get_template('templates/home.html')
         self.response.write(template.render(template_vars))
