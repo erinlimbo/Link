@@ -46,10 +46,14 @@ class Home(webapp2.RequestHandler):
             current_user.put()
         else:
             self.redirect("/login")
-        template_vars = {
-        "email_address": email_address,
-    }
 
+        current_user = users.get_current_user()
+        get_current_user=User.query().filter(current_user.nickname() == User.email).fetch()
+
+        template_vars = {
+            "email_address": email_address,
+            "friends": get_current_user[0].friends,
+        }
         template = jinja_env.get_template('templates/home.html')
         self.response.write(template.render(template_vars))
 
@@ -75,26 +79,29 @@ class Profile(webapp2.RequestHandler):
     def post(self):
         current_user = users.get_current_user()
         get_current_user = User.query().filter(current_user.nickname() == User.email).fetch()
-        free_date = self.request.get('freeDate')
-
-        get_current_user[0].dates_free.append(free_date)
+        user_free_date = self.request.get('user_free_date')
+        # date_list = get_current_user[0].dates_free
+        get_current_user[0].dates_free.append(user_free_date)
+        print get_current_user[0].dates_free
+        print user_free_date
+        print "hello"
 
         # dates_free.append(free_date)
         template_vars = {
-            'date': free_date
+            'date': user_free_date
         }
         template = jinja_env.get_template('templates/profile.html')
         self.response.write(template.render(template_vars))
 
 class Friends(webapp2.RequestHandler):
     def get(self):
-        current_user = users.get_current_user()
-        get_current_user=User.query().filter(current_user.nickname() == User.email).fetch()
-        # for friend in get_current_user[0].friends:
-        #             friends_free.append(friend.get().email)
-        # ancestor_key = ndb.Key('email', "sydneym2019@gmail.com")
+        # current_user = users.get_current_user()
+        # get_current_user=User.query().filter(current_user.nickname() == User.email).fetch()
+        # # for friend in get_current_user[0].friends:
+        # #             friends_free.append(friend.get().email)
+        # # ancestor_key = ndb.Key('email', "sydneym2019@gmail.com")
         template_vars = {
-            "friends": get_current_user[0].friends
+            # "friends": get_current_user[0].friends
         }
         template = jinja_env.get_template('templates/friends.html')
         self.response.write(template.render(template_vars))
