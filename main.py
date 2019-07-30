@@ -44,18 +44,13 @@ class Home(webapp2.RequestHandler):
             get_current_user=User.query().filter(user.nickname() == User.email).get()
             template_vars = {
                 "email_address": email_address,
-                "friends": get_current_user.friends,
+                "friends": current_user.friends,
             }
         else:
             self.redirect("/login")
+            template_vars = {
+            }
 
-        current_user = users.get_current_user()
-        get_current_user=User.query().filter(current_user.nickname() == User.email).get()
-        # get_current_user.
-        template_vars = {
-            "email_address": email_address,
-            "friends": get_current_user.friends,
-        }
         template = jinja_env.get_template('templates/home.html')
         self.response.write(template.render(template_vars))
 
