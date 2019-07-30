@@ -34,11 +34,16 @@
 
 .button {
   /* background-color: #4CAF50; /* Green */ */
+  background: linear-gradient(-45deg,#ffede3, #ffe8e0, #ffede3, #f79b7c,  );
+  color: black;
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 15s ease infinite;
+  -moz-animation: Gradient 15s ease infinite;
+  animation: Gradient 15s ease infinite;
   height: 10px;
   width: 100px;
   border: 2.5px solid #FEB69E;
   padding: 27px 47px;
-  color: black;
   text-align: center;
   text-decoration: none;
   font-size: 28px;
@@ -47,9 +52,10 @@
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
 
+
 }
 .button:hover {
-  background-color: #FEB69E;
+  background: linear-gradient(-45deg,#ffede3, #ffe8e0, #ffede3, #f79b7c,  );
   color: white;
 }
 
@@ -81,7 +87,7 @@ body {
     width: 100wh;
 	height: 90vh;
 	color: black;
-	background: linear-gradient(-45deg, #ffe8e0, #fccfc0, #ffede3, #ffe8e0);
+	background: linear-gradient(-45deg, #ffe8e0, #f79b7c, #ffede3, #ffe8e0);
 	background-size: 400% 400%;
 	-webkit-animation: Gradient 15s ease infinite;
 	-moz-animation: Gradient 15s ease infinite;
