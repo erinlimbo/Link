@@ -15,7 +15,7 @@ body {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 17px;
   font-family: "Roboto", sans-serif;
   margin: 4px 2px;
   -webkit-transition-duration: 0.4s; /* Safari */
@@ -36,7 +36,7 @@ body {
   background-color: white;
   color: black;
   border: 2px solid #FEB69E;
-  font-size: 10px;
+  font-size: 17px;
   display: inline;
 }
 

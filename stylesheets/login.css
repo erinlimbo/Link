@@ -1,5 +1,5 @@
 #container {
-  border: 2px solid black;
+  /* border: 2px solid black; */
   display: flex;
   justify-content: space-around;
   align-items: stretch;
@@ -7,7 +7,7 @@
 }
 #leftLogo {
    flex-grow: 1.7;
-   border: 1px solid black;
+   /* border: 1px solid black; */
    height: 100vmin;
    display: flex;
    flex-direction: column;
@@ -23,9 +23,9 @@
 }
 
 #rightLogin{
-  border: 1px solid black;
-  height: 100vmin;
-  width: 29%;
+  /* border: 1px solid black; */
+  /* height: 100vmin;
+  width: 29%; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,17 +45,20 @@
   /* background-color: #4CAF50; /* Green */ */
   border: none;
   color: black;
-  padding: 26px 40px;
+  padding: 28px 42px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 28px;
   font-family: "Roboto", sans-serif;
-  margin: 5px 3px;
+  margin: px px;
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   cursor: pointer;
-  display: inline;
+}
+.button:hover {
+  background-color: #FEB69E;
+  color: white;
 }
 
 #formContainer{
@@ -79,3 +82,8 @@
 input {
   font-size: 15px;
 }
+
+body {
+    font-family: "Montserrat", sans-serif;
+    text-align: inherit;
+  }
