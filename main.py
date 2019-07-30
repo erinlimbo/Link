@@ -19,18 +19,22 @@ jinja_env = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__))
 )
 
-# def get_current_profile:
-    # TODO
-
-# def get_all_profiles:
-        # TODO
-
 class Profile(ndb.Model):
     first_name = ndb.StringProperty()
     last_name = ndb.StringProperty()
     email = ndb.StringProperty()
     dates_free = ndb.StringProperty(repeated=True)
     friends = ndb.KeyProperty(repeated=True, kind='Profile')
+
+def get_current_email():
+    return users.get_current_user()
+
+def get_current_profile():
+    current_user = get_current_email()
+    return Profile.query().filter(current_user.email() == Profile.email).get()
+
+def get_all_profiles():
+    return Profile.query().fetch()
 
 class Login(webapp2.RequestHandler):
     def get(self):
@@ -45,8 +49,8 @@ class Login(webapp2.RequestHandler):
 
 class Home(webapp2.RequestHandler):
     def get(self):
-        current_user = users.get_current_user()
-        all_people = Profile.query().fetch()
+        current_user = get_current_email()
+        all_people = get_all_profiles()
         if current_user:
             email_address = current_user.email()
             logout_link_html = '<a href="%s">sign out</a>' % (users.create_logout_url('/login'))
@@ -62,12 +66,10 @@ class Home(webapp2.RequestHandler):
                     dates_free = [],
                 )
                 new_user.put()
-
-            # get_current_user=User.query().filter(user.nickname() == User.email).get()
             template_vars = {
                 "email_address": email_address,
-            #     "friends": current_user.friends,
             }
+
         else:
             self.redirect("/login")
             template_vars = {}
@@ -85,7 +87,7 @@ class EditProfile(webapp2.RequestHandler):
         self.response.write(template.render(template_vars))
     def post(self):
         current_user = users.get_current_user()
-        get_current_user = Profile.query().filter(current_user.email() == Profile.email).get()
+        get_current_user = get_current_profile()
         user_free_date = self.request.get('user_free_date')
         get_current_user.dates_free.append(user_free_date)
         get_current_user.put()
@@ -102,23 +104,22 @@ class Friends(webapp2.RequestHandler):
     ],
     language='en')
     def get(self):
-        all_users = Profile.query().fetch()
+        all_users = get_all_profiles()
         template_vars = {
             "all_users": all_users
         }
         template = jinja_env.get_template('templates/friends.html')
         self.response.write(template.render(template_vars))
     def post(self):
-        current_user = users.get_current_user()
-        get_current_user = Profile.query().filter(current_user.email() == Profile.email).get()
-        all_people = Profile.query().fetch()
+        current_user = get_current_email()
+        get_current_user = get_current_profile()
+        all_people = get_all_profiles()
         for person in all_people:
             if_checked_person = self.request.get(person.email)
             if if_checked_person == "on":
                 get_current_user.friends.append(person.key)
                 get_current_user.put()
 
-        
 class Schedule(webapp2.RequestHandler):
     def get(self):
         template_vars = {
@@ -127,8 +128,8 @@ class Schedule(webapp2.RequestHandler):
         self.response.write(template.render(template_vars))
 
     def post(self):
-        current_user = users.get_current_user()
-        get_current_user=Profile.query().filter(current_user.email() == Profile.email).get()
+        current_user = get_current_email()
+        get_current_user=get_current_profile()
         hangout_date = self.request.get("hangout_date")
         friends_free = []
         if len(get_current_user.friends) != 0:
