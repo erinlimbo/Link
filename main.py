@@ -67,7 +67,6 @@ class Home(webapp2.RequestHandler):
 class Profile(webapp2.RequestHandler):
     def get(self):
         current_user = users.get_current_user()
-
         template_vars = {
             'current_user': current_user,
         }
@@ -127,7 +126,7 @@ class populateDatabase(webapp2.RequestHandler):
         alexa = User(
             first_name = 'Alexa',
             email = 'alexa@gmail.com',
-            dates_free = ["2019-11-30", "2019-10-11",],
+            dates_free = ["2019-11-30", "2019-10-11", ],
             friends = []
         )
         alexa_key = alexa.put()
