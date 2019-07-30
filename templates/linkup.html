@@ -11,10 +11,14 @@
     <br>
     date is: {{hangout_date}}
     <br>
+    {%if friends_free|length == 0%}
+    You have no friends or none of your friends are free.
+    {%else %}
     friends who are free are:
     {% for friend in friends_free %}
       {{friend}}
     {% endfor %}
+    {%endif%}
 
   </body>
 </html>

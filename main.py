@@ -31,39 +31,35 @@ class Login(webapp2.RequestHandler):
 
 class Home(webapp2.RequestHandler):
     def get(self):
-        user = users.get_current_user()
-        if user:
-            email_address = user.nickname()
+        current_user = users.get_current_user()
+        all_people = User.query().fetch()
+        if current_user:
+            email_address = current_user.email()
             logout_link_html = '<a href="%s">sign out</a>' % (users.create_logout_url('/login'))
             self.response.write(" You're logged in as " + email_address + ". " + logout_link_html)
-            current_user = User(
-                nickname=user.nickname(),
-                email=user.email(),
+            is_existing_person = False
+            for person in all_people:
+                if person.email == email_address:
+                    is_existing_person = True
+            if (is_existing_person == False):
+                new_user = User(
+                    email=current_user.email(),
+                    friends = [],
+                    dates_free = [],
                 )
-            current_user.put()
-            get_current_user=User.query().filter(user.nickname() == User.email).get()
+                new_user.put()
+
+            # get_current_user=User.query().filter(user.nickname() == User.email).get()
             template_vars = {
                 "email_address": email_address,
-                "friends": current_user.friends,
+            #     "friends": current_user.friends,
             }
         else:
             self.redirect("/login")
-            template_vars = {
-            }
+            template_vars = {}
 
         template = jinja_env.get_template('templates/home.html')
         self.response.write(template.render(template_vars))
-
-    def post(self):
-        current_user = users.get_current_user()
-        user = User(
-            nickname=current_user.nickname(),
-            email=current_user.email(),
-        )
-        user.put()
-        self.response.write('Thanks for signing up, %s! <br><a href="/">Home</a>' %
-            user.first_name)
-        self.redirect("/")
 
 class Profile(webapp2.RequestHandler):
     def get(self):
@@ -75,16 +71,10 @@ class Profile(webapp2.RequestHandler):
         self.response.write(template.render(template_vars))
     def post(self):
         current_user = users.get_current_user()
-        get_current_user = User.query().filter(current_user.nickname() == User.email).get()
+        get_current_user = User.query().filter(current_user.email() == User.email).get()
         user_free_date = self.request.get('user_free_date')
-        # date_list = get_current_user[0].dates_free
         get_current_user.dates_free.append(user_free_date)
         get_current_user.put()
-        print get_current_user.dates_free
-        print user_free_date
-        print "hello"
-
-        # dates_free.append(free_date)
         template_vars = {
             'date': user_free_date
         }
@@ -112,17 +102,19 @@ class Schedule(webapp2.RequestHandler):
 
     def post(self):
         current_user = users.get_current_user()
-        get_current_user=User.query().filter(current_user.nickname() == User.email).fetch()
+        get_current_user=User.query().filter(current_user.email() == User.email).get()
         hangout_date = self.request.get("hangout_date")
         friends_free = []
-        for friend in get_current_user[0].friends:
-            for date in friend.get().dates_free:
-                if hangout_date == date:
-                    friends_free.append(friend.get().email)
+        if len(get_current_user.friends) != 0:
+            for friend in get_current_user.friends:
+                if len(friend.get().dates_free) != 0:
+                    for date in friend.get().dates_free:
+                        if hangout_date == date:
+                            friends_free.append(friend.get().email)
 
         template_vars = {
             "hangout_date": hangout_date,
-            "get_current_user": get_current_user[0],
+            "get_current_user": get_current_user,
             "friends_free": friends_free
         }
         template = jinja_env.get_template('templates/linkup.html')
