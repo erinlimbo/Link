@@ -24,57 +24,49 @@
 
 #rightLogin{
   /* border: 1px solid black; */
-  /* height: 100vmin;
-  width: 29%; */
+  height: 100vmin;
+  width: 29%;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
-#login{
-  font-size: 80px;
-  background-color: white;
-  color: black;
-  border: 2.5px solid #FEB69E;
-  /* background-color: #FEB69E; */
-  color: white;
-
-}
 
 .button {
   /* background-color: #4CAF50; /* Green */ */
-  border: none;
+  height: 10px;
+  width: 100px;
+  border: 2.5px solid #FEB69E;
+  padding: 27px 47px;
   color: black;
-  padding: 28px 42px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
   font-size: 28px;
   font-family: "Roboto", sans-serif;
-  margin: px px;
+  /* margin: 1px; */
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
-  cursor: pointer;
+
 }
 .button:hover {
   background-color: #FEB69E;
   color: white;
 }
 
-#formContainer{
+/* #formContainer{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-}
+} */
 #password, #username {
-  width: 200px;
+  width: 20px;
   height: 30px;
 }
 
 
 #submit {
   height: 50px;
-  width: 100px;
+  width: 50px;
   border-radius: 30px;
   background-color: transparent;
 }
