@@ -10,8 +10,11 @@ jinja_env = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__))
 )
 
-# def get_current_user:
-    #TODO
+# def get_current_profile:
+    # TODO
+
+# def get_all_profiles:
+        # TODO
 
 class Profile(ndb.Model):
     first_name = ndb.StringProperty()
@@ -86,7 +89,6 @@ class EditProfile(webapp2.RequestHandler):
 class Friends(webapp2.RequestHandler):
     def get(self):
         all_users = Profile.query().fetch()
-        print all_users
         template_vars = {
             "all_users": all_users
         }
@@ -135,7 +137,7 @@ class populateDatabase(webapp2.RequestHandler):
         alexa = Profile(
             first_name = 'Alexa',
             email = 'alexa@gmail.com',
-            dates_free = ["2019-11-30", "2019-10-11", ],
+            dates_free = ["2019-11-30", "2019-10-11",],
             friends = []
         )
         alexa_key = alexa.put()
