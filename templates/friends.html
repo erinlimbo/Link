@@ -6,7 +6,10 @@
   </head>
   <body>
     <p> add friends here </p>
-    for 
+    {% for user in all_users %}
+    <input type="checkbox" name="{{user.email}}"> {{user.email}} </input>
+    <br>
+    {% endfor %}
 
   </body>
 </html>
