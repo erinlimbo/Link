@@ -15,7 +15,7 @@ class User(ndb.Model):
     last_name = ndb.StringProperty()
     nickname = ndb.StringProperty()
     email = ndb.StringProperty()
-    dates_free = ndb.DateProperty(repeated=True)
+    dates_free = ndb.StringProperty(repeated=True)
     friends = ndb.KeyProperty(repeated=True, kind='User')
 
 class Login(webapp2.RequestHandler):
@@ -29,12 +29,6 @@ class Login(webapp2.RequestHandler):
         template = jinja_env.get_template('templates/login.html')
         self.response.write(template.render(template_vars))
     def post(self):
-        # template_vars = {
-        #     'username' : self.request.get('username'),
-        #     'password': self.request.get('password'),
-        # }
-        # template = jinja_env.get_template('templates/home.html')
-        # self.response.write(template.render(template_vars))
         self.redirect("/")
 
 class Home(webapp2.RequestHandler):
@@ -55,7 +49,6 @@ class Home(webapp2.RequestHandler):
 
         template_vars = {
             "email_address": email_address,
-            # "login_url": login_url
         }
         template = jinja_env.get_template('templates/home.html')
         self.response.write(template.render(template_vars))
@@ -74,9 +67,21 @@ class Home(webapp2.RequestHandler):
 class Profile(webapp2.RequestHandler):
     def get(self):
         current_user = users.get_current_user()
-
         template_vars = {
             'current_user': current_user,
+        }
+        template = jinja_env.get_template('templates/profile.html')
+        self.response.write(template.render(template_vars))
+    def post(self):
+        current_user = users.get_current_user()
+        get_current_user = User.query().filter(current_user.nickname() == User.email).fetch()
+        free_date = self.request.get('freeDate')
+
+        get_current_user[0].dates_free.append(free_date)
+
+        # dates_free.append(free_date)
+        template_vars = {
+            'date': free_date
         }
         template = jinja_env.get_template('templates/profile.html')
         self.response.write(template.render(template_vars))
@@ -96,29 +101,25 @@ class Friends(webapp2.RequestHandler):
 
 class Schedule(webapp2.RequestHandler):
     def get(self):
-        # friends_query = User.query()
-        # friends_list = friends_query.fetch()
-        # current_user = users.get_current_user()
-        # first_name = users.name.familyName()
         template_vars = {
-            # "current_user": current_user,
-
         }
         template = jinja_env.get_template('templates/schedule.html')
         self.response.write(template.render(template_vars))
 
     def post(self):
         current_user = users.get_current_user()
-        print current_user.nickname()
         get_current_user=User.query().filter(current_user.nickname() == User.email).fetch()
-
+        hangout_date = self.request.get("hangout_date")
+        friends_free = []
+        for friend in get_current_user[0].friends:
+            for date in friend.get().dates_free:
+                if hangout_date == date:
+                    friends_free.append(friend.get().email)
 
         template_vars = {
-            "date": date(int(self.request.get("year")),
-            int(self.request.get("month")),
-            int(self.request.get("day"))),
+            "hangout_date": hangout_date,
             "get_current_user": get_current_user[0],
-
+            "friends_free": friends_free
         }
         template = jinja_env.get_template('templates/linkup.html')
         self.response.write(template.render(template_vars))
@@ -129,21 +130,24 @@ class populateDatabase(webapp2.RequestHandler):
         alexa = User(
             first_name = 'Alexa',
             email = 'alexa@gmail.com',
-            dates_free = [date(2019, 11, 30), date(2019, 12, 12)],
+            dates_free = ["2019-11-30", "2019-10-11", ],
             friends = []
         )
         alexa_key = alexa.put()
 
         ashlee = User(
             first_name = 'Ashlee',
-            email = 'ashlee@gmail.com',
-            dates_free = [date(2019, 11, 30), date(2019, 12, 11)],
+            email = 'ashlee@example.com',
+            dates_free = ["2019-11-30", "2019-12-11",],
             friends = []
         )
         ashlee_key = ashlee.put()
 
         alexa.friends = [ashlee_key]
         ashlee.friends = [alexa_key]
+
+        alexa_key = alexa.put()
+        ashlee_key = ashlee.put()
 
         self.redirect("/")
 
