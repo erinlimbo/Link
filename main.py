@@ -34,13 +34,15 @@ class Login(webapp2.RequestHandler):
 class Home(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
+
         if user:
             email_address = user.nickname()
             logout_link_html = '<a href="%s">sign out</a>' % (users.create_logout_url('/login'))
             self.response.write(" You're logged in as " + email_address + ". " + logout_link_html)
             current_user = User(
                 nickname=user.nickname(),
-                email=user.email(),)
+                email=user.email(),
+                )
             current_user.put()
             get_current_user=User.query().filter(user.nickname() == User.email).fetch()
             template_vars = {
