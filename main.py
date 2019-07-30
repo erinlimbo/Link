@@ -40,10 +40,8 @@ class Home(webapp2.RequestHandler):
             self.response.write(" You're logged in as " + email_address + ". " + logout_link_html)
             current_user = User(
                 nickname=user.nickname(),
-                email=user.email(),
+                email=user.email(),)
             current_user.put()
-
-
         else:
             self.redirect("/login")
 
