@@ -34,6 +34,7 @@ class Login(webapp2.RequestHandler):
 class Home(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
+
         if user:
             email_address = user.nickname()
             logout_link_html = '<a href="%s">sign out</a>' % (users.create_logout_url('/login'))
@@ -41,15 +42,14 @@ class Home(webapp2.RequestHandler):
             current_user = User(
                 nickname=user.nickname(),
                 email=user.email(),
+                )
             current_user.put()
-
-
         else:
             self.redirect("/login")
-
         template_vars = {
-            "email_address": email_address,
-        }
+        "email_address": email_address,
+    }
+
         template = jinja_env.get_template('templates/home.html')
         self.response.write(template.render(template_vars))
 
