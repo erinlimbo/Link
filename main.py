@@ -80,6 +80,19 @@ class Profile(webapp2.RequestHandler):
         }
         template = jinja_env.get_template('templates/profile.html')
         self.response.write(template.render(template_vars))
+    def post(self):
+        current_user = users.get_current_user()
+        get_current_user = User.query().filter(current_user.nickname() == User.email).fetch()
+        free_date = self.request.get('freeDate')
+
+        get_current_user[0].dates_free.append(free_date)
+
+        # dates_free.append(free_date)
+        template_vars = {
+            'date': free_date
+        }
+        template = jinja_env.get_template('templates/profile.html')
+        self.response.write(template.render(template_vars))
 
 
 class Friends(webapp2.RequestHandler):

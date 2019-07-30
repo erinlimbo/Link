@@ -5,11 +5,12 @@
     <title>Link</title>
   </head>
   <body>
-    <label for="date">Add Date you're free!: </label>
-    <input type="date" name="date" >
-    <!-- <input onclick="freeDate()" type="checkbox" id = "date1" class="button">date 1</input>
-    <input onclick="freeDate()" type="checkbox" id="date2" class="button">date 2</input>
-    <input onclick="freeDate()" type="checkbox" id="date3" class="button">date 3</input> -->
+    <form  action="/profile" method="POST">
+      <input type="date" name="freeDate">
+      <input type="submit" name="submitDate" Value = "Add Date">
+      You added: {{date}}
+    </form>
+
     <script src="../scripts/profile.js" charset="utf-8"></script>
   </body>
 </html>
