@@ -41,10 +41,10 @@ class Home(webapp2.RequestHandler):
                 email=user.email(),
                 )
             current_user.put()
-            get_current_user=User.query().filter(user.nickname() == User.email).fetch()
+            get_current_user=User.query().filter(user.nickname() == User.email).get()
             template_vars = {
                 "email_address": email_address,
-                "friends": get_current_user[0].friends,
+                "friends": get_current_user.friends,
             }
         else:
             self.redirect("/login")
