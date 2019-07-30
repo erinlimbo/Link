@@ -41,17 +41,17 @@ class Home(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
         if user:
-          email_address = user.nickname()
-          logout_link_html = '<a href="%s">sign out</a>' % (users.create_logout_url('/login'))
-          self.response.write(" You're logged in as " + email_address + ". " + logout_link_html)
-          current_user = User(
-              nickname=user.nickname(),
-              email=user.email(),)
-          current_user.put()
+            email_address = user.nickname()
+            logout_link_html = '<a href="%s">sign out</a>' % (users.create_logout_url('/login'))
+            self.response.write(" You're logged in as " + email_address + ". " + logout_link_html)
+            current_user = User(
+                nickname=user.nickname(),
+                email=user.email(),
+            current_user.put()
 
 
         else:
-          self.redirect("/login")
+            self.redirect("/login")
 
         template_vars = {
             "email_address": email_address,
@@ -81,11 +81,15 @@ class Profile(webapp2.RequestHandler):
         template = jinja_env.get_template('templates/profile.html')
         self.response.write(template.render(template_vars))
 
-
 class Friends(webapp2.RequestHandler):
     def get(self):
+        current_user = users.get_current_user()
+        get_current_user=User.query().filter(current_user.nickname() == User.email).fetch()
+        # for friend in get_current_user[0].friends:
+        #             friends_free.append(friend.get().email)
+        # ancestor_key = ndb.Key('email', "sydneym2019@gmail.com")
         template_vars = {
-
+            "friends": get_current_user[0].friends
         }
         template = jinja_env.get_template('templates/friends.html')
         self.response.write(template.render(template_vars))
