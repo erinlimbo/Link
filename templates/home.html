@@ -18,15 +18,16 @@
       <br>
       <a href=""><img src="images/linklogo.png" alt="CSGO Howl" style="width:100px;height:100px;float:left";></a>
       <p class="w3-right">
-        <a class="button" href="{{logout_link_html}}">Logout</a>
+        <a class="button" href="{{logout_link}}">Logout</a>
       </p>
     </header>
     <div class="row">
   <div class="column">
-     <h2>Hello {{email_address}}</h2> <!-- it says email rn, but soon it will say users first name -->
+     <h2>Hello {{first_name}}</h2>
     <p>You can add your friends here:</p>
     <br>
-    <a href="http://linkwithfriends.appspot.com/friends" class="button button2">Add Friends</a>
+    <a href="/friends" class="button button2">Add Friends</a>
+
   </div>
 
   <div class="column">
@@ -37,14 +38,15 @@
       <li>{{date}}</li>
       {%endfor%}
     </ul>
-    <a href="http://linkwithfriends.appspot.com/schedule" class="button button1">Schedule</a>
+    <a href="/profile" class="button button1">Your availabilities</a>
+
   </div>
 
   <div class="column">
     <h2>Friends</h2>
     <p>List of friends wil be displayed here: </p>
     <br>
-    <a href="http://linkwithfriends.appspot.com/schedule" class="button button1">Link Up</a>
+    <a href="/schedule" class="button button1">Link Up</a>
   </div>
   </body>
 </html>

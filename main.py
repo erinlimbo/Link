@@ -7,8 +7,6 @@ from google.appengine.api import users
 from datetime import date
 from google.appengine.api import search
 
-
-
 jinja_env = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__))
 )
@@ -48,8 +46,7 @@ class Home(webapp2.RequestHandler):
 
         if current_user:
             email_address = current_user.email()
-            logout_link_html = '<a href="%s">sign out</a>' % (users.create_logout_url('/login'))
-            # self.response.write(" You're logged in as " + email_address + ". " + logout_link_html)
+            logout_link = users.create_logout_url('/login')
             is_existing_person = False
             for person in all_people:
                 if person.email == email_address:
@@ -67,9 +64,11 @@ class Home(webapp2.RequestHandler):
 
             else:
                 user_free_dates = sorted(get_current_profile().dates_free)
+                first_name = get_current_profile().first_name
                 template_vars = {
-                    "email_address": email_address,
+                    "first_name": first_name,
                     "user_free_dates": user_free_dates,
+                    "logout_link": logout_link,
                 }
                 template = jinja_env.get_template('templates/home.html')
                 self.response.write(template.render(template_vars))
@@ -86,7 +85,6 @@ class Home(webapp2.RequestHandler):
         get_current_user.last_name = last_name
         get_current_user.put()
         self.redirect('/')
-
 
 class EditProfile(webapp2.RequestHandler):
     def get(self):
@@ -126,12 +124,10 @@ class EditProfile(webapp2.RequestHandler):
         self.response.write(template.render(template_vars))
 
 class Friends(webapp2.RequestHandler):
-
     def get(self):
         current_user = users.get_current_user()
         get_current_user = Profile.query().filter(current_user.email() == Profile.email).get()
         all_users = Profile.query().filter(current_user.email() != Profile.email).fetch()
-
 
         template_vars = {
             "all_users": all_users
@@ -165,7 +161,7 @@ class Schedule(webapp2.RequestHandler):
                 if len(friend.get().dates_free) != 0:
                     for date in friend.get().dates_free:
                         if hangout_date == date:
-                            friends_free.append(friend.get().email)
+                            friends_free.append(friend.get().first_name)
 
         template_vars = {
             "hangout_date": hangout_date,
@@ -174,7 +170,6 @@ class Schedule(webapp2.RequestHandler):
         }
         template = jinja_env.get_template('templates/linkup.html')
         self.response.write(template.render(template_vars))
-
 
 class populateDatabase(webapp2.RequestHandler):
     def get(self):
