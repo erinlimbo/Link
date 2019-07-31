@@ -133,7 +133,6 @@ class EditProfile(webapp2.RequestHandler):
         current_user = users.get_current_user()
         get_current_user = get_current_profile()
         added_dates = sorted(get_current_user.dates_free)
-<<<<<<< HEAD
         # if get_current_user.dates_free:
         #     # currentDate = "you added " + get_current_user.dates_free[-1]
         #     template_vars = {
@@ -146,7 +145,7 @@ class EditProfile(webapp2.RequestHandler):
         'current_user': current_user,
         'added_dates': added_dates,
         }
-=======
+
         for date in added_dates:
             parse_dates = []
             parse_dates.append(parseDate(date))
@@ -154,7 +153,7 @@ class EditProfile(webapp2.RequestHandler):
             template_vars = {
                 'current_user': current_user,
                 'added_dates': added_dates,
-                'currentDate': currentDate,
+                # 'currentDate': currentDate,
                 'parse_dates': parse_dates
             }
         else:
@@ -162,7 +161,6 @@ class EditProfile(webapp2.RequestHandler):
             'current_user': current_user,
             'added_dates': added_dates,
             }
->>>>>>> 7f65d7688598399d07b678bd2739e22fa4e4bd5b
         template = jinja_env.get_template('templates/profile.html')
         self.response.write(template.render(template_vars))
 
