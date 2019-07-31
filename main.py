@@ -7,13 +7,7 @@ from google.appengine.api import users
 from datetime import date
 from google.appengine.api import search
 
-index = search.Index(name='friend_search')
-search.Document(
-    doc_id='documentId',
-    fields=[search.TextField(name='friends', value='search for friends'),
 
-            ],
-    language='en')
 
 jinja_env = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__))
@@ -84,23 +78,25 @@ class EditProfile(webapp2.RequestHandler):
         current_user = users.get_current_user()
         get_current_user = Profile.query().filter(current_user.email() == Profile.email).get()
         user_free_date = self.request.get('user_free_date')
-        get_current_user.dates_free.append(user_free_date)
+        #Only add date if not already added
+        if user_free_date not in get_current_user.dates_free:
+            get_current_user.dates_free.append(user_free_date)
         get_current_user.put()
+
         template_vars = {
-            'date': user_free_date
+            'date': user_free_date,
         }
         template = jinja_env.get_template('templates/profile.html')
         self.response.write(template.render(template_vars))
 
 class Friends(webapp2.RequestHandler):
-    doc = search.Document(
-        doc_id='documentId',
-        fields=[search.TextField(name='subject', value='going for dinner'),
-    ],
-    language='en')
+
     def get(self):
-        all_users = Profile.query().fetch()
-        print all_users
+        current_user = users.get_current_user()
+        get_current_user = Profile.query().filter(current_user.email() == Profile.email).get()
+        all_users = Profile.query().filter(current_user.email() != Profile.email).fetch()
+
+
         template_vars = {
             "all_users": all_users
         }
@@ -116,7 +112,7 @@ class Friends(webapp2.RequestHandler):
                 get_current_user.friends.append(person.key)
                 get_current_user.put()
 
-        
+
 class Schedule(webapp2.RequestHandler):
     def get(self):
         template_vars = {
