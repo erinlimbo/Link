@@ -67,6 +67,16 @@
     	-moz-animation: Gradient 15s ease infinite;
     	animation: Gradient 15s ease infinite;
       }
+
+#date{
+    text-transform: uppercase;
+    color: #f79b7c;
+    width: 150px;
+    height: 30px;
+    font-size: 15px;
+}
+
+
       @-webkit-keyframes Gradient {
       	0% {
       		background-position: 0% 50%
