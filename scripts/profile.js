@@ -6,6 +6,7 @@ const createList = (json) => {
     dateItem.innerHTML = date;
     let removeButton = document.createElement('button');
     removeButton.innerHTML = 'remove';
+    removeButton.id = date;
     removeButton.addEventListener('click', function(){
       createList(json)
       let data = {'date_removed': date}
