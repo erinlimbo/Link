@@ -185,16 +185,22 @@ class Friends(webapp2.RequestHandler):
         all_people = get_all_profiles()
         search = self.request.get('search')
         searched_friends = Profile.query().filter(Profile.first_name == search).fetch()
-        print searched_friends
+        if not searched_friends:
+            warning = "There is no user by that name."
+            template_vars = {
+                "searched_friends": searched_friends,
+                'warning': warning,
+            }
+        else:
+            template_vars = {
+                "searched_friends": searched_friends,
+            }
 
         for person in all_people:
             if_checked_person = self.request.get(person.email)
             if if_checked_person == "on":
                 get_current_user.friends.append(person.key)
                 get_current_user.put()
-        template_vars = {
-            "searched_friends": searched_friends,
-        }
         template = jinja_env.get_template('templates/friends.html')
         self.response.write(template.render(template_vars))
 class Schedule(webapp2.RequestHandler):
