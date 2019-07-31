@@ -1,16 +1,19 @@
+img {
+  flex-grow: 1.7;
+  height: 10vmin;
+  display: flex;
+  flex-direction: column;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
   background: linear-gradient(-45deg, #ffe8e0, #f79b7c, #ffede3, #ffe8e0);
 	background-size: 1500% 1500%;
-	-webkit-animation: Gradient 15s ease infinite;
-	-moz-animation: Gradient 15s ease infinite;
-	animation: Gradient 15s ease infinite;
+	-webkit-animation: Gradient 8s ease infinite;
+	-moz-animation: Gradient 8s ease infinite;
+	animation: Gradient 8s ease infinite;
   }
 
-img {
-  height: 80px;
-  width: 80px;
-}
   @-webkit-keyframes Gradient {
   	0% {
   		background-position: 0% 50%
@@ -52,9 +55,9 @@ img {
   background: linear-gradient(-45deg, #ffede3, #f79b7c, #ffe8e0, #ffe8e0);
   color: black;
   background-size: 800% 800%;
-  -webkit-animation: Gradient 15s ease infinite;
-  -moz-animation: Gradient 15s ease infinite;
-  animation: Gradient 15s ease infinite;
+  -webkit-animation: Gradient 8s ease infinite;
+  -moz-animation: Gradient 8s ease infinite;
+  animation: Gradient 8s ease infinite;
   height: 35px;
   width: 75px;
   border: 2.5px solid #FEB69E;
@@ -96,4 +99,30 @@ img {
   transition-duration: 0.4s;
 
 
+}
+
+.button {
+  margin-top: 50px;
+  color: black;
+  background-size: 800% 800%;
+  -webkit-animation: Gradient 8s ease infinite;
+  -moz-animation: Gradient 8s ease infinite;
+  animation: Gradient 8s ease infinite; /* Green */
+  border: none;
+  border: 2.5px solid #FEB69E;
+  padding: 16px 32px;
+  text-align: right;
+  text-decoration: none;
+  /* display: inline-block; */
+  font-size: 17px;
+  font-family: "Roboto", sans-serif;
+  /* margin: 4px 2px; */
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.button:hover {
+  background: #FEB69E;
+  border: 3px solid white;
+  color: white;
 }

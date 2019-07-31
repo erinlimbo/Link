@@ -6,10 +6,21 @@
     <link rel="stylesheet" href="../stylesheets/profile.css">
   </head>
   <body>
-    <a href="/"><img src="images/linklogo.png" alt="Link logo" "/"></a>
+    <a href="/"><img src="images/linklogo.png" alt="Link logo" "/" style="width:100px;height:100px;float:left";></a>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div align="right">
+      <br>
+    <a href="/login" class="button" href="{{logout_link}}">Logout</a>
+  </div>
     <form  action="/profile" method="POST">
       <input class="button2" type="date" name="user_free_date">
       <input class="button1" type="submit" name="submitDate" value="Add Date">
+      <br>
       <br>
       {{currentDate}}
       {%for date in added_dates%}
