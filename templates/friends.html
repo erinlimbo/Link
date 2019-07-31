@@ -6,14 +6,17 @@
       <link rel="stylesheet" href="../stylesheets/friends.css">
   </head>
   <body>
+    <a href="/"><img src="images/linklogo.png" alt="Link logo" style="width:100px;height:100px;"/></a>
     <form  action="/friends" method="POST">
-      <p> alsdasld </p>
+      <p><b>Choose Your Friends!</b></p>
       {% for user in all_users %}
         {% if user != get_current_user.friends %}
+
       <input type="checkbox" name={{user.email}}> {{user.email}} </input>
-      <br>
         {% endif %}
       {% endfor %}
+      <br>
+      <br>
       <input class="button" type="submit" name="addFriends" Value = "Add Friends">
 
     </form>
