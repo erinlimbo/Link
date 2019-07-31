@@ -9,7 +9,10 @@
     <form  action="/profile" method="POST">
       <input type="date" name="user_free_date">
       <input type="submit" name="submitDate" Value = "Add Date">
-      You added: {{date}}
+      {%for date in added_dates%}
+      <input type="checkbox" name={{date}} > {{date}} </input>
+
+      {%endfor%}
 
     </form>
 
