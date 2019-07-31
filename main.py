@@ -48,7 +48,7 @@ class Home(webapp2.RequestHandler):
         if current_user:
             email_address = current_user.email()
             logout_link_html = '<a href="%s">sign out</a>' % (users.create_logout_url('/login'))
-            self.response.write(" You're logged in as " + email_address + ". " + logout_link_html)
+            # self.response.write(" You're logged in as " + email_address + ". " + logout_link_html)
             is_existing_person = False
             for person in all_people:
                 if person.email == email_address:
