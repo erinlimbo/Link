@@ -6,21 +6,24 @@
     <link rel="stylesheet" href="../stylesheets/linkup.css">
   </head>
   <body>
-    <div id="container">
-
-      
-
-    </div>
-    <h3>Hello this is linkup.</h3>
-    Current User email is: {{get_current_user.email}}
+    <header class="w3-container w3-xlarge">
+      <a href="/"><img src="images/linklogo.png" alt="CSGO Howl" style="width:100px;height:100px;float:left";></a>
+      <p class="w3-right">
+        <div align="right">
+        <a href="/login" class="button" href="{{logout_link}}">Logout</a>
+      </div>
+      </p>
+    </header>
     <br>
-    date is: {{hangout_date}}
-    <br>
+    <h3>Friends who are free on {{hangout_date}}: </h3>
+    <!-- Current User email is: {{get_current_user.email}} -->
+    <!-- Date Selected: {{hangout_date}} -->
     {%if friends_free|length == 0%}
     You have no friends or none of your friends are free.
     {%else %}
-    friends who are free are:
     {% for friend in friends_free %}
+    <br>
+    <br>
       {{friend}}
     {% endfor %}
     {%endif%}

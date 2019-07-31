@@ -1,11 +1,47 @@
 body {
   font-family: "Montserrat", sans-serif;
   color: white;
-  background-color:  #ffe8e0;
-  /* background: linear-gradient(-45deg, #ffe8e0, #f79b7c, #ffede3, #ffe8e0); */
+  /* background-color:  #ffe8e0; */
+  background: linear-gradient(-45deg, #ffe8e0, #f79b7c, #ffede3, #ffe8e0);
+  background-size: 2000% 2000%;
   -webkit-animation: Gradient 8s ease infinite;
   -moz-animation: Gradient 8s ease infinite;
   animation: Gradient 8s ease infinite;
+  }
+  @-webkit-keyframes Gradient {
+    0% {
+      background-position: 0% 50%
+    }
+    50% {
+      background-position: 100% 50%
+    }
+    100% {
+      background-position: 0% 50%
+    }
+  }
+
+  @-moz-keyframes Gradient {
+    0% {
+      background-position: 0% 50%
+    }
+    50% {
+      background-position: 100% 50%
+    }
+    100% {
+      background-position: 0% 50%
+    }
+  }
+
+  @keyframes Gradient {
+    0% {
+      background-position: 0% 50%
+    }
+    50% {
+      background-position: 100% 50%
+    }
+    100% {
+      background-position: 0% 50%
+    }
 }
 
 input {
@@ -30,8 +66,38 @@ input {
 
 }
 
+.first1{
+  height: 30px;
+  width: 150px;
+  border: 2.5px solid #FEB69E;
+  padding: 7px 9px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  /* margin: 1px; */
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+
+}
+
+.last1{
+  height: 30px;
+  width: 150px;
+  border: 2.5px solid #FEB69E;
+  padding: 7px 9px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  /* margin: 1px; */
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+
+}
+
 #submit {
-  background: linear-gradient(-45deg, #ffede3, #f79b7c, #ffe8e0, #ffe8e0);
+  /* background: linear-gradient(-45deg, #ffede3, #f79b7c, #ffe8e0, #ffe8e0);
   color: white;
   -webkit-animation: Gradient 8s ease infinite;
   -moz-animation: Gradient 8s ease infinite;
@@ -43,6 +109,27 @@ input {
   font-size: 15px
   font-family: "Roboto", sans-serif;
   /* margin: 1px; */
+  /* -webkit-transition-duration: 0.4s; /* Safari */
+  /* transition-duration: 0.4s; */ */ */
+  background: linear-gradient(-45deg, #ffede3, #f79b7c, #ffe8e0, #ffe8e0);
+  height: 50px;
+  width: 170px;
+  border: 2.5px solid #FEB69E;
+  padding: 13px 40px;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+  /* margin: 1px; */
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
+
+}
+
+#submit:hover {
+  background-color: #FEB69E;
+  border: 3px solid white;
+  color: white;
+}
 }

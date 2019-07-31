@@ -137,6 +137,21 @@ body {
   border: 3px solid white;
   color: white;
 }
+
+.friends{
+  height: 30px;
+  width: 150px;
+  border: 2.5px solid #FEB69E;
+  padding: 7px 9px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  /* margin: 1px; */
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+
+}
 /* Create three equal columns that floats next to each other */
 .column {
   float: left;

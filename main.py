@@ -2,6 +2,7 @@ import webapp2
 import logging
 import jinja2
 import os
+import json
 from google.appengine.ext import ndb
 from google.appengine.api import users
 from google.appengine.api import search
@@ -80,6 +81,7 @@ class Login(webapp2.RequestHandler):
 
 class Home(webapp2.RequestHandler):
     def get(self):
+        key_query_parameter = self.request.get('key_query_parameter')
         current_user = get_current_email()
         all_people = get_all_profiles()
 
@@ -104,7 +106,10 @@ class Home(webapp2.RequestHandler):
             else:
                 user_free_dates = sorted(get_current_profile().dates_free)
                 friend_list = get_current_profile().friends
-                first_name = get_current_profile().first_name
+                if key_query_parameter != "":
+                    first_name = key_query_parameter
+                else:
+                    first_name = get_current_profile().first_name
                 template_vars = {
                     "first_name": first_name,
                     "user_free_dates": user_free_dates,
@@ -125,13 +130,18 @@ class Home(webapp2.RequestHandler):
         get_current_user.first_name = first_name
         get_current_user.last_name = last_name
         get_current_user.put()
-        self.redirect('/')
+        self.redirect('/?key_query_parameter=%s' % first_name)
 
 class EditProfile(webapp2.RequestHandler):
     def get(self):
         current_user = users.get_current_user()
         get_current_user = get_current_profile()
         added_dates = sorted(get_current_user.dates_free)
+        template_vars = {
+        'current_user': current_user,
+        'added_dates': added_dates,
+        }
+
         for date in added_dates:
             parse_dates = []
             parse_dates.append(parseDate(date))
@@ -139,7 +149,6 @@ class EditProfile(webapp2.RequestHandler):
             template_vars = {
                 'current_user': current_user,
                 'added_dates': added_dates,
-                'currentDate': currentDate,
                 'parse_dates': parse_dates
             }
         else:
@@ -149,23 +158,28 @@ class EditProfile(webapp2.RequestHandler):
             }
         template = jinja_env.get_template('templates/profile.html')
         self.response.write(template.render(template_vars))
+
     def post(self):
+        request_dictionary = json.loads(self.request.body)
         current_user = users.get_current_user()
         get_current_user = get_current_profile()
-        user_free_date = self.request.get('user_free_date')
-
-        #Only add date if not already added
-        if user_free_date not in get_current_user.dates_free:
-            get_current_user.dates_free.append(user_free_date)
-
-        get_current_user.put()
-        self.redirect("/profile")
-
-        template_vars = {
-            'date': user_free_date,
+        result = False
+        if 'user_free_date' in request_dictionary.keys():
+            user_free_date = request_dictionary['user_free_date']
+            if user_free_date not in get_current_user.dates_free:
+                get_current_user.dates_free.append(user_free_date)
+                get_current_user.put()
+                result = True
+        if 'date_removed' in request_dictionary.keys():
+            remove_date = request_dictionary['date_removed']
+            get_current_user.dates_free.remove(remove_date)
+            get_current_user.put()
+        added_dates = sorted(get_current_user.dates_free)
+        jsonResponseData = {
+            'status': result,
+            'added_dates': added_dates,
         }
-        template = jinja_env.get_template('templates/profile.html')
-        self.response.write(template.render(template_vars))
+        self.response.write(json.dumps(jsonResponseData))
 
 class Friends(webapp2.RequestHandler):
     def get(self):
@@ -261,11 +275,22 @@ class populateDatabase(webapp2.RequestHandler):
         )
         ashlee_key = ashlee.put()
 
+        sydney = Profile(
+            first_name = 'sydney',
+            last_name = 'Martinez',
+            email = 'sydney@example.com',
+            dates_free = ["2019-11-30", "2019-12-11",],
+            friends = []
+        )
+        sydney_key = sydney.put()
+
         alexa.friends = [ashlee_key]
         ashlee.friends = [alexa_key]
+        sydney.friends = [alexa_key]
 
         alexa_key = alexa.put()
         ashlee_key = ashlee.put()
+        sydney_key = sydney.put()
 
         self.redirect("/")
 

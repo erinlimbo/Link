@@ -109,12 +109,14 @@ body {
   -moz-animation: Gradient 8s ease infinite;
   animation: Gradient 8s ease infinite; /* Green */
   border: none;
+  height: 35px;
+  width: 100px;
   border: 2.5px solid #FEB69E;
-  padding: 16px 32px;
+  padding: 8px 19px;
   text-align: right;
   text-decoration: none;
   /* display: inline-block; */
-  font-size: 17px;
+  font-size: 13px;
   font-family: "Roboto", sans-serif;
   /* margin: 4px 2px; */
   -webkit-transition-duration: 0.4s; /* Safari */
