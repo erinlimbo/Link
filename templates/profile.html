@@ -10,7 +10,8 @@
       <input type="date" name="user_free_date">
       <input type="submit" name="submitDate" Value = "Add Date">
       {%for date in added_dates%}
-      <input type="checkbox" name={{date}} > {{date}} </input>
+      <br>
+      {{date}}<input type="button" name={{date}} value="Remove" >  </input>
 
       {%endfor%}
 
