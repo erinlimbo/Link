@@ -47,8 +47,6 @@ class Home(webapp2.RequestHandler):
         if current_user:
             email_address = current_user.email()
             logout_link = users.create_logout_url('/login')
-            # logout_link_html = '<a href="%s">sign out</a>' % (logout_link)
-            # self.response.write(" You're logged in as " + email_address + ". " + logout_link_html)
             is_existing_person = False
             for person in all_people:
                 if person.email == email_address:
@@ -116,7 +114,6 @@ class EditProfile(webapp2.RequestHandler):
         self.response.write(template.render(template_vars))
 
 class Friends(webapp2.RequestHandler):
-
     def get(self):
         current_user = users.get_current_user()
         get_current_user = Profile.query().filter(current_user.email() == Profile.email).get()
@@ -154,7 +151,7 @@ class Schedule(webapp2.RequestHandler):
                 if len(friend.get().dates_free) != 0:
                     for date in friend.get().dates_free:
                         if hangout_date == date:
-                            friends_free.append(friend.get().email)
+                            friends_free.append(friend.get().first_name)
 
         template_vars = {
             "hangout_date": hangout_date,
