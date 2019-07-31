@@ -136,7 +136,6 @@ class EditProfile(webapp2.RequestHandler):
             parse_dates = []
             parse_dates.append(parseDate(date))
         if get_current_user.dates_free:
-            currentDate = "you added " + parseDate(get_current_user.dates_free[-1])
             template_vars = {
                 'current_user': current_user,
                 'added_dates': added_dates,
@@ -185,7 +184,7 @@ class Friends(webapp2.RequestHandler):
         get_current_user = get_current_profile()
         all_people = get_all_profiles()
         search = self.request.get('search')
-        searched_friends = Profile.query().filter(Profile.email == search).fetch()
+        searched_friends = Profile.query().filter(Profile.first_name == search).fetch()
         print searched_friends
 
         for person in all_people:
