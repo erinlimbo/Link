@@ -66,8 +66,9 @@ class Home(webapp2.RequestHandler):
 
             else:
                 user_free_dates = sorted(get_current_profile().dates_free)
+                first_name = get_current_profile().first_name
                 template_vars = {
-                    "email_address": email_address,
+                    "first_name": first_name,
                     "user_free_dates": user_free_dates,
                     "logout_link": logout_link,
                 }
