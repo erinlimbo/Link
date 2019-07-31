@@ -92,8 +92,7 @@ class EditProfile(webapp2.RequestHandler):
     def get(self):
         current_user = users.get_current_user()
         get_current_user = get_current_profile()
-        added_dates = get_current_user.dates_free
-        print added_dates
+        added_dates = sorted(get_current_user.dates_free)
         template_vars = {
             'current_user': current_user,
             'added_dates': added_dates,
@@ -105,10 +104,10 @@ class EditProfile(webapp2.RequestHandler):
         get_current_user = get_current_profile()
         user_free_date = self.request.get('user_free_date')
         #Only add date if not already added
-        if len(get_current_user.dates_free) != 0:
-            if user_free_date not in get_current_user.dates_free:
-                get_current_user.dates_free.append(user_free_date)
+        if user_free_date not in get_current_user.dates_free:
+            get_current_user.dates_free.append(user_free_date)
         get_current_user.put()
+        self.redirect("/profile")
 
         template_vars = {
             'date': user_free_date,
