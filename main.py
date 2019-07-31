@@ -46,7 +46,8 @@ class Home(webapp2.RequestHandler):
 
         if current_user:
             email_address = current_user.email()
-            logout_link_html = '<a href="%s">sign out</a>' % (users.create_logout_url('/login'))
+            logout_link = users.create_logout_url('/login')
+            # logout_link_html = '<a href="%s">sign out</a>' % (logout_link)
             # self.response.write(" You're logged in as " + email_address + ". " + logout_link_html)
             is_existing_person = False
             for person in all_people:
@@ -68,6 +69,7 @@ class Home(webapp2.RequestHandler):
                 template_vars = {
                     "email_address": email_address,
                     "user_free_dates": user_free_dates,
+                    "logout_link": logout_link,
                 }
                 template = jinja_env.get_template('templates/home.html')
                 self.response.write(template.render(template_vars))
