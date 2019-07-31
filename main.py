@@ -194,21 +194,32 @@ class Friends(webapp2.RequestHandler):
         template = jinja_env.get_template('templates/friends.html')
         self.response.write(template.render(template_vars))
     def post(self):
+        current_user = users.get_current_user()
+        get_current_user = get_current_profile()
+        all_users = Profile.query().filter(current_user.email() != Profile.email).fetch()
         current_user = get_current_email()
         get_current_user = get_current_profile()
         all_people = get_all_profiles()
-        search = self.request.get('search')
-        searched_friends = Profile.query().filter(Profile.first_name == search).fetch()
-        if not searched_friends:
-            warning = "There is no user by that name."
-            template_vars = {
-                "searched_friends": searched_friends,
-                'warning': warning,
-            }
+        search = self.request.get('search') #User Input Search
+        searched_friends_first = Profile.query().filter(Profile.first_name == search).fetch()
+        searched_friends_last = Profile.query().filter(Profile.last_name == search).fetch()
+        searched_friends_email = Profile.query().filter(Profile.email == search).fetch()
+        searched_friends = []
+        template_vars = {
+                "all_users": all_users,
+                'get_current_user': get_current_user,
+        }
+
+        if not searched_friends_first:
+            if not searched_friends_last:
+                if searched_friends_email:
+                    searched_friends.extend(searched_friends_email)
+            else:
+                searched_friends.extend(searched_friends_last)
         else:
-            template_vars = {
-                "searched_friends": searched_friends,
-            }
+            searched_friends.extend(searched_friends_first)
+        template_vars["searched_friends"]=searched_friends
+
 
         for person in all_people:
             if_checked_person = self.request.get(person.email)
