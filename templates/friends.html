@@ -18,10 +18,14 @@
     <form  action="/friends" method="POST">
 
       <input type="text" name="search" placeholder="Search"/>
-      {{warning}}
-      {% for user in searched_friends %}
-        <input type="checkbox" name={{user.email}}>{{user.email}}</input>
-      {%endfor%}      <br>
+      {%if not searched_friends%}
+        There is no user by that name!
+      {%endif%}
+      {%for friend in searched_friends%}
+        <br><input type="checkbox" name={{friend.email}}>{{friend.email}}</input>
+      {%endfor%}
+
+      <br>
       <br>
       <p><b>Add Friends!</b></p>
 
