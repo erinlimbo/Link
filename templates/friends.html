@@ -18,7 +18,7 @@
     <form  action="/friends" method="POST">
       <br>
       <br>
-      <input type="text" name="search" placeholder="Search"/>
+      <input class="friends" type="text" name="search" placeholder="Search"/>
       {{warning}}
       {% for user in searched_friends %}
         <input type="checkbox" name={{user.email}}>{{user.email}}</input>
