@@ -6,6 +6,11 @@ body {
 	-moz-animation: Gradient 15s ease infinite;
 	animation: Gradient 15s ease infinite;
   }
+
+img {
+  height: 80px;
+  width: 80px;
+}
   @-webkit-keyframes Gradient {
   	0% {
   		background-position: 0% 50%

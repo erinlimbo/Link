@@ -1,3 +1,18 @@
+
+body {
+  font-family: "Montserrat", sans-serif;
+  text-align: inherit;
+  width: 100wh;
+	height: 90vh;
+	color: white;
+	background: linear-gradient(-45deg, #ffe8e0, #f79b7c, #ffede3, #ffe8e0);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+  }
+
+
 #container {
   /* border: 2px solid black; */
   display: flex;
@@ -41,9 +56,9 @@
   background: linear-gradient(-45deg, #ffede3, #f79b7c, #ffe8e0, #ffe8e0);
   color: white;
   background-size: 400% 400%;
-  -webkit-animation: Gradient 15s ease infinite;
-  -moz-animation: Gradient 15s ease infinite;
-  animation: Gradient 15s ease infinite;
+  -webkit-animation: Gradient 5s ease infinite;
+  -moz-animation: Gradient 5s ease infinite;
+  animation: Gradient 5s ease infinite;
   height: 10px;
   width: 100px;
   border: 2.5px solid #FEB69E;
@@ -59,7 +74,8 @@
 
 }
 .button:hover {
-  background: #FEB69E;
+  background-color: #FEB69E;
+  border: 3px solid white;
   color: white;
 }
 
@@ -89,18 +105,6 @@ input {
   font-size: 20px;
 }
 
-body {
-  font-family: "Montserrat", sans-serif;
-  text-align: inherit;
-  width: 100wh;
-	height: 90vh;
-	color: white;
-	background: linear-gradient(-45deg, #ffe8e0, #f79b7c, #ffede3, #ffe8e0);
-	background-size: 400% 400%;
-	-webkit-animation: Gradient 15s ease infinite;
-	-moz-animation: Gradient 15s ease infinite;
-	animation: Gradient 15s ease infinite;
-  }
   @-webkit-keyframes Gradient {
   	0% {
   		background-position: 0% 50%

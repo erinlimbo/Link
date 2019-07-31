@@ -3,17 +3,22 @@
   <head>
     <meta charset="utf-8">
     <title>Welcome to Link</title>
+    <link rel="stylesheet" href="../stylesheets/registration.css">
   </head>
   <body>
-    <br>
-    Thanks for joining Link!
-    <br>
-    <form  action="/" method="POST">
-      Please enter your first name: <input type="text" name="first_name" />
-      <br>
-      Please enter your last name: <input type="text" name="last_name" />
-      <br>
-      <input class="button" type="submit" name="submit" Value = "Submit">
-    </form>
+    <div id="container">
+      <div id="title"><h1>Thanks for joining Link!</h1></div>
+
+      <div id="form">
+        <form  action="/" method="POST">
+          <div id="first"><input type="text" name="first_name" placeholder="First Name" /></div>
+           <div id="last"><input type="text" name="last_name" placeholder="Last Name" /></div>
+          <div id="submitButton"> <input class="button" type="submit" id="submit" name="submit" Value = "Submit"></button>
+        </form>
+      </div>
+    </div>
+
+
+
   </body>
 </html>

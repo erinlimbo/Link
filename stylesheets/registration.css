@@ -1,0 +1,48 @@
+body {
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  background-color:  #ffe8e0;
+  /* background: linear-gradient(-45deg, #ffe8e0, #f79b7c, #ffede3, #ffe8e0); */
+  -webkit-animation: Gradient 15s ease infinite;
+  -moz-animation: Gradient 15s ease infinite;
+  animation: Gradient 15s ease infinite;
+}
+
+input {
+  margin-top: 3px;
+  height: 30px;
+  width: 250px;
+  text-align: center;
+  font-size: 15px;
+}
+
+#container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#form{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  
+}
+
+#submit {
+  background: linear-gradient(-45deg, #ffede3, #f79b7c, #ffe8e0, #ffe8e0);
+  color: white;
+  -webkit-animation: Gradient 5s ease infinite;
+  -moz-animation: Gradient 5s ease infinite;
+  animation: Gradient 5s ease infinite;
+  height: 30px;
+  width: 100px;
+  border: 2.5px solid #FEB69E;
+  text-align: center;
+  font-size: 15px
+  font-family: "Roboto", sans-serif;
+  /* margin: 1px; */
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}

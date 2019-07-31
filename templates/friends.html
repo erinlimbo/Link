@@ -9,8 +9,10 @@
     <form  action="/friends" method="POST">
       <p> alsdasld </p>
       {% for user in all_users %}
+        {% if user != get_current_user.friends %}
       <input type="checkbox" name={{user.email}}> {{user.email}} </input>
       <br>
+        {% endif %}
       {% endfor %}
       <input class="button" type="submit" name="addFriends" Value = "Add Friends">
 

@@ -126,11 +126,13 @@ class EditProfile(webapp2.RequestHandler):
 class Friends(webapp2.RequestHandler):
     def get(self):
         current_user = users.get_current_user()
-        get_current_user = Profile.query().filter(current_user.email() == Profile.email).get()
-        all_users = Profile.query().filter(current_user.email() != Profile.email).fetch()
+        get_current_user = get_current_profile()
 
+        all_users = get_all_profiles()
+        # filtered_users = all_users.filter(Profile.email != Profile.friends.email).fetch()
         template_vars = {
-            "all_users": all_users
+            "all_users": all_users,
+            'get_current_user': get_current_user
         }
         template = jinja_env.get_template('templates/friends.html')
         self.response.write(template.render(template_vars))
@@ -138,7 +140,9 @@ class Friends(webapp2.RequestHandler):
         current_user = get_current_email()
         get_current_user = get_current_profile()
         all_people = get_all_profiles()
+
         for person in all_people:
+
             if_checked_person = self.request.get(person.email)
             if if_checked_person == "on":
                 get_current_user.friends.append(person.key)
