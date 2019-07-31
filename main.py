@@ -2,6 +2,7 @@ import webapp2
 import logging
 import jinja2
 import os
+import json
 from google.appengine.ext import ndb
 from google.appengine.api import users
 from datetime import date
@@ -107,23 +108,23 @@ class EditProfile(webapp2.RequestHandler):
             }
         template = jinja_env.get_template('templates/profile.html')
         self.response.write(template.render(template_vars))
+
     def post(self):
+        request_dictionary = json.loads(self.request.body)
         current_user = users.get_current_user()
         get_current_user = get_current_profile()
-        user_free_date = self.request.get('user_free_date')
-
-        #Only add date if not already added
+        user_free_date = request_dictionary['user_free_date']
+        result = False
         if user_free_date not in get_current_user.dates_free:
             get_current_user.dates_free.append(user_free_date)
-
-        get_current_user.put()
-        self.redirect("/profile")
-
-        template_vars = {
-            'date': user_free_date,
+            get_current_user.put()
+            result = True
+        added_dates = sorted(get_current_user.dates_free)
+        jsonResponseData = {
+            'status': result,
+            'added_dates': added_dates,
         }
-        template = jinja_env.get_template('templates/profile.html')
-        self.response.write(template.render(template_vars))
+        self.response.write(json.dumps(jsonResponseData))
 
 class Friends(webapp2.RequestHandler):
     def get(self):
