@@ -6,15 +6,17 @@
     <link rel="stylesheet" href="../stylesheets/profile.css">
   </head>
   <body>
-    <a href="/"><img src="images/linklogo.png" alt="Link logo" "/></a>
+    <a href="/"><img src="images/linklogo.png" alt="Link logo" "/"></a>
     <form  action="/profile" method="POST">
-      <input type="date" name="user_free_date">
-      <input type="submit" name="submitDate" Value = "Add Date">
+      <input class="button2" type="date" name="user_free_date">
+      <input class="button1" type="submit" name="submitDate" value="Add Date">
       <br>
       {{currentDate}}
       {%for date in added_dates%}
       <br>
-      {{date}}<input type="button" name={{date}} value="Remove" >  </input>
+      <br>
+      {{date}}<input class="button1" type="button" name={{date}} value="Remove">
+      </input>
 
       {%endfor%}
 

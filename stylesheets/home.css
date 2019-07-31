@@ -54,7 +54,7 @@ body {
   -moz-animation: Gradient 15s ease infinite;
   animation: Gradient 15s ease infinite; /* Green */
   border: none;
-  /* border: 2.5px solid #FEB69E; */
+  border: 2.5px solid #FEB69E;
   padding: 16px 32px;
   text-align: center;
   text-decoration: none;
@@ -69,6 +69,7 @@ body {
 .button:hover {
   background: #FEB69E;
   color: white;
+  border: 3px solid white;
 }
 .button1 {
   /* background-color: #4CAF50; /* Green */ */
@@ -91,6 +92,7 @@ body {
 
 .button1:hover {
   background-color: #FEB69E;
+  border: 3px solid white;
   color: white;
 }
 .button2 {
@@ -112,6 +114,7 @@ body {
 
 .button2:hover {
   background-color: #FEB69E;
+  border: 3px solid white;
   color: white;
 }
 /* Create three equal columns that floats next to each other */
