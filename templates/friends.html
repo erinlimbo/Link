@@ -15,24 +15,34 @@
       </p>
     </header>
 
+
+    <div class="column">
     <form  action="/friends" method="POST">
+      <h1> Add friends here! </h1>
+    </div>
+    <div class="column">
       <br>
-      <br>
+      <p><b>Add by search:</b></p>
       <input class="friends" type="text" name="search" placeholder="Search"/>
       {%if not searched_friends%}
+      <br>
+      <br>
         There is no user by that name!
       {%endif%}
       {%for friend in searched_friends%}
+      <br>
         <br><input type="checkbox" name={{friend.email}}>{{friend.email}}</input>
       {%endfor%}
 
       <br>
       <br>
-      <p><b>Add Friends!</b></p>
+      <input class="button" type="submit" name="addFriends" Value = "Add">
+      <br>
+      <p><b>Add by list:</b></p>
 
       {% for user in all_users %}
         {% if user != get_current_user.friends %}
-        <br>
+
 
       <input type="checkbox" name={{user.email}}> {{user.email}} </input>
       <br>
@@ -40,10 +50,13 @@
       {% endfor %}
       <br>
       <br>
-      <input class="button" type="submit" name="addFriends" Value = "Add Friends">
+      <input class="button" type="submit" name="addFriends" Value = "Add">
+      <br>
+      <br>
+      <br>
+    </div>
 
     </form>
-
   <!-- <script type="text/javascript" src="../scripts/friends.js"></script> -->
   </body>
 </html>
