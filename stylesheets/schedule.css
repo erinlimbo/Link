@@ -7,10 +7,59 @@
 
   h3 {
       font-family: "Montserrat", sans-serif;
+      text-align: left;
+      font-size: 50px;
+      color: white;
     }
+
+  label {
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+  }
+
+  input {
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  header {
+    margin-top: 10px;
+    margin-left: -20px;
+  }
+
+  .button {
+    margin-top: 50px;
+    color: black;
+    background-size: 800% 800%;
+    -webkit-animation: Gradient 15s ease infinite;
+    -moz-animation: Gradient 15s ease infinite;
+    animation: Gradient 15s ease infinite; /* Green */
+    border: none;
+    /* border: 2.5px solid #FEB69E; */
+    padding: 16px 32px;
+    text-align: right;
+    text-decoration: none;
+    /* display: inline-block; */
+    font-size: 17px;
+    font-family: "Roboto", sans-serif;
+    /* margin: 4px 2px; */
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  .button:hover {
+    background: #FEB69E;
+    color: white;
+  }
 
 
   body {
+      margin-left: 45px;
       font-family: "Montserrat", sans-serif;
       background: linear-gradient(-45deg, #ffe8e0, #f79b7c, #ffede3, #ffe8e0);
     	background-size: 800% 800%;

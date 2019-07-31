@@ -3,6 +3,11 @@
   font-family: "Roboto", sans-serif
 }
 
+header {
+  margin-top: 15px;
+  margin-left: 10px;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
   background: linear-gradient(-45deg, #ffe8e0, #f79b7c, #ffede3, #ffe8e0);
