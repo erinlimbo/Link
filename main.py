@@ -20,6 +20,13 @@ class Profile(ndb.Model):
     dates_free = ndb.StringProperty(repeated=True)
     friends = ndb.KeyProperty(repeated=True, kind='Profile')
 
+def parseDate(inputString):
+    splitDate = inputString.split("-")
+    parseDate = ''.join(splitDate)
+    return parseDate
+
+
+
 def get_current_email():
     return users.get_current_user()
 
@@ -45,6 +52,7 @@ class Home(webapp2.RequestHandler):
     def get(self):
         current_user = get_current_email()
         all_people = get_all_profiles()
+
         if current_user:
             email_address = current_user.email()
             logout_link_html = '<a href="%s">sign out</a>' % (users.create_logout_url('/login'))
@@ -53,6 +61,7 @@ class Home(webapp2.RequestHandler):
             for person in all_people:
                 if person.email == email_address:
                     is_existing_person = True
+
             if (is_existing_person == False):
                 new_user = Profile(
                     email=current_user.email(),
@@ -60,16 +69,31 @@ class Home(webapp2.RequestHandler):
                     dates_free = [],
                 )
                 new_user.put()
-            template_vars = {
-                "email_address": email_address,
-            }
+                template = jinja_env.get_template('templates/registration.html')
+                self.response.write(template.render())
+
+            else:
+                user_free_dates = sorted(get_current_profile().dates_free)
+                template_vars = {
+                    "email_address": email_address,
+                    "user_free_dates": user_free_dates,
+                }
+                template = jinja_env.get_template('templates/home.html')
+                self.response.write(template.render(template_vars))
 
         else:
             self.redirect("/login")
-            template_vars = {}
 
-        template = jinja_env.get_template('templates/home.html')
-        self.response.write(template.render(template_vars))
+    def post(self):
+        current_user = get_current_email()
+        get_current_user = get_current_profile()
+        first_name = self.request.get("first_name")
+        last_name = self.request.get("last_name")
+        get_current_user.first_name = first_name
+        get_current_user.last_name = last_name
+        get_current_user.put()
+        self.redirect('/')
+
 
 class EditProfile(webapp2.RequestHandler):
     def get(self):
@@ -83,6 +107,7 @@ class EditProfile(webapp2.RequestHandler):
         current_user = users.get_current_user()
         get_current_user = get_current_profile()
         user_free_date = self.request.get('user_free_date')
+        # print "OVER HEREEEEEEEEEEEEEEEEE " + parseDate(str(user_free_date))
         #Only add date if not already added
         if user_free_date not in get_current_user.dates_free:
             get_current_user.dates_free.append(user_free_date)
@@ -149,6 +174,7 @@ class populateDatabase(webapp2.RequestHandler):
     def get(self):
         alexa = Profile(
             first_name = 'Alexa',
+            last_name = 'Ramirez',
             email = 'alexa@gmail.com',
             dates_free = ["2019-11-30", "2019-10-11",],
             friends = []
@@ -157,6 +183,7 @@ class populateDatabase(webapp2.RequestHandler):
 
         ashlee = Profile(
             first_name = 'Ashlee',
+            last_name = 'Kupor',
             email = 'ashlee@example.com',
             dates_free = ["2019-11-30", "2019-12-11",],
             friends = []

@@ -32,6 +32,11 @@
   <div class="column">
     <h2>Your Schedule</h2>Your schedule will be displayed here: </p>
     <br>
+    <ul>
+      {%for date in user_free_dates%}
+      <li>{{date}}</li>
+      {%endfor%}
+    </ul>
     <a href="http://linkwithfriends.appspot.com/schedule" class="button button1">Schedule</a>
   </div>
 

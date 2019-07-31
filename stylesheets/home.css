@@ -49,7 +49,7 @@ body {
 
 .button {
   color: black;
-  background-size: 400% 400%;
+  background-size: 800% 800%;
   -webkit-animation: Gradient 15s ease infinite;
   -moz-animation: Gradient 15s ease infinite;
   animation: Gradient 15s ease infinite; /* Green */
