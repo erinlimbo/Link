@@ -39,8 +39,8 @@
 .button {
   /* background-color: #4CAF50; /* Green */ */
   background: linear-gradient(-45deg, #ffede3, #f79b7c, #ffe8e0, #ffe8e0);
-  color: black;
-  background-size: 800% 800%;
+  color: white;
+  background-size: 400% 400%;
   -webkit-animation: Gradient 15s ease infinite;
   -moz-animation: Gradient 15s ease infinite;
   animation: Gradient 15s ease infinite;
@@ -94,7 +94,7 @@ body {
   text-align: inherit;
   width: 100wh;
 	height: 90vh;
-	color: black;
+	color: white;
 	background: linear-gradient(-45deg, #ffe8e0, #f79b7c, #ffede3, #ffe8e0);
 	background-size: 400% 400%;
 	-webkit-animation: Gradient 15s ease infinite;

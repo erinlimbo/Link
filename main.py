@@ -18,11 +18,6 @@ class Profile(ndb.Model):
     dates_free = ndb.StringProperty(repeated=True)
     friends = ndb.KeyProperty(repeated=True, kind='Profile')
 
-def parseDate(inputString):
-    splitDate = inputString.split("-")
-    parseDate = ''.join(splitDate)
-    return parseDate
-
 def get_current_email():
     return users.get_current_user()
 
@@ -52,7 +47,7 @@ class Home(webapp2.RequestHandler):
         if current_user:
             email_address = current_user.email()
             logout_link_html = '<a href="%s">sign out</a>' % (users.create_logout_url('/login'))
-            self.response.write(" You're logged in as " + email_address + ". " + logout_link_html)
+            # self.response.write(" You're logged in as " + email_address + ". " + logout_link_html)
             is_existing_person = False
             for person in all_people:
                 if person.email == email_address:
@@ -93,8 +88,12 @@ class Home(webapp2.RequestHandler):
 class EditProfile(webapp2.RequestHandler):
     def get(self):
         current_user = users.get_current_user()
+        get_current_user = get_current_profile()
+        added_dates = get_current_user.dates_free
+        print added_dates
         template_vars = {
             'current_user': current_user,
+            'added_dates': added_dates,
         }
         template = jinja_env.get_template('templates/profile.html')
         self.response.write(template.render(template_vars))
@@ -102,10 +101,10 @@ class EditProfile(webapp2.RequestHandler):
         current_user = users.get_current_user()
         get_current_user = get_current_profile()
         user_free_date = self.request.get('user_free_date')
-        # print "OVER HEREEEEEEEEEEEEEEEEE " + parseDate(str(user_free_date))
         #Only add date if not already added
-        if user_free_date not in get_current_user.dates_free:
-            get_current_user.dates_free.append(user_free_date)
+        if len(get_current_user.dates_free) != 0:
+            if user_free_date not in get_current_user.dates_free:
+                get_current_user.dates_free.append(user_free_date)
         get_current_user.put()
 
         template_vars = {
