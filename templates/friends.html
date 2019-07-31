@@ -27,8 +27,10 @@
 
       {% for user in all_users %}
         {% if user != get_current_user.friends %}
+        <br>
 
       <input type="checkbox" name={{user.email}}> {{user.email}} </input>
+      <br>
         {% endif %}
       {% endfor %}
       <br>
