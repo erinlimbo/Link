@@ -59,6 +59,7 @@ class Home(webapp2.RequestHandler):
             for person in all_people:
                 if person.email == email_address:
                     is_existing_person = True
+
             if (is_existing_person == False):
                 new_user = Profile(
                     email=current_user.email(),
@@ -66,6 +67,10 @@ class Home(webapp2.RequestHandler):
                     dates_free = [],
                 )
                 new_user.put()
+                self.response.write("Please enter your first name:")
+                self.response.write("Please enter your last name:")
+                # easier to just create new html file that we send them to?
+
             template_vars = {
                 "email_address": email_address,
             }
@@ -152,6 +157,7 @@ class populateDatabase(webapp2.RequestHandler):
     def get(self):
         alexa = Profile(
             first_name = 'Alexa',
+            last_name = 'Ramirez',
             email = 'alexa@gmail.com',
             dates_free = ["2019-11-30", "2019-10-11",],
             friends = []
@@ -160,6 +166,7 @@ class populateDatabase(webapp2.RequestHandler):
 
         ashlee = Profile(
             first_name = 'Ashlee',
+            last_name = 'Kupor',
             email = 'ashlee@example.com',
             dates_free = ["2019-11-30", "2019-12-11",],
             friends = []
