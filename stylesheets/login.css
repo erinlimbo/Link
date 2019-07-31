@@ -1,31 +1,35 @@
 #container {
   /* border: 2px solid black; */
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: stretch;
 
 }
 #leftLogo {
-   flex-grow: 1.7;
+   /* flex-grow: 2; */
    /* border: 1px solid black; */
    height: 100vmin;
    display: flex;
    flex-direction: column;
+   justify-content: center;
+   align-items: center;
 }
 #leftLogo img {
   height: 500px;
-  width: 500px
+  width: 500px;
+  justify-content: center;
 }
 
 #leftLogo #biography {
   width: 500px;
   padding-left: 110px;
+
 }
 
 #rightLogin{
   /* border: 1px solid black; */
   height: 100vmin;
-  width: 59%;
+  width: 30%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,9 +38,9 @@
 
 .button {
   /* background-color: #4CAF50; /* Green */ */
-  background: linear-gradient(-45deg,#ffede3, #ffe8e0, #ffede3, #f79b7c,  );
+  background: linear-gradient(-45deg, #ffede3, #f79b7c, #ffe8e0, #ffe8e0);
   color: black;
-  background-size: 400% 400%;
+  background-size: 800% 800%;
   -webkit-animation: Gradient 15s ease infinite;
   -moz-animation: Gradient 15s ease infinite;
   animation: Gradient 15s ease infinite;
@@ -55,7 +59,7 @@
 
 }
 .button:hover {
-  background: linear-gradient(-45deg,#ffede3, #ffe8e0, #ffede3, #f79b7c,  );
+  background: #FEB69E;
   color: white;
 }
 
@@ -81,10 +85,14 @@ input {
   font-size: 15px;
 }
 
+.bio {
+  font-size: 20px;
+}
+
 body {
-    font-family: "Montserrat", sans-serif;
-    text-align: inherit;
-    width: 100wh;
+  font-family: "Montserrat", sans-serif;
+  text-align: inherit;
+  width: 100wh;
 	height: 90vh;
 	color: black;
 	background: linear-gradient(-45deg, #ffe8e0, #f79b7c, #ffede3, #ffe8e0);

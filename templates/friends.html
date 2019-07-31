@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Link</title>
+      <link rel="stylesheet" href="../stylesheets/friends.css">
   </head>
   <body>
     <form  action="/friends" method="POST">
@@ -11,10 +12,10 @@
       <input type="checkbox" name={{user.email}}> {{user.email}} </input>
       <br>
       {% endfor %}
-      <input type="submit" name="addFriends" Value = "Add Friends">
+      <input class="button" type="submit" name="addFriends" Value = "Add Friends">
 
     </form>
 
-  <script type="text/javascript" src="../scripts/friends.js"></script>
+  <!-- <script type="text/javascript" src="../scripts/friends.js"></script> -->
   </body>
 </html>
