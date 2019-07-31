@@ -16,13 +16,13 @@
     </header>
 
     <form  action="/friends" method="POST">
-
+      <br>
+      <br>
       <input type="text" name="search" placeholder="Search"/>
       {{warning}}
       {% for user in searched_friends %}
         <input type="checkbox" name={{user.email}}>{{user.email}}</input>
       {%endfor%}      <br>
-      <br>
       <p><b>Add Friends!</b></p>
 
       {% for user in all_users %}
