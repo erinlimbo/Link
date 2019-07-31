@@ -3,14 +3,32 @@
   font-family: "Roboto", sans-serif
 }
 
+header {
+  margin-left: -10px;
+}
 
 body {
+  margin-left: 45px;
+  font-size: 30px;
   font-family: "Montserrat", sans-serif;
-  background: linear-gradient(-45deg, #ffe8e0, #f79b7c, #ffede3, #ffe8e0);
-	background-size: 400% 600%;
+<<<<<<< HEAD
+  text-align: inherit;
+  width: 100wh;
+	height: 90vh;
+	color: black;
+	background: linear-gradient(-45deg, #ffe8e0, #f79b7c, #ffede3, #ffe8e0);
+	background-size: 800% 800%;
 	-webkit-animation: Gradient 8s ease infinite;
 	-moz-animation: Gradient 8s ease infinite;
 	animation: Gradient 8s ease infinite;
+=======
+  color: white;
+  background: linear-gradient(-45deg, #ffe8e0, #f79b7c, #ffede3, #ffe8e0);
+	background-size: 400% 1000%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+>>>>>>> a060a0adb23a68ad523390b7851f715389677cf0
   }
   @-webkit-keyframes Gradient {
   	0% {
@@ -51,13 +69,14 @@ body {
 .button {
   color: black;
   background-size: 800% 800%;
-  -webkit-animation: Gradient 15s ease infinite;
-  -moz-animation: Gradient 15s ease infinite;
-  animation: Gradient 15s ease infinite; /* Green */
-  border: none;
+  -webkit-animation: Gradient 8s ease infinite;
+  -moz-animation: Gradient 8s ease infinite;
+  animation: Gradient 8s ease infinite;
+  height: 60px;
+  width: 160px;
   border: 2.5px solid #FEB69E;
   padding: 16px 32px;
-  text-align: center;
+  text-align: right;
   text-decoration: none;
   /* display: inline-block; */
   font-size: 17px;

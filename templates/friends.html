@@ -6,14 +6,33 @@
       <link rel="stylesheet" href="../stylesheets/friends.css">
   </head>
   <body>
+    <header class="w3-container w3-xlarge">
+      <a href="/"><img src="images/linklogo.png" alt="CSGO Howl" style="width:100px;height:100px;float:left";></a>
+      <p class="w3-right">
+        <div align="right">
+        <a class="button" href="{{logout_link}}">Logout</a>
+        </div>
+      </p>
+    </header>
+
     <form  action="/friends" method="POST">
-      <p> alsdasld </p>
+
+      <input type="text" name="search" placeholder="Search"/>
+      {{warning}}
+      {% for user in searched_friends %}
+        <input type="checkbox" name={{user.email}}>{{user.email}}</input>
+      {%endfor%}      <br>
+      <br>
+      <p><b>Add Friends!</b></p>
+
       {% for user in all_users %}
         {% if user != get_current_user.friends %}
+
       <input type="checkbox" name={{user.email}}> {{user.email}} </input>
-      <br>
         {% endif %}
       {% endfor %}
+      <br>
+      <br>
       <input class="button" type="submit" name="addFriends" Value = "Add Friends">
 
     </form>

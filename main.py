@@ -5,8 +5,11 @@ import os
 import json
 from google.appengine.ext import ndb
 from google.appengine.api import users
-from datetime import date
 from google.appengine.api import search
+from urlparse import urlparse
+
+from datetime import date
+
 
 jinja_env = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__))
@@ -18,6 +21,42 @@ class Profile(ndb.Model):
     email = ndb.StringProperty()
     dates_free = ndb.StringProperty(repeated=True)
     friends = ndb.KeyProperty(repeated=True, kind='Profile')
+
+def parseDate(inputString):
+    split_string = inputString.split('-')
+    index = [1,2,0]
+    temp = [split_string[x] for x in index]
+    perm = '-'.join(temp)
+    return perm
+
+# def check_month(month):
+#     switcher={
+#                 01:'January',
+#                 02:'February',
+#                 03:'March',
+#                 04:'April',
+#                 05:'May',
+#                 06:'June'
+#                 07:'July',
+#                 08:'August',
+#                 09:'September',
+#                 10:'October',
+#                 11:'November',
+#                 12:'December',
+#              }
+#     return switcher.get(month,"Invalid Month")
+
+# def check_month(x):
+#     return {
+#          01:'January',
+#          02:'February',
+#          03:'March',
+#          04:'April',
+#          05:'May',
+#          06:'June',
+#          07:'July',
+#
+#     }.get(x, "not a month")
 
 def get_current_email():
     return users.get_current_user()
@@ -94,6 +133,7 @@ class EditProfile(webapp2.RequestHandler):
         current_user = users.get_current_user()
         get_current_user = get_current_profile()
         added_dates = sorted(get_current_user.dates_free)
+<<<<<<< HEAD
         # if get_current_user.dates_free:
         #     # currentDate = "you added " + get_current_user.dates_free[-1]
         #     template_vars = {
@@ -106,6 +146,23 @@ class EditProfile(webapp2.RequestHandler):
         'current_user': current_user,
         'added_dates': added_dates,
         }
+=======
+        for date in added_dates:
+            parse_dates = []
+            parse_dates.append(parseDate(date))
+        if get_current_user.dates_free:
+            template_vars = {
+                'current_user': current_user,
+                'added_dates': added_dates,
+                'currentDate': currentDate,
+                'parse_dates': parse_dates
+            }
+        else:
+            template_vars = {
+            'current_user': current_user,
+            'added_dates': added_dates,
+            }
+>>>>>>> 7f65d7688598399d07b678bd2739e22fa4e4bd5b
         template = jinja_env.get_template('templates/profile.html')
         self.response.write(template.render(template_vars))
 
@@ -143,8 +200,7 @@ class Friends(webapp2.RequestHandler):
     def get(self):
         current_user = users.get_current_user()
         get_current_user = get_current_profile()
-
-        all_users = get_all_profiles()
+        all_users = Profile.query().filter(current_user.email() != Profile.email).fetch()
         # filtered_users = all_users.filter(Profile.email != Profile.friends.email).fetch()
         template_vars = {
             "all_users": all_users,
@@ -156,14 +212,26 @@ class Friends(webapp2.RequestHandler):
         current_user = get_current_email()
         get_current_user = get_current_profile()
         all_people = get_all_profiles()
+        search = self.request.get('search')
+        searched_friends = Profile.query().filter(Profile.first_name == search).fetch()
+        if not searched_friends:
+            warning = "There is no user by that name."
+            template_vars = {
+                "searched_friends": searched_friends,
+                'warning': warning,
+            }
+        else:
+            template_vars = {
+                "searched_friends": searched_friends,
+            }
 
         for person in all_people:
-
             if_checked_person = self.request.get(person.email)
             if if_checked_person == "on":
                 get_current_user.friends.append(person.key)
                 get_current_user.put()
-
+        template = jinja_env.get_template('templates/friends.html')
+        self.response.write(template.render(template_vars))
 class Schedule(webapp2.RequestHandler):
     def get(self):
         template_vars = {
