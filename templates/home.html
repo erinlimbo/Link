@@ -22,16 +22,24 @@
     </header>
     <div class="row">
   <div class="column">
-     <h2>Hello {{first_name}}</h2>
+    <h2>Hello {{first_name}}!</h2>
     <p>You can add your friends here:</p>
     <br>
+
     <br>
     <a href="/friends" class="button button2">Add Friends</a>
+    <br>
+    <br>
+
 
   </div>
 
   <div class="column">
     <h2>Your Schedule</h2>Your availabile dates: </p>
+    <br>
+    <br>
+    <a href="/profile" class="button button1">Edit Availability</a>
+    <br>
     <br>
     <ul>
       {%for date in user_free_dates%}
@@ -40,13 +48,16 @@
     </ul>
     <br>
     <br>
-    <a href="/profile" class="button button1">Edit availability</a>
 
   </div>
 
   <div class="column">
     <h2>Friends</h2>
     <p>List of friends wil be displayed here: </p>
+    <br>
+    <br>
+    <a href="/schedule" class="button button1">Link Up</a>
+    <br>
     <br>
     <ul>
       {%for friend in friend_list%}
@@ -55,7 +66,6 @@
     </ul>
     <br>
     <br>
-    <a href="/schedule" class="button button1">Link Up</a>
   </div>
   </body>
 </html>
