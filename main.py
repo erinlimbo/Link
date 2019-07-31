@@ -64,11 +64,13 @@ class Home(webapp2.RequestHandler):
 
             else:
                 user_free_dates = sorted(get_current_profile().dates_free)
+                friend_list = get_current_profile().friends
                 first_name = get_current_profile().first_name
                 template_vars = {
                     "first_name": first_name,
                     "user_free_dates": user_free_dates,
                     "logout_link": logout_link,
+                    "friend_list": friend_list
                 }
                 template = jinja_env.get_template('templates/home.html')
                 self.response.write(template.render(template_vars))
