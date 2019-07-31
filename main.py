@@ -81,6 +81,7 @@ class Login(webapp2.RequestHandler):
 
 class Home(webapp2.RequestHandler):
     def get(self):
+        key_query_parameter = self.request.get('key_query_parameter')
         current_user = get_current_email()
         all_people = get_all_profiles()
 
@@ -105,7 +106,10 @@ class Home(webapp2.RequestHandler):
             else:
                 user_free_dates = sorted(get_current_profile().dates_free)
                 friend_list = get_current_profile().friends
-                first_name = get_current_profile().first_name
+                if key_query_parameter != "":
+                    first_name = key_query_parameter
+                else:
+                    first_name = get_current_profile().first_name
                 template_vars = {
                     "first_name": first_name,
                     "user_free_dates": user_free_dates,
@@ -126,21 +130,13 @@ class Home(webapp2.RequestHandler):
         get_current_user.first_name = first_name
         get_current_user.last_name = last_name
         get_current_user.put()
-        self.redirect('/')
+        self.redirect('/?key_query_parameter=%s' % first_name)
 
 class EditProfile(webapp2.RequestHandler):
     def get(self):
         current_user = users.get_current_user()
         get_current_user = get_current_profile()
         added_dates = sorted(get_current_user.dates_free)
-        # if get_current_user.dates_free:
-        #     # currentDate = "you added " + get_current_user.dates_free[-1]
-        #     template_vars = {
-        #         'current_user': current_user,
-        #         'added_dates': added_dates,
-        #         # 'currentDate': currentDate,
-        #     }
-        # else:
         template_vars = {
         'current_user': current_user,
         'added_dates': added_dates,
@@ -153,7 +149,6 @@ class EditProfile(webapp2.RequestHandler):
             template_vars = {
                 'current_user': current_user,
                 'added_dates': added_dates,
-                # 'currentDate': currentDate,
                 'parse_dates': parse_dates
             }
         else:
@@ -166,13 +161,8 @@ class EditProfile(webapp2.RequestHandler):
 
     def post(self):
         request_dictionary = json.loads(self.request.body)
-
-
-
         current_user = users.get_current_user()
         get_current_user = get_current_profile()
-
-
         result = False
         if 'user_free_date' in request_dictionary.keys():
             user_free_date = request_dictionary['user_free_date']
@@ -184,15 +174,12 @@ class EditProfile(webapp2.RequestHandler):
             remove_date = request_dictionary['date_removed']
             get_current_user.dates_free.remove(remove_date)
             get_current_user.put()
-            # self.redirect("/profile")
-
         added_dates = sorted(get_current_user.dates_free)
         jsonResponseData = {
             'status': result,
             'added_dates': added_dates,
         }
         self.response.write(json.dumps(jsonResponseData))
-        # self.redirect('/profile')
 
 class Friends(webapp2.RequestHandler):
     def get(self):

@@ -7,7 +7,6 @@ const createList = (json) => {
     let removeButton = document.createElement('button');
     removeButton.innerHTML = 'remove';
     removeButton.addEventListener('click', function(){
-      // dateItem.parentNode.removeChild(dateItem)
       createList(json)
       let data = {'date_removed': date}
       fetch('/profile', {
@@ -17,6 +16,10 @@ const createList = (json) => {
         },
         body: JSON.stringify(data),
       })
+      .then((response)=>response.json())
+      .then((json) => {
+          createList(json)
+      });
     });
     dateItem.appendChild(removeButton);
     datesList.appendChild(dateItem);
@@ -45,4 +48,16 @@ submitButton.addEventListener('click', () => {
   });
 });
 
-// window.onload = createList(json)
+window.onload = () => {
+  fetch('/profile', {
+    method:'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({}),
+  })
+  .then((response)=>response.json())
+  .then((json) => {
+      createList(json)
+  });
+}
