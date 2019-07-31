@@ -7,8 +7,6 @@ from google.appengine.api import users
 from datetime import date
 from google.appengine.api import search
 
-
-
 jinja_env = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__))
 )
@@ -24,8 +22,6 @@ def parseDate(inputString):
     splitDate = inputString.split("-")
     parseDate = ''.join(splitDate)
     return parseDate
-
-
 
 def get_current_email():
     return users.get_current_user()
@@ -94,7 +90,6 @@ class Home(webapp2.RequestHandler):
         get_current_user.put()
         self.redirect('/')
 
-
 class EditProfile(webapp2.RequestHandler):
     def get(self):
         current_user = users.get_current_user()
@@ -125,7 +120,6 @@ class Friends(webapp2.RequestHandler):
         current_user = users.get_current_user()
         get_current_user = Profile.query().filter(current_user.email() == Profile.email).get()
         all_users = Profile.query().filter(current_user.email() != Profile.email).fetch()
-
 
         template_vars = {
             "all_users": all_users
@@ -168,7 +162,6 @@ class Schedule(webapp2.RequestHandler):
         }
         template = jinja_env.get_template('templates/linkup.html')
         self.response.write(template.render(template_vars))
-
 
 class populateDatabase(webapp2.RequestHandler):
     def get(self):
