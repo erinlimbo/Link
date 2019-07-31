@@ -7,7 +7,10 @@
   </head>
   <body>
     <form  action="/friends" method="POST">
-      <p> alsdasld </p>
+      <input type="text" name="search" placeholder="Search"/>
+      {% for user in searched_friends %}
+        {{user}}
+      {%endfor%}
       {% for user in all_users %}
         {% if user != get_current_user.friends %}
       <input type="checkbox" name={{user.email}}> {{user.email}} </input>
