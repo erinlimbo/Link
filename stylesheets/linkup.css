@@ -6,12 +6,113 @@ img {
 }
 
 h3 {
-  font-family: "Reboto", sans-serif;
+  font-family: "Montserrat", sans-serif;
+  text-align: left;
+  font-size: 50px;
+  color: white;
 }
 
+label {
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+input {
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+}
+header {
+  margin-top: 10px;
+  margin-left: -20px;
+}
+
+.button {
+margin-top: 50px;
+color: black;
+background-size: 800% 800%;
+-webkit-animation: Gradient 8s ease infinite;
+-moz-animation: Gradient 8s ease infinite;
+animation: Gradient 8s ease infinite; /* Green */
+border: none;
+border: 2.5px solid #FEB69E;
+padding: 16px 32px;
+text-align: right;
+text-decoration: none;
+/* display: inline-block; */
+font-size: 17px;
+font-family: "Roboto", sans-serif;
+/* margin: 4px 2px; */
+-webkit-transition-duration: 0.4s; /* Safari */
+transition-duration: 0.4s;
+cursor: pointer;
+}
+.button:hover {
+background: #FEB69E;
+border: 3px solid white;
+color: white;
+}
+
+.button2 {
+  margin-top: 50px;
+  color: black;
+  background-size: 800% 800%;
+  -webkit-animation: Gradient 8s ease infinite;
+  -moz-animation: Gradient 8s ease infinite;
+  animation: Gradient 8s ease infinite; /* Green */
+  border: none;
+  border: 2.5px solid #FEB69E;
+  padding: 16px 32px;
+  text-align: right;
+  text-decoration: none;
+  /* display: inline-block; */
+  font-size: 17px;
+  font-family: "Roboto", sans-serif;
+  /* margin: 4px 2px; */
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.button2:hover {
+  background: #FEB69E;
+  border: 3px solid white;
+  color: white;
+}
+
+.button1 {
+  /* background-color: #4CAF50; /* Green */ */
+  /* background: linear-gradient(-45deg, #ffede3, #f79b7c, #ffe8e0, #ffe8e0);
+  color: black;
+  background-size: 800% 800%;
+  -webkit-animation: Gradient 15s ease infinite;
+  -moz-animation: Gradient 15s ease infinite;
+  animation: Gradient 15s ease infinite; */
+  height: 30px;
+  width: 150px;
+  border: 2.5px solid #FEB69E;
+  padding: 7px 9px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  /* margin: 1px; */
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+
+
+}
 
 body {
-  font-family: "Reboto", sans-serif;
+  margin-left: 40px;
+  font-family: "Montserrat", sans-serif;
+  text-align: left;
+  font-size: 30px;
+  color: white;
   background: linear-gradient(-45deg, #ffe8e0, #f79b7c, #ffede3, #ffe8e0);
 	background-size: 2000% 2000%;
 	-webkit-animation: Gradient 8s ease infinite;

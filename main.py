@@ -277,11 +277,22 @@ class populateDatabase(webapp2.RequestHandler):
         )
         ashlee_key = ashlee.put()
 
+        sydney = Profile(
+            first_name = 'sydney',
+            last_name = 'Martinez',
+            email = 'sydney@example.com',
+            dates_free = ["2019-11-30", "2019-12-11",],
+            friends = []
+        )
+        sydney_key = sydney.put()
+
         alexa.friends = [ashlee_key]
         ashlee.friends = [alexa_key]
+        sydney.friends = [alexa_key]
 
         alexa_key = alexa.put()
         ashlee_key = ashlee.put()
+        sydney_key = sydney.put()
 
         self.redirect("/")
 
