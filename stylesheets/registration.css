@@ -3,9 +3,9 @@ body {
   color: white;
   background-color:  #ffe8e0;
   /* background: linear-gradient(-45deg, #ffe8e0, #f79b7c, #ffede3, #ffe8e0); */
-  -webkit-animation: Gradient 15s ease infinite;
-  -moz-animation: Gradient 15s ease infinite;
-  animation: Gradient 15s ease infinite;
+  -webkit-animation: Gradient 8s ease infinite;
+  -moz-animation: Gradient 8s ease infinite;
+  animation: Gradient 8s ease infinite;
 }
 
 input {
@@ -27,15 +27,15 @@ input {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  
+
 }
 
 #submit {
   background: linear-gradient(-45deg, #ffede3, #f79b7c, #ffe8e0, #ffe8e0);
   color: white;
-  -webkit-animation: Gradient 5s ease infinite;
-  -moz-animation: Gradient 5s ease infinite;
-  animation: Gradient 5s ease infinite;
+  -webkit-animation: Gradient 8s ease infinite;
+  -moz-animation: Gradient 8s ease infinite;
+  animation: Gradient 8s ease infinite;
   height: 30px;
   width: 100px;
   border: 2.5px solid #FEB69E;

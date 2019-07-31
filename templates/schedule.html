@@ -6,18 +6,27 @@
     <link rel="stylesheet" href="../stylesheets/schedule.css">
   </head>
   <body>
-<a href="/"><img src="images/linklogo.png" alt="Link logo" style="width:100px;height:100px;"/></a>
-<p class="w3-right">
-  <i a class="fa fa-smile-o w3-margin-right"</a></i>
-</p>
+    <header class="w3-container w3-xlarge">
+      <a href="/"><img src="images/linklogo.png" alt="CSGO Howl" style="width:100px;height:100px;float:left";></a>
+      <p class="w3-right">
+        <div align="right">
+          <br>
+          <br>
+        <a href="/login" class="button" href="{{logout_link}}">Logout</a>
+      </div>
+      </p>
+    </header>
+
     <form method="POST" action="/schedule">
-      <h3>Schedule your next hangout!</h3>
       <br>
-      <label for="hangout_date">What date do you want to hang out on? </label>
-      <input id="date" type="date" name="hangout_date"/>
+      <br>
+      <h3>Schedule Your Next Hangout!</h3>
+      <br>
+      <label for="hangout_date">Which date do you want to hang out on? </label>
+      <input class="button1" type="date" name="hangout_date"/>
       <!-- TODO: add here the friends you want to hang out with instead of just selecting all -->
       <br>
-      <input type="submit" name="submit" value="Generate a hangout!"/>
+      <input class="button2" type="submit" name="submit" value="Generate A Hangout!"/>
     </form>
   </body>
 </html>
