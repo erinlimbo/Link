@@ -129,8 +129,7 @@ class Friends(webapp2.RequestHandler):
     def get(self):
         current_user = users.get_current_user()
         get_current_user = get_current_profile()
-
-        all_users = get_all_profiles()
+        all_users = Profile.query().filter(current_user.email() != Profile.email).fetch()
         # filtered_users = all_users.filter(Profile.email != Profile.friends.email).fetch()
         template_vars = {
             "all_users": all_users,
