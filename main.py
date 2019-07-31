@@ -52,7 +52,6 @@ class Home(webapp2.RequestHandler):
     def get(self):
         current_user = get_current_email()
         all_people = get_all_profiles()
-        user_free_dates = sorted(get_current_profile().dates_free)
 
         if current_user:
             email_address = current_user.email()
@@ -70,21 +69,31 @@ class Home(webapp2.RequestHandler):
                     dates_free = [],
                 )
                 new_user.put()
-                self.response.write("Please enter your first name:")
-                self.response.write("Please enter your last name:")
-                # easier to just create new html file that we send them to?
+                template = jinja_env.get_template('templates/registration.html')
+                self.response.write(template.render())
 
-            template_vars = {
-                "email_address": email_address,
-                "user_free_dates": user_free_dates,
-            }
+            else:
+                user_free_dates = sorted(get_current_profile().dates_free)
+                template_vars = {
+                    "email_address": email_address,
+                    "user_free_dates": user_free_dates,
+                }
+                template = jinja_env.get_template('templates/home.html')
+                self.response.write(template.render(template_vars))
 
         else:
             self.redirect("/login")
-            template_vars = {}
 
-        template = jinja_env.get_template('templates/home.html')
-        self.response.write(template.render(template_vars))
+    def post(self):
+        current_user = get_current_email()
+        get_current_user = get_current_profile()
+        first_name = self.request.get("first_name")
+        last_name = self.request.get("last_name")
+        get_current_user.first_name = first_name
+        get_current_user.last_name = last_name
+        get_current_user.put()
+        self.redirect('/')
+
 
 class EditProfile(webapp2.RequestHandler):
     def get(self):
