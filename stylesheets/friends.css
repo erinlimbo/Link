@@ -1,0 +1,82 @@
+img {
+  flex-grow: 1.7;
+  height: 10vmin;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  text-align: inherit;
+  width: 100wh;
+	height: 90vh;
+	color: black;
+	background: linear-gradient(-45deg, #ffe8e0, #f79b7c, #ffede3, #ffe8e0);
+	background-size: 800% 800%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+  }
+  @-webkit-keyframes Gradient {
+  	0% {
+  		background-position: 0% 50%
+  	}
+  	50% {
+  		background-position: 100% 50%
+  	}
+  	100% {
+  		background-position: 0% 50%
+  	}
+  }
+
+  @-moz-keyframes Gradient {
+  	0% {
+  		background-position: 0% 50%
+  	}
+  	50% {
+  		background-position: 100% 50%
+  	}
+  	100% {
+  		background-position: 0% 50%
+  	}
+  }
+
+  @keyframes Gradient {
+  	0% {
+  		background-position: 0% 50%
+  	}
+  	50% {
+  		background-position: 100% 50%
+  	}
+  	100% {
+  		background-position: 0% 50%
+  	}
+  }
+
+.button {
+  /* background-color: #4CAF50; /* Green */ */
+  background: linear-gradient(-45deg, #ffede3, #f79b7c, #ffe8e0, #ffe8e0);
+  color: black;
+  background-size: 800% 800%;
+  -webkit-animation: Gradient 15s ease infinite;
+  -moz-animation: Gradient 15s ease infinite;
+  animation: Gradient 15s ease infinite;
+  height: 60px;
+  width: 130px;
+  border: 2.5px solid #FEB69E;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  /* margin: 1px; */
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+
+
+}
+.button:hover {
+  background-color: #FEB69E;
+  border: 3px solid white;
+  color: white;
+}
