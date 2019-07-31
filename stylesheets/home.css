@@ -48,24 +48,35 @@ body {
   }
 
 .button {
-  background-color: #FEB69E; /* Green */
+  background: linear-gradient(-45deg, #ffede3, #f79b7c, #ffe8e0, #ffe8e0);
+  color: black;
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 15s ease infinite;
+  -moz-animation: Gradient 15s ease infinite;
+  animation: Gradient 15s ease infinite; /* Green */
   border: none;
-  color: white;
+  /* border: 2.5px solid #FEB69E; */
   padding: 16px 32px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  /* display: inline-block; */
   font-size: 17px;
   font-family: "Roboto", sans-serif;
-  margin: 4px 2px;
+  /* margin: 4px 2px; */
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   cursor: pointer;
 }
+.button:hover {
+  background: #FEB69E;
+  color: white;
+}
 .button1 {
   /* background-color: #4CAF50; /* Green */ */
+  background: linear-gradient(-45deg, #ffede3, #f79b7c, #ffe8e0, #ffe8e0);
+
   height: 5px;
-  width: 80px;
+  width: 100px;
   border: 2.5px solid #FEB69E;
   padding: 27px 47px;
   color: black;
@@ -86,7 +97,7 @@ body {
 .button2 {
   /* background-color: #4CAF50; /* Green */ */
   height: 5px;
-  width: 80px;
+  width: 100px;
   border: 2.5px solid #FEB69E;
   padding: 27px 47px;
   color: black;
