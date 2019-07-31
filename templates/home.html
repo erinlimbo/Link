@@ -46,6 +46,11 @@
     <h2>Friends</h2>
     <p>List of friends wil be displayed here: </p>
     <br>
+    <ul>
+      {%for friend in friend_list%}
+      <li>{{friend.get().first_name}} {{friend.get().last_name}}</li>
+      {%endfor%}
+    </ul>
     <a href="/schedule" class="button button1">Link Up</a>
   </div>
   </body>
