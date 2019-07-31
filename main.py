@@ -93,19 +93,29 @@ class EditProfile(webapp2.RequestHandler):
         current_user = users.get_current_user()
         get_current_user = get_current_profile()
         added_dates = sorted(get_current_user.dates_free)
-        template_vars = {
+        if get_current_user.dates_free:
+            currentDate = "you added " + get_current_user.dates_free[-1]
+            template_vars = {
+                'current_user': current_user,
+                'added_dates': added_dates,
+                'currentDate': currentDate,
+            }
+        else:
+            template_vars = {
             'current_user': current_user,
             'added_dates': added_dates,
-        }
+            }
         template = jinja_env.get_template('templates/profile.html')
         self.response.write(template.render(template_vars))
     def post(self):
         current_user = users.get_current_user()
         get_current_user = get_current_profile()
         user_free_date = self.request.get('user_free_date')
+
         #Only add date if not already added
         if user_free_date not in get_current_user.dates_free:
             get_current_user.dates_free.append(user_free_date)
+
         get_current_user.put()
         self.redirect("/profile")
 

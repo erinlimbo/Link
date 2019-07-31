@@ -9,6 +9,8 @@
     <form  action="/profile" method="POST">
       <input type="date" name="user_free_date">
       <input type="submit" name="submitDate" Value = "Add Date">
+      <br>
+      {{currentDate}}
       {%for date in added_dates%}
       <br>
       {{date}}<input type="button" name={{date}} value="Remove" >  </input>
