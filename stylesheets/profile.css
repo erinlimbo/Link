@@ -132,7 +132,6 @@ body {
   -webkit-animation: Gradient 8s ease infinite;
   -moz-animation: Gradient 8s ease infinite;
   animation: Gradient 8s ease infinite; /* Green */
-  border: none;
   height: 35px;
   width: 100px;
   border: 2.5px solid #FEB69E;
