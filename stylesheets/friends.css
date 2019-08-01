@@ -29,8 +29,14 @@ body {
 	-webkit-animation: Gradient 15s ease infinite;
 	-moz-animation: Gradient 15s ease infinite;
 	animation: Gradient 15s ease infinite;
->>>>>>> a060a0adb23a68ad523390b7851f715389677cf0
+
   }
+
+  #noResults {
+    margin: 10px 0px;
+  }
+
+  
   @-webkit-keyframes Gradient {
   	0% {
   		background-position: 0% 50%
