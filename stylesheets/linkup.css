@@ -1,4 +1,18 @@
-img {
+body {
+  margin-left: 40px;
+  font-family: "Montserrat", sans-serif;
+  text-align: left;
+  font-size: 30px;
+  color: white;
+  background: linear-gradient(-45deg, #ffe8e0, #f79b7c, #ffede3, #ffe8e0);
+	background-size: 2000% 2000%;
+	-webkit-animation: Gradient 8s ease infinite;
+	-moz-animation: Gradient 8s ease infinite;
+	animation: Gradient 8s ease infinite;
+  }
+
+
+#logo {
   flex-grow: 1.7;
   height: 10vmin;
   display: flex;
@@ -31,6 +45,33 @@ header {
   margin-top: 10px;
   margin-left: -20px;
 }
+
+
+.parentElement{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+  border: 5px solid #f79b7c;
+  padding: 5px;
+}
+.childElement {
+  margin-left: 10%;
+  display: flex;
+  flex-direction: column;
+
+}
+.title{
+  text-align: center;
+  color: yellow;
+}
+.images{
+  height: 200px;
+  width: 300px;
+}
+
+
 
 .button {
 margin-top: 50px;
@@ -106,18 +147,7 @@ color: white;
 
 }
 
-body {
-  margin-left: 40px;
-  font-family: "Montserrat", sans-serif;
-  text-align: left;
-  font-size: 30px;
-  color: white;
-  background: linear-gradient(-45deg, #ffe8e0, #f79b7c, #ffede3, #ffe8e0);
-	background-size: 2000% 2000%;
-	-webkit-animation: Gradient 8s ease infinite;
-	-moz-animation: Gradient 8s ease infinite;
-	animation: Gradient 8s ease infinite;
-  }
+
   @-webkit-keyframes Gradient {
   	0% {
   		background-position: 0% 50%
