@@ -83,6 +83,32 @@ color: white;
   color: white;
 }
 
+.search {
+  margin-top: 50px;
+  color: white;
+  background-size: 800% 800%;
+  background-color: transparent;
+  -webkit-animation: Gradient 8s ease infinite;
+  -moz-animation: Gradient 8s ease infinite;
+  animation: Gradient 8s ease infinite; /* Green */
+  border: 2.5px solid #FEB69E;
+  padding: 16px 32px;
+  text-align: right;
+  text-decoration: none;
+  /* display: inline-block; */
+  font-size: 17px;
+  font-family: "Roboto", sans-serif;
+  /* margin: 4px 2px; */
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.search:hover {
+  background: #FEB69E;
+  border: 3px solid white;
+  color: white;
+}
+
 .button1 {
   /* background-color: #4CAF50; /* Green */ */
   /* background: linear-gradient(-45deg, #ffede3, #f79b7c, #ffe8e0, #ffe8e0);

@@ -39,7 +39,7 @@
         }
         let newSearch = document.createElement('BUTTON');
         newSearch.classList.add('search');
-        newSearch.innerHTML = 'Search again';
+        newSearch.innerHTML = 'Search Again';
         document.body.appendChild(newSearch);
       }).catch(() => {
         let noEvents = document.createElement('p');
@@ -59,7 +59,7 @@
       </p>
     </header>
     <br>
-    <h3>Friends who are free on {{hangout_date}}: </h3>
+    <h3>Friends Who Are Free On {{hangout_date}}: </h3>
     {%if friends_free|length == 0%}
     You have no friends or none of your friends are free.
     <br>

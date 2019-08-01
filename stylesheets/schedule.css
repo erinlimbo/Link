@@ -39,7 +39,6 @@
   -webkit-animation: Gradient 8s ease infinite;
   -moz-animation: Gradient 8s ease infinite;
   animation: Gradient 8s ease infinite; /* Green */
-  border: none;
   border: 2.5px solid #FEB69E;
   padding: 16px 32px;
   text-align: right;
@@ -88,7 +87,7 @@
     height: 30px;
     width: 150px;
     border: 2.5px solid #FEB69E;
-    color: #FEB69E
+    color: #FEB69E;
     padding: 7px 9px;
     text-align: center;
     text-decoration: none;
