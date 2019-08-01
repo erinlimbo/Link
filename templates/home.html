@@ -31,7 +31,7 @@
     </header>
     <div class="row">
   <div class="column">
-    <h2>Hello {{first_name}}!</h2>
+    <h2><b>Hello {{first_name}}!</b></h2>
     <br>
     <br>
     <a href="/schedule" class="button button1">Link Up</a>
@@ -41,7 +41,7 @@
 
   <div class="column">
     <div id="schedule">
-      <h2>Your Schedule</h2>
+      <h2><b>Your Schedule</b></h2>
     </div>
 
     <div class="bottomSpacing">
@@ -58,7 +58,7 @@
   </div>
 
   <div class="column">
-    <h2>Friends</h2>
+    <h2><b>Friends</b></h2>
     <br>
 
     <br>
@@ -72,8 +72,8 @@
       <li class="mdl-list__item mdl-list__item--two-line ">
         <span class="mdl-list__item-primary-content friendSize">
           <i class="material-icons mdl-list__item-avatar">person</i>
-          <span>{{friend.get().first_name}} {{friend.get().last_name}}</span>
-          <span class="mdl-list__item-sub-title">15 Dates Free</span>
+          <span style="color:white">{{friend.get().first_name}} {{friend.get().last_name}}</span>
+          <span style="color:white" class="mdl-list__item-sub-title">15 Dates Free</span>
         </span>
       </li>
       {%endfor%}
