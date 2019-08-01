@@ -1,11 +1,47 @@
-// const parseDate = (inputString) => {
-//   split_string = inputString.split('-')
-//   index = [1,2,0]
-//   temp = [split_string[x] for x in index]
-//   perm = temp.join('-')
-//   return perm
-// }
+const parseDate = (inputString) => {
+  let splitString = inputString.split('-');
+  splitString[1]=splitString[1].replace(/0/, "");
+  splitString[2]=splitString[2].replace(/0/, "");
+  let tempList = [];
+  tempList.push(splitString[1]);
+  tempList.push(splitString[2]);
+  tempList.push(splitString[0]);
 
+  let a = parseInt(tempList[0]);
+  let b = "";
+
+      switch(a){
+          case 1: b = "January";
+              break;
+          case 2: b = "February";
+              break;
+          case 3: b = "March";
+              break;
+          case 4: b = "April";
+              break;
+          case 5: b = "May";
+              break;
+          case 6: b = "June";
+              break;
+          case 7: b = "July";
+              break;
+          case 8: b = "August";
+              break;
+          case 9: b = "September";
+              break;
+          case 10: b = "October";
+              break;
+          case 11: b = "November";
+              break;
+          case 12: b = "December";
+              break;
+          }
+  tempList[0] = b;
+  tempList[1] = tempList[1] + ','
+  console.log(b);
+  return tempList.join(' ');
+
+}
 
 const createList = (json) => {
   let datesList = document.querySelector('#datesList');
@@ -41,7 +77,8 @@ const createList = (json) => {
 
 let submitButton = document.querySelector('#submitDate');
 submitButton.addEventListener('click', () => {
-  let tempDate = document.querySelector('#user_free_date').value;
+
+  let tempDate = parseDate(document.querySelector('#user_free_date').value);
   let data = {'user_free_date' : tempDate};
   fetch('/profile', {
     method:'POST',

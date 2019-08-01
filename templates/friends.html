@@ -30,11 +30,21 @@
         {%endif%}
       </div>
       {%for friend in searched_friends%}
-      <br>
-        <br><input type="checkbox" name={{friend.email}}>{{friend.email}}</input>
+        <br><input type="checkbox" name={{friend.email}}>{{friend.first_name}} {{friend.last_name}}</input>
       {%endfor%}
 
-        <input class="button" type="submit" name="addFriends" Value = "Add">
+        <br><input class="button" type="submit" name="addFriends" Value = "Add Friends">
+      {% for user in all_users %}
+        {% if user not in get_current_user.friends %}
+        <br>
+      <input type="checkbox" name={{user.email}}> {{user.first_name}} {{user.last_name}} </input>
+      <br>
+        {% endif %}
+      {% endfor %}
+      <br>
+      <br>
+
+
       </div>
     </form>
   <!-- <script type="text/javascript" src="../scripts/friends.js"></script> -->
