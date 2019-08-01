@@ -230,7 +230,6 @@ class Friends(webapp2.RequestHandler):
             searched_friends.extend(searched_friends_first)
         template_vars["searched_friends"]=searched_friends
 
-
         for person in all_people:
             if_checked_person = self.request.get(person.email)
             if if_checked_person == "on":
@@ -238,6 +237,7 @@ class Friends(webapp2.RequestHandler):
                 get_current_user.put()
         template = jinja_env.get_template('templates/friends.html')
         self.response.write(template.render(template_vars))
+
 class Schedule(webapp2.RequestHandler):
     def get(self):
         template_vars = {
