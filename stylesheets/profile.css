@@ -101,33 +101,7 @@ body {
 
 
 }
-.remove {
-  margin-top: 5px;
-  color: black;
-  background-size: 800% 800%;
-  -webkit-animation: Gradient 8s ease infinite;
-  -moz-animation: Gradient 8s ease infinite;
-  animation: Gradient 8s ease infinite;
-  border: none;
-  height: 25px;
-  width: 80px;
-  border: 2.5px solid #FEB69E;
-  margin-left: 5px;
-  text-align: center;
-  color: #f79b7c;
-  /* display: inline-block; */
-  font-size: 13px;
-  font-family: "Roboto", sans-serif;
-  /* margin: 4px 2px; */
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
-  cursor: pointer;
-}
-.remove:hover {
-  background: #FEB69E;
-  border: 3px solid white;
-  color: white;
-}
+
 
 
 
@@ -153,6 +127,43 @@ body {
   cursor: pointer;
 }
 .button:hover {
+  background: #FEB69E;
+  border: 3px solid white;
+  color: white;
+}
+
+#datesList {
+  /* text-align: right; */
+  display: flex;
+  flex-direction: column;
+  width: 27%;
+}
+
+.dates {
+  margin-top: 3px;
+  float: left;
+}
+
+.remove {
+  float: right;
+  margin-bottom: 2px;
+  color: black;
+  background-size: 800% 800%;
+  -webkit-animation: Gradient 8s ease infinite;
+  -moz-animation: Gradient 8s ease infinite;
+  animation: Gradient 8s ease infinite;
+  height: 25px;
+  width: 80px;
+  border: 2.5px solid #FEB69E;
+  text-align: center;
+  color: #f79b7c;
+  font-size: 13px;
+  font-family: "Roboto", sans-serif;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.remove:hover {
   background: #FEB69E;
   border: 3px solid white;
   color: white;

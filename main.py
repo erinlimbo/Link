@@ -16,8 +16,17 @@ jinja_env = jinja2.Environment(
 
 class APIKey(ndb.Model):
     api_key = ndb.StringProperty(required=True)
+<<<<<<< HEAD
 
 api_key = APIKey.query().fetch()[0].api_key
+=======
+#
+# postal_code = '95030'
+# base_url = 'https://app.ticketmaster.com/discovery/v2/'
+# # api_key = APIKey.query().fetch()[0].api_key
+#
+# print base_url + 'events.json?postalCode=%s&apikey=%s' % (postal_code, api_key)
+>>>>>>> 0423b6ce48ceb762a9360c8772f8fa1cd3bfd967
 
 class Profile(ndb.Model):
     first_name = ndb.StringProperty()
@@ -26,45 +35,14 @@ class Profile(ndb.Model):
     dates_free = ndb.StringProperty(repeated=True)
     friends = ndb.KeyProperty(repeated=True, kind='Profile')
 
-def parseDate(inputString):
-    split_string = inputString.split('-')
-    index = [1,2,0]
-    temp = [split_string[x] for x in index]
-    perm = '-'.join(temp)
-    return perm
+# def parseDate(inputString):
+#     split_string = inputString.split('-')
+#     index = [1,2,0]
+#     temp = [split_string[x] for x in index]
+#     perm = '-'.join(temp)
+#     return perm
 
-# def check_month(month):
-#     switcher={
-#                 01:'January',
-#                 02:'February',
-#                 03:'March',
-#                 04:'April',
-#                 05:'May',
-#                 06:'June'
-#                 07:'July',
-#                 08:'August',
-#                 09:'September',
-#                 10:'October',
-#                 11:'November',
-#                 12:'December',
-#              }
-#     return switcher.get(month,"Invalid Month")
 
-def check_month(x):
-    return {
-         1:'January',
-         2:'February',
-         3:'March',
-         4:'April',
-         5:'May',
-         6:'June',
-         7:'July',
-         8:'August',
-         9:'September',
-         10:'October',
-         11:'November',
-         12:'December',
-    }.get(x, "not a month")
 
 def get_current_email():
     return users.get_current_user()
@@ -150,14 +128,14 @@ class EditProfile(webapp2.RequestHandler):
         'added_dates': added_dates,
         }
 
-        for date in added_dates:
-            parse_dates = []
-            parse_dates.append(parseDate(date))
+        # for date in added_dates:
+        #     parse_dates = []
+        #     parse_dates.append(parseDate(date))
         if get_current_user.dates_free:
             template_vars = {
                 'current_user': current_user,
                 'added_dates': added_dates,
-                'parse_dates': parse_dates
+                # 'parse_dates': parse_dates
             }
         else:
             template_vars = {
@@ -202,21 +180,16 @@ class Friends(webapp2.RequestHandler):
         template = jinja_env.get_template('templates/friends.html')
         self.response.write(template.render(template_vars))
     def post(self):
-        current_user = users.get_current_user()
-        get_current_user = get_current_profile()
-        # all_users = Profile.query().filter(get_current_user.email != get_current_user.friends.email).fetch()
-        # print all_users
-        #FIX THIS ^^^^^^^^^
         current_user = get_current_email()
+        all_users = Profile.query().filter(current_user.email() != Profile.email).fetch()
         get_current_user = get_current_profile()
-        all_people = get_all_profiles()
         search = self.request.get('search') #User Input Search
         searched_friends_first = Profile.query().filter(Profile.first_name == search).fetch()
         searched_friends_last = Profile.query().filter(Profile.last_name == search).fetch()
         searched_friends_email = Profile.query().filter(Profile.email == search).fetch()
         searched_friends = []
         template_vars = {
-                # "all_users": all_users,
+                "all_users": all_users,
                 'get_current_user': get_current_user,
         }
 
@@ -229,8 +202,12 @@ class Friends(webapp2.RequestHandler):
         else:
             searched_friends.extend(searched_friends_first)
         template_vars["searched_friends"]=searched_friends
+        template_vars["results"]="Here are your results: "
 
-        for person in all_people:
+
+
+
+        for person in all_users:
             if_checked_person = self.request.get(person.email)
             if if_checked_person == "on":
                 get_current_user.friends.append(person.key)
