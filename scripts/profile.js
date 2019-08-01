@@ -43,6 +43,15 @@ const parseDate = (inputString) => {
 
 }
 
+
+
+// <span class="mdl-chip mdl-chip--contact mdl-chip--deletable">
+//     <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">A</span>
+//     <span class="mdl-chip__text">Deletable Contact Chip</span>
+//     <a href="#" class="mdl-chip__action"><i class="material-icons">cancel</i></a>
+// </span>
+
+
 const createList = (json) => {
   let datesList = document.querySelector('#datesList');
   datesList.innerHTML = '';
@@ -50,7 +59,44 @@ const createList = (json) => {
     let dateItem = document.createElement('li');
     dateItem.innerHTML = parseDate(date);
     dateItem.classList.add('dates');
+    ////////////
+    let spanClass = document.createElement('span');
+    spanClass.classList.add('mdl-chip', 'mdl-chip--contact', 'mdl-chip--deletable')
+    let spanText = document.createElement('span');
+    spanText.classList.add('mdl-chip__contact', 'mdl-color--pink', 'mdl-color-text--white');
+    spanText.innerHTML = parseDate(date)[0];
+    spanClass.appendChild(spanText);
+    let spanSmall = document.createElement('span');
+    spanSmall.innerHTML = parseDate(date);
+    spanSmall.classList.add('mdl-chip__text');
+    spanClass.appendChild(spanSmall)
+    let anchor = document.createElement('a');
+    anchor.classList.add('mdl-chip__action')
+    let ith = document.createElement('i');
+    ith.id = date
+    ith.innerHTML = "cancel";
+    ith.classList.add('material-icons');
+    ith.addEventListener('click', function(){
+      createList(json)
+      let data = {'date_removed': date}
+      fetch('/profile', {
+        method:'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+      .then((response)=>response.json())
+      .then((json) => {
+          createList(json)
+      });
+    });
+    anchor.appendChild(ith);
+    spanClass.appendChild(anchor)
 
+
+
+///////////
     let removeButton = document.createElement('button');
     removeButton.innerHTML = 'remove';
     removeButton.classList.add('remove');
@@ -73,6 +119,7 @@ const createList = (json) => {
     });
     dateItem.appendChild(removeButton);
     datesList.appendChild(dateItem);
+    datesList.appendChild(spanClass);
   }
 };
 
