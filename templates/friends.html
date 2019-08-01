@@ -28,43 +28,18 @@
       <br>
       <p><b>Add by search:</b></p>
       <input class="friends" type="text" name="search" placeholder="Search"/>
-      {%if not searched_friends%}
-      <br>
-      <br>
-        There is no user by that name!
-      {%endif%}
+      <div id="noResults">
+        {%if not searched_friends%}
+          There is no user by that name!
+        {%endif%}
+      </div>
       {%for friend in searched_friends%}
       <br>
         <br><input type="checkbox" name={{friend.email}}>{{friend.email}}</input>
       {%endfor%}
 
-
-          {%if not searched_friends %}
-            There is no user by that name!
-          {%endif%}
-          {%for friend in searched_friends%}
-            <br><input type="checkbox" name={{friend.email}}>{{friend.first_name}} {{friend.last_name}}</input>
-          {%endfor%}
-      <br>
-      <br>
       <input class="button" type="submit" name="addFriends" Value = "Add">
-      <br>
-      <p><b>Add by list:</b></p>
 
-      {% for user in all_users %}
-        {% if user != get_current_user.friends %}
-
-
-      <input type="checkbox" name={{user.email}}> {{user.first_name}} {{user.last_name}} </input>
-      <br>
-        {% endif %}
-      {% endfor %}
-      <br>
-      <br>
-      <input class="button" type="submit" name="addFriends" Value = "Add">
-      <br>
-      <br>
-      <br>
     </div>
 
     </form>
