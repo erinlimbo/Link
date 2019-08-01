@@ -1,4 +1,18 @@
-img {
+body {
+  margin-left: 40px;
+  font-family: "Montserrat", sans-serif;
+  text-align: left;
+  font-size: 30px;
+  color: white;
+  background: linear-gradient(-45deg, #ffe8e0, #f79b7c, #ffede3, #ffe8e0);
+	background-size: 2000% 2000%;
+	-webkit-animation: Gradient 8s ease infinite;
+	-moz-animation: Gradient 8s ease infinite;
+	animation: Gradient 8s ease infinite;
+  }
+
+
+#logo {
   flex-grow: 1.7;
   height: 10vmin;
   display: flex;
@@ -32,30 +46,62 @@ header {
   margin-left: -20px;
 }
 
+
+.parentElement{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 5px solid #f79b7c;
+  padding: 5px;
+}
+.childElement {
+  margin-left: 10%;
+  display: flex;
+  flex-direction: column;
+  float: right;
+  width: 300px;
+
+}
+.title{
+  text-align: center;
+  color: yellow;
+}
+.images{
+  height: 200px;
+  width: 300px;
+}
+
+
+
 .button {
-margin-top: 50px;
-color: black;
-background-size: 800% 800%;
--webkit-animation: Gradient 8s ease infinite;
--moz-animation: Gradient 8s ease infinite;
-animation: Gradient 8s ease infinite; /* Green */
-border: 2.5px solid #FEB69E;
-padding: 16px 32px;
-text-align: right;
-text-decoration: none;
-/* display: inline-block; */
-font-size: 17px;
-font-family: "Roboto", sans-serif;
-/* margin: 4px 2px; */
--webkit-transition-duration: 0.4s; /* Safari */
-transition-duration: 0.4s;
-cursor: pointer;
-}
+    margin-top: 50px;
+    color: white;
+    background-size: 800% 800%;
+    background-color: transparent;
+    -webkit-animation: Gradient 8s ease infinite;
+    -moz-animation: Gradient 8s ease infinite;
+    animation: Gradient 8s ease infinite; /* Green */
+    border: 2.5px solid #FEB69E;
+    padding: 16px 32px;
+    text-align: right;
+    text-decoration: none;
+    /* display: inline-block; */
+    font-size: 17px;
+    font-family: "Roboto", sans-serif;
+    /* margin: 4px 2px; */
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+
 .button:hover {
-background: #FEB69E;
-border: 3px solid white;
-color: white;
-}
+    background: #FEB69E;
+    border: 3px solid white;
+    color: white;
+  }
 
 .button2 {
   margin-top: 50px;
@@ -78,6 +124,32 @@ color: white;
   cursor: pointer;
 }
 .button2:hover {
+  background: #FEB69E;
+  border: 3px solid white;
+  color: white;
+}
+
+.search {
+  margin-top: 50px;
+  color: white;
+  background-size: 800% 800%;
+  background-color: transparent;
+  -webkit-animation: Gradient 8s ease infinite;
+  -moz-animation: Gradient 8s ease infinite;
+  animation: Gradient 8s ease infinite; /* Green */
+  border: 2.5px solid #FEB69E;
+  padding: 16px 32px;
+  text-align: right;
+  text-decoration: none;
+  /* display: inline-block; */
+  font-size: 17px;
+  font-family: "Roboto", sans-serif;
+  /* margin: 4px 2px; */
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.search:hover {
   background: #FEB69E;
   border: 3px solid white;
   color: white;
@@ -106,18 +178,7 @@ color: white;
 
 }
 
-body {
-  margin-left: 40px;
-  font-family: "Montserrat", sans-serif;
-  text-align: left;
-  font-size: 30px;
-  color: white;
-  background: linear-gradient(-45deg, #ffe8e0, #f79b7c, #ffede3, #ffe8e0);
-	background-size: 2000% 2000%;
-	-webkit-animation: Gradient 8s ease infinite;
-	-moz-animation: Gradient 8s ease infinite;
-	animation: Gradient 8s ease infinite;
-  }
+
   @-webkit-keyframes Gradient {
   	0% {
   		background-position: 0% 50%

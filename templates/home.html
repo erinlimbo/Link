@@ -19,8 +19,8 @@
 
   <body>
     <!-- Top header -->
-    <header class="w3-container w3-xlarge">
-      <a href="/"><img src="images/linklogo.png" alt="CSGO Howl" style="margin-left:10px;margin-top:15px;width:100px;height:100px;float:left";></a>
+    <div id="header">
+      <a href="/"><img src="images/linklogo.png" alt="CSGO Howl" style="margin-left:10px;margin-top:10px;width:100px;height:100px;float:left";></a>
       <p class="w3-right">
         <div align="right">
           <br>
@@ -28,9 +28,10 @@
         <a href="/login" class="button" href="{{logout_link}}">Logout</a>
       </div>
       </p>
-    </header>
-    <div class="row">
-  <div class="column">
+    </div>
+    <div id="container">
+    <!-- <div class="row"> -->
+  <div class="column left">
     <h2><b>Hello {{first_name}}!</b></h2>
     <br>
     <br>
@@ -39,7 +40,7 @@
     <br>
   </div>
 
-  <div class="column">
+  <div class="column middle">
     <div id="schedule">
       <h2><b>Your Schedule</b></h2>
     </div>
@@ -50,14 +51,16 @@
     <br>
     <br>
     <div>
-      <p><b> Your availabile dates: </b></p>
+      <p><b> Your Availabile Dates: </b></p>
+      <div style="text-align:left;"
       <ul id = "dateList">
+      </div>
       </ul>
     </div>
 
   </div>
 
-  <div class="column">
+  <div class="column right">
     <h2><b>Friends</b></h2>
     <br>
 
@@ -85,6 +88,7 @@
 
     <br>
   </div>
+  <!-- </div> -->
   <script src="../scripts/home.js" charset="utf-8"></script>
   </body>
 </html>

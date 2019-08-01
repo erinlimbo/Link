@@ -1,3 +1,17 @@
+
+body {
+  margin-left: 45px;
+  padding: 20px;
+  font-family: "Montserrat", sans-serif;
+  background: linear-gradient(-45deg, #ffe8e0, #f79b7c, #ffede3, #ffe8e0);
+	background-size: 1500% 1500%;
+	-webkit-animation: Gradient 8s ease infinite;
+	-moz-animation: Gradient 8s ease infinite;
+	animation: Gradient 8s ease infinite;
+  }
+
+
+
 img {
   flex-grow: 1.7;
   height: 10vmin;
@@ -11,17 +25,6 @@ h3 {
   font-size: 50px;
   color: white;
 }
-
-body {
-  margin-left: 45px;
-  padding: 20px;
-  font-family: "Montserrat", sans-serif;
-  background: linear-gradient(-45deg, #ffe8e0, #f79b7c, #ffede3, #ffe8e0);
-	background-size: 1500% 1500%;
-	-webkit-animation: Gradient 8s ease infinite;
-	-moz-animation: Gradient 8s ease infinite;
-	animation: Gradient 8s ease infinite;
-  }
 
 
 
@@ -180,7 +183,7 @@ body {
   text-align: center;
   font-size: 13px;
   font-family: "Roboto", sans-serif;
-  -webkit-transition-duration: 0.4s; /* Safari */
+  -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
   cursor: pointer;
 }

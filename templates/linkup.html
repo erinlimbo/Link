@@ -14,15 +14,22 @@
         console.log(result);
         for (let item of result.items){
           let eventElement = document.createElement('div');
-          eventElement.classList.add('eventElement'); //to style in CSS later
-          let title = document.createElement('a');
-          title.textContent = item.name;
-          title.href = item.url;
-          title.target = '_blank'
-          eventElement.appendChild(title);
+          eventElement.classList.add('parentElement'); //to style in CSS later
           let image = document.createElement('img');
+          image.classList.add('images')
           image.src = item.images[0].url; // later handle the case when there are no images
           eventElement.appendChild(image);
+          let childElement = document.createElement('div');
+          childElement.classList.add('childElement');
+          let title = document.createElement('a');
+          title.classList.add('title')
+          title.textContent = item.name;
+          title.href = item.url;
+          // title.style="text-decoration:none";
+          title.target = '_blank'
+          childElement.appendChild(title)
+
+
           let date = new Date(item.dates.start.dateTime)
           let parsed_date = date.toLocaleDateString("en-US", {
             weekday:'long',
@@ -34,7 +41,8 @@
             timeZoneName:'short',
           });
           let datetime = document.createTextNode(parsed_date);
-          eventElement.appendChild(datetime);
+          childElement.appendChild(datetime);
+          eventElement.appendChild(childElement);
           document.body.appendChild(eventElement);
         }
         let newSearch = document.createElement('BUTTON');
@@ -55,7 +63,7 @@
   </head>
   <body>
     <header class="w3-container w3-xlarge">
-      <a href="/"><img src="images/linklogo.png" alt="CSGO Howl" style="width:100px;height:100px;float:left";></a>
+      <a href="/"><img id="logo" src="images/linklogo.png" alt="CSGO Howl" style="width:100px;height:100px;float:left";></a>
       <p class="w3-right">
         <div align="right">
         <a href="/login" class="button" href="{{logout_link}}">Logout</a>
@@ -63,7 +71,7 @@
       </p>
     </header>
     <br>
-    <h3>Friends who are free on {{hangout_date}}: </h3>
+    <h3>Friends Who Are Free On {{hangout_date}}: </h3>
     {%if friends_free|length == 0%}
     You have no friends or none of your friends are free.
     <br>
