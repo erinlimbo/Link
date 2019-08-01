@@ -107,7 +107,7 @@ body {
   background-size: 800% 800%;
   -webkit-animation: Gradient 8s ease infinite;
   -moz-animation: Gradient 8s ease infinite;
-  animation: Gradient 8s ease infinite; 
+  animation: Gradient 8s ease infinite;
   border: none;
   height: 25px;
   width: 80px;
@@ -123,12 +123,39 @@ body {
   transition-duration: 0.4s;
   cursor: pointer;
 
+<<<<<<< HEAD
 }
 .remove:hover {
   background: #FEB69E;
   border: 3px solid white;
   color: white;
 }
+=======
+.removeButton {
+  background: linear-gradient(-45deg, #ffede3, #f79b7c, #ffe8e0, #ffe8e0);
+  height: 50px;
+  width: 170px;
+  border: 2.5px solid #FEB69E;
+  padding: 13px 40px;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+  /* margin: 1px; */
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+
+}
+
+.removeButton:hover {
+  background-color: #FEB69E;
+  border: 3px solid white;
+  color: white;
+}
+}
+
+
 .button {
   margin-top: 50px;
   color: black;
@@ -136,7 +163,6 @@ body {
   -webkit-animation: Gradient 8s ease infinite;
   -moz-animation: Gradient 8s ease infinite;
   animation: Gradient 8s ease infinite; /* Green */
-  border: none;
   height: 35px;
   width: 100px;
   border: 2.5px solid #FEB69E;
