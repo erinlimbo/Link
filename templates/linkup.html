@@ -9,8 +9,7 @@
     <script type="text/javascript">
       let startDateTime = '{{hangout_date}}' + 'T00:00:00Z'
       let endDateTime = '{{hangout_date}}' + 'T11:59:59Z'
-      // TODO: fix zipcode/location!!
-      ticketmaster('{{api_key}}').discovery.v2.event.all({city:['London'], startDateTime: startDateTime, endDateTime: endDateTime})
+      ticketmaster('{{api_key}}').discovery.v2.event.all({city:'{{zipCode}}', startDateTime: startDateTime, endDateTime: endDateTime})
       .then((result) => {
         console.log(result);
         for (let item of result.items){
@@ -25,7 +24,6 @@
           image.src = item.images[0].url; // later handle the case when there are no images
           eventElement.appendChild(image);
           let date = new Date(item.dates.start.dateTime)
-          // console.log(date);
           let parsed_date = date.toLocaleDateString("en-US", {
             weekday:'long',
             year:'numeric',
@@ -35,7 +33,6 @@
             minute:'numeric',
             timeZoneName:'short',
           });
-          // let parsed_date = parseDate(item.dates.start.dateTime);
           let datetime = document.createTextNode(parsed_date);
           eventElement.appendChild(datetime);
           document.body.appendChild(eventElement);
