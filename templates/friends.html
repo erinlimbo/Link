@@ -16,10 +16,6 @@
       </p>
     </header>
 
-
-
-      <input type="text" id="search" name="search" placeholder="Search"/>
-
     <div class="column">
     <form  action="/friends" method="POST">
       <h1> Add friends here! </h1>
@@ -38,10 +34,8 @@
         <br><input type="checkbox" name={{friend.email}}>{{friend.email}}</input>
       {%endfor%}
 
-      <input class="button" type="submit" name="addFriends" Value = "Add">
-
-    </div>
-
+        <input class="button" type="submit" name="addFriends" Value = "Add">
+      </div>
     </form>
   <!-- <script type="text/javascript" src="../scripts/friends.js"></script> -->
   </body>
