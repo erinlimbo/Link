@@ -46,9 +46,13 @@
           document.body.appendChild(eventElement);
         }
         let newSearch = document.createElement('BUTTON');
+        let anchor = document.createElement('a');
+        anchor.href = ("/schedule")
+        anchor.appendChild(newSearch)
         newSearch.classList.add('search');
-        newSearch.innerHTML = 'Search Again';
-        document.body.appendChild(newSearch);
+        newSearch.innerHTML = 'Search again';
+        // newSearch.onclick("/schedule");
+        document.body.appendChild(anchor);
       }).catch(() => {
         let noEvents = document.createElement('p');
         noEvents.textContent = 'There are no events that matched your search.';
