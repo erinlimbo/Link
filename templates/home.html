@@ -20,7 +20,7 @@
   <body>
     <!-- Top header -->
     <header class="w3-container w3-xlarge">
-      <a href="/"><img src="images/linklogo.png" alt="CSGO Howl" style="width:100px;height:100px;float:left";></a>
+      <a href="/"><img src="images/linklogo.png" alt="CSGO Howl" style="margin-left:10px;margin-top:15px;width:100px;height:100px;float:left";></a>
       <p class="w3-right">
         <div align="right">
           <br>
@@ -31,7 +31,7 @@
     </header>
     <div class="row">
   <div class="column">
-    <h2>Hello {{first_name}}!</h2>
+    <h2><b>Hello {{first_name}}!</b></h2>
     <br>
     <br>
     <a href="/schedule" class="button button1">Link Up</a>
@@ -40,27 +40,29 @@
   </div>
 
   <div class="column">
-    <h2>Your Schedule</h2>
+    <div id="schedule">
+      <h2><b>Your Schedule</b></h2>
+    </div>
+
+    <div class="bottomSpacing">
+      <a href="/profile" class=" button button1">Edit Availability</a>
+    </div>
     <br>
     <br>
-    <a href="/profile" class="button button1">Edit Availability</a>
-    <br>
-    <br>
-    <br>
-    <p><b> Your availabile dates: </b></p>
-    <ul id = "dateList">
-    </ul>
-    <br>
-    <br>
+    <div>
+      <p><b> Your availabile dates: </b></p>
+      <ul id = "dateList">
+      </ul>
+    </div>
 
   </div>
 
   <div class="column">
-    <h2>Friends</h2>
+    <h2><b>Friends</b></h2>
     <br>
 
     <br>
-    <a href="/friends" class="button1">Add Friends</a>
+    <a href="/friends" id="friendsAdd" class="bottomSpacing button1">Add Friends</a>
     <br>
     <br>
     <br>
@@ -70,20 +72,13 @@
       <li class="mdl-list__item mdl-list__item--two-line ">
         <span class="mdl-list__item-primary-content friendSize">
           <i class="material-icons mdl-list__item-avatar">person</i>
-          <span>{{friend.get().first_name}} {{friend.get().last_name}}</span>
-          <span class="mdl-list__item-sub-title">15 Dates Free</span>
+          <span style="color:white">{{friend.get().first_name}} {{friend.get().last_name}}</span>
+          <span style="color:white" class="mdl-list__item-sub-title">15 Dates Free</span>
         </span>
       </li>
       {%endfor%}
     </ul>
     <br>
-
-
-
-
-
-
-
 
 
 
