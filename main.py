@@ -46,17 +46,21 @@ def parseDate(inputString):
 #              }
 #     return switcher.get(month,"Invalid Month")
 
-# def check_month(x):
-#     return {
-#          01:'January',
-#          02:'February',
-#          03:'March',
-#          04:'April',
-#          05:'May',
-#          06:'June',
-#          07:'July',
-#
-#     }.get(x, "not a month")
+def check_month(x):
+    return {
+         1:'January',
+         2:'February',
+         3:'March',
+         4:'April',
+         5:'May',
+         6:'June',
+         7:'July',
+         8:'August',
+         9:'September',
+         10:'October',
+         11:'November',
+         12:'December',
+    }.get(x, "not a month")
 
 def get_current_email():
     return users.get_current_user()
@@ -196,7 +200,8 @@ class Friends(webapp2.RequestHandler):
     def post(self):
         current_user = users.get_current_user()
         get_current_user = get_current_profile()
-        all_users = Profile.query().filter(current_user.email() != Profile.email).fetch()
+        all_users = Profile.query().filter(Profile.email != get_current_user.friends.email).fetch()
+        print all_users
         current_user = get_current_email()
         get_current_user = get_current_profile()
         all_people = get_all_profiles()

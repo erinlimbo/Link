@@ -17,14 +17,14 @@
 
     <form  action="/friends" method="POST">
 
-      <input type="text" name="search" placeholder="Search"/>
-      {%if not searched_friends%}
-        There is no user by that name!
-      {%endif%}
-      {%for friend in searched_friends%}
-        <br><input type="checkbox" name={{friend.email}}>{{friend.email}}</input>
-      {%endfor%}
+      <input type="text" id="search" name="search" placeholder="Search"/>
 
+          {%if not searched_friends %}
+            There is no user by that name!
+          {%endif%}
+          {%for friend in searched_friends%}
+            <br><input type="checkbox" name={{friend.email}}>{{friend.first_name}} {{friend.last_name}}</input>
+          {%endfor%}
       <br>
       <br>
       <p><b>Add Friends!</b></p>
@@ -33,7 +33,7 @@
         {% if user != get_current_user.friends %}
         <br>
 
-      <input type="checkbox" name={{user.email}}> {{user.email}} </input>
+      <input type="checkbox" name={{user.email}}> {{user.first_name}} {{user.last_name}} </input>
       <br>
         {% endif %}
       {% endfor %}
