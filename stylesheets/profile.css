@@ -28,7 +28,8 @@ body {
 .button1 {
   /* background-color: #4CAF50; /* Green */ */
   background: linear-gradient(-45deg, #ffede3, #f79b7c, #ffe8e0, #ffe8e0);
-  color: black;
+  color: white;
+  background-color: transparent;
   background-size: 800% 800%;
   -webkit-animation: Gradient 8s ease infinite;
   -moz-animation: Gradient 8s ease infinite;
@@ -81,30 +82,29 @@ body {
 
 
 .button {
-  margin-top: 50px;
-  color: black;
+  color: white;
   background-size: 800% 800%;
-  -webkit-animation: Gradient 8s ease infinite;
-  -moz-animation: Gradient 8s ease infinite;
-  animation: Gradient 8s ease infinite; /* Green */
-  height: 35px;
-  width: 100px;
+  -webkit-animation: Gradient 15s ease infinite;
+  -moz-animation: Gradient 15s ease infinite;
+  animation: Gradient 15s ease infinite; /* Green */
+  border: none;
   border: 2.5px solid #FEB69E;
-  padding: 8px 19px;
-  text-align: right;
-  color: #f79b7c;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
   /* display: inline-block; */
-  font-size: 13px;
+  font-size: 17px;
   font-family: "Roboto", sans-serif;
   /* margin: 4px 2px; */
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   cursor: pointer;
+  display: inline-grid;
 }
 .button:hover {
   background: #FEB69E;
-  border: 3px solid white;
   color: white;
+  border: 3px solid white;
 }
 
 #datesList {
@@ -163,7 +163,8 @@ body {
 .remove {
   float: right;
   margin-bottom: 2px;
-  color: black;
+  color: white;
+  background-color: transparent;
   background-size: 800% 800%;
   -webkit-animation: Gradient 8s ease infinite;
   -moz-animation: Gradient 8s ease infinite;
@@ -172,7 +173,6 @@ body {
   width: 80px;
   border: 2.5px solid #FEB69E;
   text-align: center;
-  color: #f79b7c;
   font-size: 13px;
   font-family: "Roboto", sans-serif;
   -webkit-transition-duration: 0.4s; /* Safari */
