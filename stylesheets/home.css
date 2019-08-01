@@ -51,10 +51,15 @@ body {
   text-align: center;
   float: left;
   color:black;
+  font-size: 15px;
 }
 
 .mdl-chip__text{
   color: #FEB69E;
+  font-size: 15px;
+}
+.changeText {
+  font-size: 20px;
 }
 
 .changeImage{
