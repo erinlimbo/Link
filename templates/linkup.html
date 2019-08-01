@@ -45,11 +45,16 @@
           eventElement.appendChild(childElement);
           document.body.appendChild(eventElement);
         }
+        let newSearch = document.createElement('BUTTON');
+        newSearch.classList.add('search');
+        newSearch.innerHTML = 'Search again';
+        document.body.appendChild(newSearch);
       }).catch(() => {
         let noEvents = document.createElement('p');
         noEvents.textContent = 'There are no events that matched your search.';
         document.body.appendChild(noEvents);
       });
+
     </script>
   </head>
   <body>
