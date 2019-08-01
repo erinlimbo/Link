@@ -9,7 +9,6 @@ from google.appengine.api import search
 from urlparse import urlparse
 from datetime import date
 
-
 jinja_env = jinja2.Environment(
     loader = jinja2.FileSystemLoader(os.path.dirname(__file__))
 )
@@ -200,7 +199,7 @@ class Schedule(webapp2.RequestHandler):
         current_user = get_current_email()
         get_current_user=get_current_profile()
         hangout_date = self.request.get("hangout_date")
-        city = self.request.get("city")
+        zipCode = self.request.get("zipCode")
         friends_free = []
         if len(get_current_user.friends) != 0:
             for friend in get_current_user.friends:
@@ -208,13 +207,12 @@ class Schedule(webapp2.RequestHandler):
                     for date in friend.get().dates_free:
                         if hangout_date == date:
                             friends_free.append(friend.get().first_name)
-
         template_vars = {
             "hangout_date": hangout_date,
             "get_current_user": get_current_user,
             "friends_free": friends_free,
             'api_key': api_key,
-            'city': city,
+            'zipCode': zipCode,
         }
         template = jinja_env.get_template('templates/linkup.html')
         self.response.write(template.render(template_vars))

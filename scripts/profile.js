@@ -59,7 +59,6 @@ const createList = (json) => {
     let dateItem = document.createElement('li');
     dateItem.innerHTML = parseDate(date);
     dateItem.classList.add('dates');
-    ////////////
     let spanClass = document.createElement('span');
     spanClass.classList.add('mdl-chip', 'mdl-chip--contact', 'mdl-chip--deletable')
     let spanText = document.createElement('span');
@@ -95,8 +94,6 @@ const createList = (json) => {
     spanClass.appendChild(anchor)
 
 
-
-///////////
     let removeButton = document.createElement('button');
     removeButton.innerHTML = 'remove';
     removeButton.classList.add('remove');
