@@ -18,7 +18,24 @@ body {
 	animation: Gradient 8s ease infinite;
   }
 
-  .demo-list-two {
+#header{
+  background: linear-gradient(-45deg, #ffe8e0, #ffe8e0, #f79b7c, );
+  outline: 5px solid white;
+	background-size: 400% 600%;
+	-webkit-animation: Gradient 8s ease infinite;
+	-moz-animation: Gradient 8s ease infinite;
+	animation: Gradient 8s ease infinite;
+  height: 130px;
+  width: 100%;
+}
+#container{
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.demo-list-two {
   width: 300px;
 }
 #dateList {
@@ -83,6 +100,7 @@ body {
   animation: Gradient 15s ease infinite; /* Green */
   border: none;
   border: 2.5px solid #FEB69E;
+  margin-right: 15px;
   padding: 16px 32px;
   text-align: center;
   text-decoration: none;
@@ -147,17 +165,8 @@ body {
   color: white;
 }
 /* Create three equal columns that floats next to each other */
-.column {
-  float: left;
-  width: 33.33%;
-  padding: 15px;
-}
+
 /* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width:600px) {
