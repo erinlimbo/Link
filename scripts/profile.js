@@ -49,6 +49,7 @@ const createList = (json) => {
   for (let date of json.added_dates){
     let dateItem = document.createElement('li');
     dateItem.innerHTML = parseDate(date);
+    dateItem.classList.add('dates');
 
     let removeButton = document.createElement('button');
     removeButton.innerHTML = 'remove';
