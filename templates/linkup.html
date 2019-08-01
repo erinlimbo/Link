@@ -25,6 +25,7 @@
     </script>
   </head>
   <body>
+    {{city}}
     <header class="w3-container w3-xlarge">
       <a href="/"><img src="images/linklogo.png" alt="CSGO Howl" style="width:100px;height:100px;float:left";></a>
       <p class="w3-right">
@@ -37,12 +38,18 @@
     <h3>Friends who are free on {{hangout_date}}: </h3>
     {%if friends_free|length == 0%}
     You have no friends or none of your friends are free.
+    <br>
+    <br>
     {%else %}
+    <br>
     {% for friend in friends_free %}
     <br>
     <br>
+    <br>
       {{friend}}
+      <br>
     {% endfor %}
+    <br>
     {%endif%}
   </body>
 </html>

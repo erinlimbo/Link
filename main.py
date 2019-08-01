@@ -16,12 +16,8 @@ jinja_env = jinja2.Environment(
 
 class APIKey(ndb.Model):
     api_key = ndb.StringProperty(required=True)
-#
-# postal_code = '95030'
-# base_url = 'https://app.ticketmaster.com/discovery/v2/'
-# # api_key = APIKey.query().fetch()[0].api_key
-#
-# print base_url + 'events.json?postalCode=%s&apikey=%s' % (postal_code, api_key)
+
+api_key = APIKey.query().fetch()[0].api_key
 
 class Profile(ndb.Model):
     first_name = ndb.StringProperty()
@@ -29,15 +25,6 @@ class Profile(ndb.Model):
     email = ndb.StringProperty()
     dates_free = ndb.StringProperty(repeated=True)
     friends = ndb.KeyProperty(repeated=True, kind='Profile')
-
-# def parseDate(inputString):
-#     split_string = inputString.split('-')
-#     index = [1,2,0]
-#     temp = [split_string[x] for x in index]
-#     perm = '-'.join(temp)
-#     return perm
-
-
 
 def get_current_email():
     return users.get_current_user()
@@ -123,14 +110,10 @@ class EditProfile(webapp2.RequestHandler):
         'added_dates': added_dates,
         }
 
-        # for date in added_dates:
-        #     parse_dates = []
-        #     parse_dates.append(parseDate(date))
         if get_current_user.dates_free:
             template_vars = {
                 'current_user': current_user,
                 'added_dates': added_dates,
-                # 'parse_dates': parse_dates
             }
         else:
             template_vars = {
@@ -167,7 +150,6 @@ class Friends(webapp2.RequestHandler):
         current_user = users.get_current_user()
         get_current_user = get_current_profile()
         all_users = Profile.query().filter(current_user.email() != Profile.email).fetch()
-        # filtered_users = all_users.filter(Profile.email != Profile.friends.email).fetch()
         template_vars = {
             "all_users": all_users,
             'get_current_user': get_current_user
@@ -199,9 +181,6 @@ class Friends(webapp2.RequestHandler):
         template_vars["searched_friends"]=searched_friends
         template_vars["results"]="Here are your results: "
 
-
-
-
         for person in all_users:
             if_checked_person = self.request.get(person.email)
             if if_checked_person == "on":
@@ -209,6 +188,7 @@ class Friends(webapp2.RequestHandler):
                 get_current_user.put()
         template = jinja_env.get_template('templates/friends.html')
         self.response.write(template.render(template_vars))
+
 class Schedule(webapp2.RequestHandler):
     def get(self):
         template_vars = {
@@ -220,6 +200,7 @@ class Schedule(webapp2.RequestHandler):
         current_user = get_current_email()
         get_current_user=get_current_profile()
         hangout_date = self.request.get("hangout_date")
+        city = self.request.get("city")
         friends_free = []
         if len(get_current_user.friends) != 0:
             for friend in get_current_user.friends:
@@ -232,7 +213,8 @@ class Schedule(webapp2.RequestHandler):
             "hangout_date": hangout_date,
             "get_current_user": get_current_user,
             "friends_free": friends_free,
-            'api_key': api_key
+            'api_key': api_key,
+            'city': city,
         }
         template = jinja_env.get_template('templates/linkup.html')
         self.response.write(template.render(template_vars))

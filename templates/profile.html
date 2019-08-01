@@ -11,16 +11,22 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
   <body>
-    <a href="/"><img src="images/linklogo.png" alt="Link logo"/ style="width:100px;height:100px;float:left";></a>
+    <header class="w3-container w3-xlarge">
+      <a href="/"><img src="images/linklogo.png" alt="CSGO Howl" style="width:100px;height:100px;float:left";></a>
+      <p class="w3-right">
+        <div align="right">
+          <br>
+          <br>
+        <a href="/login" class="button" href="{{logout_link}}">Logout</a>
+      </div>
+      </p>
+    </header>
+
     <form  action="/profile" method="POST">
       <br>
       <br>
       <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
+      <h3>Edit your available dates: </h3>
       <input class="button2" type="date" id="user_free_date" name="user_free_date">
       <input class="button" type="button" id="submitDate" name="submitDate" Value="Add Date" />
       <br>
