@@ -37,6 +37,10 @@
           eventElement.appendChild(datetime);
           document.body.appendChild(eventElement);
         }
+      }).catch(() => {
+        let noEvents = document.createElement('p');
+        noEvents.textContent = 'There are no events that matched your search.';
+        document.body.appendChild(noEvents);
       });
     </script>
   </head>
