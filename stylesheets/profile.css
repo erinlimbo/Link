@@ -61,7 +61,8 @@ body {
 .button1 {
   /* background-color: #4CAF50; /* Green */ */
   background: linear-gradient(-45deg, #ffede3, #f79b7c, #ffe8e0, #ffe8e0);
-  color: #FEB69E;
+  color: white;
+  background-color: transparent;
   background-size: 800% 800%;
   -webkit-animation: Gradient 8s ease infinite;
   -moz-animation: Gradient 8s ease infinite;
@@ -131,8 +132,9 @@ body {
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   cursor: pointer;
-  }
-  .button:hover {
+  display: inline-grid;
+}
+.button:hover {
   background: #FEB69E;
   color: white;
   border: 3px solid white;
@@ -187,7 +189,8 @@ body {
 .remove {
   float: right;
   margin-bottom: 2px;
-  color: black;
+  color: white;
+  background-color: transparent;
   background-size: 800% 800%;
   -webkit-animation: Gradient 8s ease infinite;
   -moz-animation: Gradient 8s ease infinite;
@@ -196,7 +199,6 @@ body {
   width: 80px;
   border: 2.5px solid #FEB69E;
   text-align: center;
-  color: #f79b7c;
   font-size: 13px;
   font-family: "Roboto", sans-serif;
   -webkit-transition-duration: 0.4s; /* Safari */
