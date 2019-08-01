@@ -20,11 +20,11 @@ body {
   width: 100wh;
 	height: 90vh;
 	color: white;
-	background: linear-gradient(-45deg, #ffe8e0, #f79b7c, #ffede3, #ffe8e0);
+  background: linear-gradient(-45deg, #f79b7c, #f79b7c, #ffccba, #ff865c);
 	background-size: 800% 800%;
-	-webkit-animation: Gradient 8s ease infinite;
-	-moz-animation: Gradient 8s ease infinite;
-	animation: Gradient 8s ease infinite;
+	-webkit-animation: Gradient 7s ease infinite;
+	-moz-animation: Gradient 7s ease infinite;
+	animation: Gradient 7s ease infinite;
   }
 
   #noResults {
