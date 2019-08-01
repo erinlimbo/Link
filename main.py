@@ -38,21 +38,6 @@ class Profile(ndb.Model):
 #     return perm
 
 
-def check_month(x):
-    return {
-         1:'January',
-         2:'February',
-         3:'March',
-         4:'April',
-         5:'May',
-         6:'June',
-         7:'July',
-         8:'August',
-         9:'September',
-         10:'October',
-         11:'November',
-         12:'December',
-    }.get(x, "not a month")
 
 def get_current_email():
     return users.get_current_user()
@@ -190,14 +175,9 @@ class Friends(webapp2.RequestHandler):
         template = jinja_env.get_template('templates/friends.html')
         self.response.write(template.render(template_vars))
     def post(self):
-        current_user = users.get_current_user()
-        get_current_user = get_current_profile()
-        all_users = Profile.query().filter(current_user.email() != Profile.email).fetch()
-        print all_users
-        #FIX THIS ^^^^^^^^^
         current_user = get_current_email()
+        all_users = Profile.query().filter(current_user.email() != Profile.email).fetch()
         get_current_user = get_current_profile()
-        all_people = get_all_profiles()
         search = self.request.get('search') #User Input Search
         searched_friends_first = Profile.query().filter(Profile.first_name == search).fetch()
         searched_friends_last = Profile.query().filter(Profile.last_name == search).fetch()
@@ -217,9 +197,12 @@ class Friends(webapp2.RequestHandler):
         else:
             searched_friends.extend(searched_friends_first)
         template_vars["searched_friends"]=searched_friends
+        template_vars["results"]="Here are your results: "
 
 
-        for person in all_people:
+
+
+        for person in all_users:
             if_checked_person = self.request.get(person.email)
             if if_checked_person == "on":
                 get_current_user.friends.append(person.key)

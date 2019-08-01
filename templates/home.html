@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Link Home Page</title>
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
   </head>
 
@@ -61,12 +65,29 @@
     <br>
     <br>
     <p><b>Current Friends</b></p>
-    <ul>
+    <ul class="demo-list-two mdl-list">
       {%for friend in friend_list%}
-      <li>{{friend.get().first_name}} {{friend.get().last_name}}</li>
+      <li class="mdl-list__item mdl-list__item--two-line">
+        <span class="mdl-list__item-primary-content">
+          <i class="material-icons mdl-list__item-avatar">person</i>
+          <span>{{friend.get().first_name}} {{friend.get().last_name}}</span>
+          <span class="mdl-list__item-sub-title">15 Dates free</span>
+        </span>
+      </li>
       {%endfor%}
     </ul>
     <br>
+
+
+
+
+
+
+
+
+
+
+
     <br>
   </div>
   </body>
