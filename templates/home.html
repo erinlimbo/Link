@@ -67,8 +67,8 @@
     <p><b>Current Friends</b></p>
     <ul class="demo-list-two mdl-list">
       {%for friend in friend_list%}
-      <li class="mdl-list__item mdl-list__item--two-line">
-        <span class="mdl-list__item-primary-content">
+      <li class="mdl-list__item mdl-list__item--two-line ">
+        <span class="mdl-list__item-primary-content friendSize">
           <i class="material-icons mdl-list__item-avatar">person</i>
           <span>{{friend.get().first_name}} {{friend.get().last_name}}</span>
           <span class="mdl-list__item-sub-title">15 Dates free</span>

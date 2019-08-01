@@ -144,6 +144,40 @@ body {
   float: left;
 }
 
+
+
+
+.changeHolder{
+  background-color: white;
+  width: 75%;
+  border-radius: 20px;
+  z-index:1;
+}
+.changeTextColor {
+  background-color: #ffe8e0;
+}
+.changeAnchor{
+  float: right;
+  height: 24px;
+  width: 24px;
+  background: 0 0;
+  opacity: .54;
+  cursor: pointer;
+  padding: 0;
+  margin: 0 0 0 4px;
+  font-size: 13px;
+  text-decoration: none;
+  color: rgba(0,0,0,.87);
+  border: none;
+  outline: none;
+}
+.changeIcon {
+  margin-top: 5px;
+  z-index: 3;
+  float:right;
+}
+
+
 .remove {
   float: right;
   margin-bottom: 2px;
