@@ -47,7 +47,7 @@
     <br>
     <br>
     <br>
-    <p><b> Your availabile dates: </b></p>
+    <p><b> Your Availabile Dates: </b></p>
     <ul>
       {%for date in user_free_dates%}
       <li>{{date}}</li>
@@ -63,18 +63,18 @@
     <br>
 
     <br>
-    <a href="/friends" class="button button2">Add Friends</a>
+    <a href="/friends" class="button1">Add Friends</a>
     <br>
     <br>
     <br>
-    <p><b>Current Friends</b></p>
+    <p><b>Current Friends:</b></p>
     <ul class="demo-list-two mdl-list">
       {%for friend in friend_list%}
       <li class="mdl-list__item mdl-list__item--two-line">
         <span class="mdl-list__item-primary-content">
-          <i class="material-icons mdl-list__item-avatar">person</i>
+          <i class="material-icons mdl-list__item-avatar">Person</i>
           <span>{{friend.get().first_name}} {{friend.get().last_name}}</span>
-          <span class="mdl-list__item-sub-title">15 Dates free</span>
+          <span class="mdl-list__item-sub-title">15 Dates Free</span>
         </span>
       </li>
       {%endfor%}

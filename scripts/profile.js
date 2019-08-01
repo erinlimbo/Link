@@ -98,7 +98,7 @@ const createList = (json) => {
 
 ///////////
     let removeButton = document.createElement('button');
-    removeButton.innerHTML = 'remove';
+    removeButton.innerHTML = 'Remove';
     removeButton.classList.add('remove');
     removeButton.id = date;
     removeButton.class = 'removeButton';
