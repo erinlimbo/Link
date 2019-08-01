@@ -1,7 +1,6 @@
 body {
   margin-left: 40px;
   font-family: "Montserrat", sans-serif;
-  text-align: left;
   font-size: 30px;
   color: white;
   background: linear-gradient(-45deg, #f79b7c, #f79b7c, #ffccba, #ff865c);
@@ -51,6 +50,7 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  width: 80%;
   flex-wrap: wrap;
   margin-top: 5px;
   margin-bottom: 15px;
@@ -67,7 +67,8 @@ header {
 }
 .title{
   text-align: center;
-  color: yellow;
+  color: white;
+  font-weight: 400;
 }
 .images{
   height: 200px;
