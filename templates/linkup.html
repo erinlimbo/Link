@@ -38,6 +38,7 @@
           document.body.appendChild(eventElement);
         }
         let newSearch = document.createElement('BUTTON');
+        newSearch.classList.add('search');
         newSearch.innerHTML = 'Search again';
         document.body.appendChild(newSearch);
       }).catch(() => {
