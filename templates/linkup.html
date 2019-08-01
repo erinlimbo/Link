@@ -4,6 +4,24 @@
     <meta charset="utf-8">
     <title>Link</title>
     <link rel="stylesheet" href="../stylesheets/linkup.css">
+    <script type="text/javascript" src="../scripts/ticketmaster-2.0.4.min.js"></script>
+    <script type="text/javascript">
+      ticketmaster('{{api_key}}').discovery.v2.event.all({city: 'London', startDateTime: '2019-08-01T00:00:00Z', endDateTime: '2019-09-01T00:00:00Z'})
+      .then((result) => {
+        console.log(result);
+        for (let item of result.items){
+          let eventElement = document.createElement('div');
+          eventElement.classList.add('eventElement'); //to style in CSS later
+          let title = document.createTextNode(item.name);
+          eventElement.appendChild(title);
+          let image = document.createElement('img');
+          // later handle the case when there are no images
+          image.src = item.images[0].url;
+          eventElement.appendChild(image);
+          document.body.appendChild(eventElement);
+        }
+      });
+    </script>
   </head>
   <body>
     <header class="w3-container w3-xlarge">
@@ -16,8 +34,6 @@
     </header>
     <br>
     <h3>Friends who are free on {{hangout_date}}: </h3>
-    <!-- Current User email is: {{get_current_user.email}} -->
-    <!-- Date Selected: {{hangout_date}} -->
     {%if friends_free|length == 0%}
     You have no friends or none of your friends are free.
     {%else %}
@@ -27,6 +43,5 @@
       {{friend}}
     {% endfor %}
     {%endif%}
-
   </body>
 </html>
