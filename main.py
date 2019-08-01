@@ -17,9 +17,9 @@ jinja_env = jinja2.Environment(
 class APIKey(ndb.Model):
     api_key = ndb.StringProperty(required=True)
 
-postal_code = '95030'
-base_url = 'https://app.ticketmaster.com/discovery/v2/'
-api_key = APIKey.query().fetch()[0].api_key
+# postal_code = '95030'
+# base_url = 'https://app.ticketmaster.com/discovery/v2/'
+# api_key = APIKey.query().fetch()[0].api_key
 
 # print base_url + 'events.json?postalCode=%s&apikey=%s' % (postal_code, api_key)
 
@@ -30,29 +30,13 @@ class Profile(ndb.Model):
     dates_free = ndb.StringProperty(repeated=True)
     friends = ndb.KeyProperty(repeated=True, kind='Profile')
 
-def parseDate(inputString):
-    split_string = inputString.split('-')
-    index = [1,2,0]
-    temp = [split_string[x] for x in index]
-    perm = '-'.join(temp)
-    return perm
+# def parseDate(inputString):
+#     split_string = inputString.split('-')
+#     index = [1,2,0]
+#     temp = [split_string[x] for x in index]
+#     perm = '-'.join(temp)
+#     return perm
 
-# def check_month(month):
-#     switcher={
-#                 01:'January',
-#                 02:'February',
-#                 03:'March',
-#                 04:'April',
-#                 05:'May',
-#                 06:'June'
-#                 07:'July',
-#                 08:'August',
-#                 09:'September',
-#                 10:'October',
-#                 11:'November',
-#                 12:'December',
-#              }
-#     return switcher.get(month,"Invalid Month")
 
 def check_month(x):
     return {
@@ -154,14 +138,14 @@ class EditProfile(webapp2.RequestHandler):
         'added_dates': added_dates,
         }
 
-        for date in added_dates:
-            parse_dates = []
-            parse_dates.append(parseDate(date))
+        # for date in added_dates:
+        #     parse_dates = []
+        #     parse_dates.append(parseDate(date))
         if get_current_user.dates_free:
             template_vars = {
                 'current_user': current_user,
                 'added_dates': added_dates,
-                'parse_dates': parse_dates
+                # 'parse_dates': parse_dates
             }
         else:
             template_vars = {
