@@ -5,6 +5,10 @@
     <title>Link</title>
       <link rel="stylesheet" href="../stylesheets/friends.css">
           <link rel = "icon" href="images/linklogo.png" type = "image/x-icon">
+          <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
   <body>
     <header class="w3-container w3-xlarge">
@@ -17,7 +21,7 @@
     </header>
 
     <div class="column">
-    <form  action="/friends" method="POST">
+      <form  action="/friends" method="POST">
       <h1> Add friends here! </h1>
     </div>
     <div class="column">
@@ -40,12 +44,17 @@
       {% for user in all_users %}
         {% if user.email not in get_current_user.friends.email %}
         <br>
-      <input type="checkbox" name={{user.email}}> {{user.first_name}} {{user.last_name}} </input>
+        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="{{user.email}}">
+          <input type="checkbox" id="{{user.email}}" class="mdl-checkbox__input" name={{user.email}}>
+            <span class="mdl-checkbox__label">{{user.first_name}} {{user.last_name}} </span>
+          </input>
+        </label>
       <br>
         {% endif %}
       {% endfor %}
       <br>
       <br>
+
 
       <ul id="friendList">
       </ul>
