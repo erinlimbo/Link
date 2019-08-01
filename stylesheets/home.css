@@ -33,6 +33,10 @@ body {
   color:black;
 }
 
+.mdl-chip__text{
+  color: #FEB69E;
+}
+
 .changeImage{
   height: 15px;
   width: 15px;
