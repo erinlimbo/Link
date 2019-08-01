@@ -58,8 +58,7 @@ const createList = (json) => {
   datesList.innerHTML = '';
   for (let date of json.added_dates){
     let dateItem = document.createElement('li');
-    dateItem.innerHTML = parseDate(date);
-    dateItem.classList.add('dates');
+
     let spanClass = document.createElement('span');
     spanClass.classList.add( 'mdl-chip--contact','changeHolder', 'mdl-chip--deletable')
     // let spanText = document.createElement('span');
@@ -96,31 +95,7 @@ const createList = (json) => {
       });
     });
     anchor.appendChild(ith);
-    spanClass.appendChild(anchor)
-
-
-    let removeButton = document.createElement('button');
-    removeButton.innerHTML = 'Remove';
-    removeButton.classList.add('remove');
-    removeButton.id = date;
-    removeButton.class = 'removeButton';
-    removeButton.addEventListener('click', function(){
-      createList(json)
-      let data = {'date_removed': date}
-      fetch('/profile', {
-        method:'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      })
-      .then((response)=>response.json())
-      .then((json) => {
-          createList(json)
-      });
-    });
-    dateItem.appendChild(removeButton);
-    datesList.appendChild(dateItem);
+    spanClass.appendChild(anchor);
     datesList.appendChild(spanClass);
   }
 };

@@ -67,7 +67,8 @@ header {
 }
 .title{
   text-align: center;
-  color: yellow;
+  color: white;
+  font-weight: 400;
 }
 .images{
   height: 200px;
