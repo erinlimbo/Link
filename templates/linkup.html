@@ -7,14 +7,18 @@
     <link rel="stylesheet" href="../stylesheets/linkup.css">
     <script type="text/javascript" src="../scripts/ticketmaster-2.0.4.min.js"></script>
     <script type="text/javascript">
-      let startDateTime = '{{hangout_date}}' + 'T00:00:00Z'
-      let endDateTime = '{{hangout_date}}' + 'T11:59:59Z'
-      ticketmaster('{{api_key}}').discovery.v2.event.all({city:'{{zipCode}}', startDateTime: startDateTime, endDateTime: endDateTime})
+      let startDateTime = '{{hangout_date}}' + 'T07:00:00Z'
+      let endDateTime = '{{hangout_date}}' + 'T06:59:59Z'
+      let endDate = new Date('{{hangout_date}}');
+      endDate.setDate(endDate.getDate()+1);
+      let newEndDate = endDate.toISOString().substr(0,11)+'07:00:00Z'
+      let req = {city:'{{zipCode}}', startDateTime: startDateTime, endDateTime: newEndDate};
+      ticketmaster('{{api_key}}').discovery.v2.event.all(req)
       .then((result) => {
         console.log(result);
         for (let item of result.items){
           let eventElement = document.createElement('div');
-          eventElement.classList.add('parentElement'); //to style in CSS later
+          eventElement.classList.add('parentElement'); 
           let image = document.createElement('img');
           image.classList.add('images')
           image.src = item.images[0].url; // later handle the case when there are no images
@@ -25,11 +29,8 @@
           title.classList.add('title')
           title.textContent = item.name;
           title.href = item.url;
-          // title.style="text-decoration:none";
           title.target = '_blank'
           childElement.appendChild(title)
-
-
           let date = new Date(item.dates.start.dateTime)
           let parsed_date = date.toLocaleDateString("en-US", {
             weekday:'long',
@@ -51,12 +52,18 @@
         anchor.appendChild(newSearch)
         newSearch.classList.add('search');
         newSearch.innerHTML = 'Search again';
-        // newSearch.onclick("/schedule");
         document.body.appendChild(anchor);
       }).catch(() => {
         let noEvents = document.createElement('p');
         noEvents.textContent = 'There are no events that matched your search.';
         document.body.appendChild(noEvents);
+        let newSearch = document.createElement('BUTTON');
+        let anchor = document.createElement('a');
+        anchor.href = ("/schedule")
+        anchor.appendChild(newSearch)
+        newSearch.classList.add('search');
+        newSearch.innerHTML = 'Search again';
+        document.body.appendChild(anchor);
       });
 
     </script>
@@ -75,13 +82,8 @@
     {%if friends_free|length == 0%}
     You have no friends or none of your friends are free.
     <br>
-    <br>
     {%else %}
-    <br>
     {% for friend in friends_free %}
-    <br>
-    <br>
-    <br>
       {{friend}}
       <br>
     {% endfor %}
