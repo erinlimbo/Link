@@ -12,7 +12,6 @@ body {
   margin-bottom: 100px;
   font-size: 30px;
   font-family: "Montserrat", sans-serif;
-<<<<<<< HEAD
   text-align: inherit;
   width: 100wh;
 	height: 90vh;
@@ -22,13 +21,12 @@ body {
 	-webkit-animation: Gradient 8s ease infinite;
 	-moz-animation: Gradient 8s ease infinite;
 	animation: Gradient 8s ease infinite;
-=======
-  color: white;
+  /* color: white;
   background: linear-gradient(-45deg, #ffe8e0, #f79b7c, #ffede3, #ffe8e0);
 	background-size: 400% 1000%;
 	-webkit-animation: Gradient 15s ease infinite;
 	-moz-animation: Gradient 15s ease infinite;
-	animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite; */
 
   }
 
