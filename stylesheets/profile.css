@@ -117,8 +117,13 @@ body {
 .dates {
   margin-top: 3px;
   float: left;
+  color: white;
 }
 
+
+.mdl-chip__text{
+  color: #FEB69E;
+}
 
 
 

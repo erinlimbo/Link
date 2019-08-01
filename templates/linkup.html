@@ -7,11 +7,9 @@
     <link rel="stylesheet" href="../stylesheets/linkup.css">
     <script type="text/javascript" src="../scripts/ticketmaster-2.0.4.min.js"></script>
     <script type="text/javascript">
-      let startDateTime = '{{hangout_date}}' + 'T00:00:00Z';
-      let endDateTime = '{{hangout_date}}' + 'T11:59:59Z';
-
-      // TODO: fix zipcode/location!!
-      ticketmaster('{{api_key}}').discovery.v2.event.all({city:['London'], startDateTime: startDateTime, endDateTime: endDateTime})
+      let startDateTime = '{{hangout_date}}' + 'T00:00:00Z'
+      let endDateTime = '{{hangout_date}}' + 'T11:59:59Z'
+      ticketmaster('{{api_key}}').discovery.v2.event.all({city:'{{zipCode}}', startDateTime: startDateTime, endDateTime: endDateTime})
       .then((result) => {
         console.log(result);
         for (let item of result.items){
@@ -33,7 +31,6 @@
 
 
           let date = new Date(item.dates.start.dateTime)
-          // console.log(date);
           let parsed_date = date.toLocaleDateString("en-US", {
             weekday:'long',
             year:'numeric',
@@ -43,12 +40,15 @@
             minute:'numeric',
             timeZoneName:'short',
           });
-          // let parsed_date = parseDate(item.dates.start.dateTime);
           let datetime = document.createTextNode(parsed_date);
           childElement.appendChild(datetime);
           eventElement.appendChild(childElement);
           document.body.appendChild(eventElement);
         }
+      }).catch(() => {
+        let noEvents = document.createElement('p');
+        noEvents.textContent = 'There are no events that matched your search.';
+        document.body.appendChild(noEvents);
       });
     </script>
   </head>

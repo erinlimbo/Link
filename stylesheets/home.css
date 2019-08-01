@@ -3,6 +3,9 @@
   font-family: "Roboto", sans-serif
 }
 
+p {
+  font-size: 30px;
+}
 
 body {
   color: white;
@@ -31,6 +34,10 @@ body {
   text-align: center;
   float: left;
   color:black;
+}
+
+.mdl-chip__text{
+  color: #FEB69E;
 }
 
 .changeImage{
