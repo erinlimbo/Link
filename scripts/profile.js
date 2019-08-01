@@ -61,9 +61,9 @@ const createList = (json) => {
     dateItem.classList.add('dates');
     ////////////
     let spanClass = document.createElement('span');
-    spanClass.classList.add('mdl-chip', 'mdl-chip--contact', 'mdl-chip--deletable')
+    spanClass.classList.add( 'mdl-chip--contact','changeHolder', 'mdl-chip--deletable')
     let spanText = document.createElement('span');
-    spanText.classList.add('mdl-chip__contact', 'mdl-color--pink', 'mdl-color-text--white');
+    spanText.classList.add('mdl-chip__contact','changeTextColor','mdl-color-text--white');
     spanText.innerHTML = parseDate(date)[0];
     spanClass.appendChild(spanText);
     let spanSmall = document.createElement('span');
@@ -71,11 +71,12 @@ const createList = (json) => {
     spanSmall.classList.add('mdl-chip__text');
     spanClass.appendChild(spanSmall)
     let anchor = document.createElement('a');
-    anchor.classList.add('mdl-chip__action')
+    anchor.classList.add( 'changeAnchor')
     let ith = document.createElement('i');
+
     ith.id = date
     ith.innerHTML = "cancel";
-    ith.classList.add('material-icons');
+    ith.classList.add('material-icons', 'changeIcon');
     ith.addEventListener('click', function(){
       createList(json)
       let data = {'date_removed': date}
