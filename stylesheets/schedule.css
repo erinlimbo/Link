@@ -50,7 +50,6 @@ body {
   -webkit-animation: Gradient 8s ease infinite;
   -moz-animation: Gradient 8s ease infinite;
   animation: Gradient 8s ease infinite; /* Green */
-  border: none;
   border: 2.5px solid #FEB69E;
   padding: 16px 32px;
   text-align: right;
