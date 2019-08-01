@@ -44,27 +44,13 @@ const parseDate = (inputString) => {
 }
 
 
-
-// <span class="mdl-chip mdl-chip--contact mdl-chip--deletable">
-//     <img class="mdl-chip__contact" src="/templates/dashboard/images/user.jpg"></img>
-//     <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">A</span>
-//     <span class="mdl-chip__text">Deletable Contact Chip</span>
-//     <a href="#" class="mdl-chip__action"><i class="material-icons">cancel</i></a>
-// </span>
-
-
 const createList = (json) => {
-  let datesList = document.querySelector('#datesList');
+  let datesList = document.querySelector('#dateList');
   datesList.innerHTML = '';
   for (let date of json.added_dates){
-    let dateItem = document.createElement('li');
-    dateItem.innerHTML = parseDate(date);
-    dateItem.classList.add('dates');
+
     let spanClass = document.createElement('span');
     spanClass.classList.add( 'mdl-chip--contact','changeHolder', 'mdl-chip--deletable')
-    // let spanText = document.createElement('span');
-    // spanText.classList.add('mdl-chip__contact','changeTextColor','mdl-color-text--white');
-    // spanText.innerHTML = parseDate(date)[0];
     let image = document.createElement('img');
     image.classList.add('mdl-chip__contact', 'changeImage')
     image.src = "../images/calender.png"
@@ -99,55 +85,11 @@ const createList = (json) => {
     spanClass.appendChild(anchor)
 
 
-    let removeButton = document.createElement('button');
-    removeButton.innerHTML = 'remove';
-    removeButton.classList.add('remove');
-    removeButton.id = date;
-    removeButton.class = 'removeButton';
-    removeButton.addEventListener('click', function(){
-      createList(json)
-      let data = {'date_removed': date}
-      fetch('/profile', {
-        method:'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      })
-      .then((response)=>response.json())
-      .then((json) => {
-          createList(json)
-      });
-    });
-    dateItem.appendChild(removeButton);
-    datesList.appendChild(dateItem);
+
+
     datesList.appendChild(spanClass);
   }
 };
-
-let submitButton = document.querySelector('#submitDate');
-submitButton.addEventListener('click', () => {
-
-  let tempDate = document.querySelector('#user_free_date').value;
-  let data = {'user_free_date' : tempDate};
-  fetch('/profile', {
-    method:'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  })
-  .then((response)=>response.json())
-  .then((json) => {
-    if (!json.status){
-      alert('You have already added that date.');
-    }
-    else {
-      createList(json)
-    }
-  });
-});
-
 
 
 window.onload = () => {

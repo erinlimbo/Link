@@ -3,12 +3,18 @@
   font-family: "Roboto", sans-serif
 }
 
+header {
+  margin-left: 45px;
+  margin-top: 10px;
+  margin-right: 20px;
+
+}
 
 
 body {
   margin-left: 45px;
   margin-bottom: 100px;
-  font-size: 30px;
+  font-size: 100px;
   font-family: "Montserrat", sans-serif;
   text-align: inherit;
   width: 100wh;
@@ -28,8 +34,6 @@ body {
 #addFriends {
   margin-bottom: 15px;
 }
-
-
 
 .button {
   background-color: Transparent;
@@ -107,6 +111,7 @@ body {
 .friends{
   height: 26px;
   width: 200px;
+  color: #FEB69E;
   border: 2.5px solid #FEB69E;
   padding: 7px 9px;
   text-align: left;

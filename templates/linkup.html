@@ -56,12 +56,18 @@
     <h3>Friends who are free on {{hangout_date}}: </h3>
     {%if friends_free|length == 0%}
     You have no friends or none of your friends are free.
+    <br>
+    <br>
     {%else %}
+    <br>
     {% for friend in friends_free %}
     <br>
     <br>
+    <br>
       {{friend}}
+      <br>
     {% endfor %}
+    <br>
     {%endif%}
   </body>
 </html>

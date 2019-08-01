@@ -5,7 +5,16 @@ img {
   flex-direction: column;
 }
 
+h3 {
+  font-family: "Montserrat", sans-serif;
+  text-align: left;
+  font-size: 50px;
+  color: white;
+}
+
 body {
+  margin-left: 45px;
+  padding: 20px;
   font-family: "Montserrat", sans-serif;
   background: linear-gradient(-45deg, #ffe8e0, #f79b7c, #ffede3, #ffe8e0);
 	background-size: 1500% 1500%;
@@ -14,46 +23,13 @@ body {
 	animation: Gradient 8s ease infinite;
   }
 
-  @-webkit-keyframes Gradient {
-  	0% {
-  		background-position: 0% 50%
-  	}
-  	50% {
-  		background-position: 100% 50%
-  	}
-  	100% {
-  		background-position: 0% 50%
-  	}
-  }
 
-  @-moz-keyframes Gradient {
-  	0% {
-  		background-position: 0% 50%
-  	}
-  	50% {
-  		background-position: 100% 50%
-  	}
-  	100% {
-  		background-position: 0% 50%
-  	}
-  }
-
-  @keyframes Gradient {
-  	0% {
-  		background-position: 0% 50%
-  	}
-  	50% {
-  		background-position: 100% 50%
-  	}
-  	100% {
-  		background-position: 0% 50%
-  	}
-  }
 
 .button1 {
   /* background-color: #4CAF50; /* Green */ */
   background: linear-gradient(-45deg, #ffede3, #f79b7c, #ffe8e0, #ffe8e0);
-  color: black;
+  color: white;
+  background-color: transparent;
   background-size: 800% 800%;
   -webkit-animation: Gradient 8s ease infinite;
   -moz-animation: Gradient 8s ease infinite;
@@ -106,30 +82,29 @@ body {
 
 
 .button {
-  margin-top: 50px;
-  color: black;
+  color: white;
   background-size: 800% 800%;
-  -webkit-animation: Gradient 8s ease infinite;
-  -moz-animation: Gradient 8s ease infinite;
-  animation: Gradient 8s ease infinite; /* Green */
-  height: 35px;
-  width: 100px;
+  -webkit-animation: Gradient 15s ease infinite;
+  -moz-animation: Gradient 15s ease infinite;
+  animation: Gradient 15s ease infinite; /* Green */
+  border: none;
   border: 2.5px solid #FEB69E;
-  padding: 8px 19px;
-  text-align: right;
-  color: #f79b7c;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
   /* display: inline-block; */
-  font-size: 13px;
+  font-size: 17px;
   font-family: "Roboto", sans-serif;
   /* margin: 4px 2px; */
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   cursor: pointer;
+  display: inline-grid;
 }
 .button:hover {
   background: #FEB69E;
-  border: 3px solid white;
   color: white;
+  border: 3px solid white;
 }
 
 #datesList {
@@ -144,10 +119,52 @@ body {
   float: left;
 }
 
+
+
+
+.changeHolder{
+  background-color: white;
+  width: 70%;
+  border-radius: 20px;
+  margin-top: 15px;
+  text-align: center;
+  float: left;
+}
+.changeTextColor {
+  background-color: #ffe8e0;
+}
+.changeImage{
+  height: 15px;
+  width: 15px;
+  float:left;
+}
+.changeAnchor{
+  float: right;
+  height: 24px;
+  width: 24px;
+  background: 0 0;
+  opacity: .54;
+  cursor: pointer;
+  padding: 0;
+  margin: 0 0 0 4px;
+  font-size: 13px;
+  text-decoration: none;
+  color: rgba(0,0,0,.87);
+  border: none;
+  outline: none;
+}
+.changeIcon {
+  margin-top: 5px;
+  z-index: 3;
+  float:right;
+}
+
+
 .remove {
   float: right;
   margin-bottom: 2px;
-  color: black;
+  color: white;
+  background-color: transparent;
   background-size: 800% 800%;
   -webkit-animation: Gradient 8s ease infinite;
   -moz-animation: Gradient 8s ease infinite;
@@ -156,7 +173,6 @@ body {
   width: 80px;
   border: 2.5px solid #FEB69E;
   text-align: center;
-  color: #f79b7c;
   font-size: 13px;
   font-family: "Roboto", sans-serif;
   -webkit-transition-duration: 0.4s; /* Safari */
@@ -167,4 +183,41 @@ body {
   background: #FEB69E;
   border: 3px solid white;
   color: white;
+}
+
+
+@-webkit-keyframes Gradient {
+  0% {
+    background-position: 0% 50%
+  }
+  50% {
+    background-position: 100% 50%
+  }
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+@-moz-keyframes Gradient {
+  0% {
+    background-position: 0% 50%
+  }
+  50% {
+    background-position: 100% 50%
+  }
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%
+  }
+  50% {
+    background-position: 100% 50%
+  }
+  100% {
+    background-position: 0% 50%
+  }
 }

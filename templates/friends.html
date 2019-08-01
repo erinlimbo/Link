@@ -15,25 +15,27 @@
       <a href="/"><img src="images/linklogo.png" alt="CSGO Howl" style="width:100px;height:100px;float:left";></a>
       <p class="w3-right">
         <div align="right">
-        <a class="button" href="{{logout_link}}">Logout</a>
-        </div>
+          <br>
+          <br>
+        <a href="/login" class="button" href="{{logout_link}}">Logout</a>
+      </div>
       </p>
     </header>
 
     <div class="column">
       <form  action="/friends" method="POST">
-      <h1> Add friends here! </h1>
+      <h1> Add Friends Here! </h1>
     </div>
     <div class="column">
       <br>
-      <p><b>Add by search:</b></p>
+      <p><b>Add By Search:</b></p>
       <input class="friends" type="text" name="search" class="input" placeholder="Search"/>
       <div id="noResults">
 
         {{results}}
         <br>
         {%if not searched_friends%}
-          There is no user by that name!
+          There Is No User By That Name!
         {%endif%}
       </div>
       {%for friend in searched_friends%}
