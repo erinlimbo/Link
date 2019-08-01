@@ -45,14 +45,6 @@ const parseDate = (inputString) => {
 
 
 
-// <span class="mdl-chip mdl-chip--contact mdl-chip--deletable">
-//     <img class="mdl-chip__contact" src="/templates/dashboard/images/user.jpg"></img>
-//     <span class="mdl-chip__contact mdl-color--teal mdl-color-text--white">A</span>
-//     <span class="mdl-chip__text">Deletable Contact Chip</span>
-//     <a href="#" class="mdl-chip__action"><i class="material-icons">cancel</i></a>
-// </span>
-
-
 const createList = (json) => {
   let datesList = document.querySelector('#datesList');
   datesList.innerHTML = '';
@@ -70,7 +62,7 @@ const createList = (json) => {
     spanClass.appendChild(image);
     let spanSmall = document.createElement('span');
     spanSmall.innerHTML = parseDate(date);
-    spanSmall.classList.add('mdl-chip__text');
+    spanSmall.classList.add('changeText');
     spanClass.appendChild(spanSmall)
     let anchor = document.createElement('a');
     anchor.classList.add( 'changeAnchor')
