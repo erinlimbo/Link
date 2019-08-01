@@ -17,11 +17,7 @@ jinja_env = jinja2.Environment(
 class APIKey(ndb.Model):
     api_key = ndb.StringProperty(required=True)
 
-postal_code = '95030'
-base_url = 'https://app.ticketmaster.com/discovery/v2/'
 api_key = APIKey.query().fetch()[0].api_key
-
-# print base_url + 'events.json?postalCode=%s&apikey=%s' % (postal_code, api_key)
 
 class Profile(ndb.Model):
     first_name = ndb.StringProperty()
