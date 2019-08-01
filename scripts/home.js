@@ -57,7 +57,7 @@ const createList = (json) => {
     spanClass.appendChild(image);
     let spanSmall = document.createElement('span');
     spanSmall.innerHTML = parseDate(date);
-    spanSmall.classList.add('mdl-chip__text');
+    spanSmall.classList.add('mdl-chip__text', 'changeText');
     spanClass.appendChild(spanSmall)
     let anchor = document.createElement('a');
     anchor.classList.add( 'changeAnchor')

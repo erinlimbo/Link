@@ -1,14 +1,13 @@
 body {
   margin-left: 40px;
   font-family: "Montserrat", sans-serif;
-  text-align: left;
   font-size: 30px;
   color: white;
-  background: linear-gradient(-45deg, #ffe8e0, #f79b7c, #ffede3, #ffe8e0);
+  background: linear-gradient(-45deg, #f79b7c, #f79b7c, #ffccba, #ff865c);
 	background-size: 2000% 2000%;
-	-webkit-animation: Gradient 8s ease infinite;
-	-moz-animation: Gradient 8s ease infinite;
-	animation: Gradient 8s ease infinite;
+	-webkit-animation: Gradient 7s ease infinite;
+	-moz-animation: Gradient 7s ease infinite;
+	animation: Gradient 7s ease infinite;
   }
 
 
@@ -51,6 +50,7 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  width: 80%;
   flex-wrap: wrap;
   margin-top: 5px;
   margin-bottom: 15px;
@@ -67,7 +67,8 @@ header {
 }
 .title{
   text-align: center;
-  color: yellow;
+  color: white;
+  font-weight: 400;
 }
 .images{
   height: 200px;
