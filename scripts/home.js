@@ -53,7 +53,7 @@ const createList = (json) => {
     spanClass.classList.add( 'mdl-chip--contact','changeHolder', 'mdl-chip--deletable')
     let image = document.createElement('img');
     image.classList.add('mdl-chip__contact', 'changeImage')
-    image.src = "../images/calender.png"
+    image.src = "../images/app.png"
     spanClass.appendChild(image);
     let spanSmall = document.createElement('span');
     spanSmall.innerHTML = parseDate(date);
