@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Link</title>
       <link rel="stylesheet" href="../stylesheets/friends.css">
+          <link rel = "icon" href="images/linklogo.png" type = "image/x-icon">
   </head>
   <body>
     <header class="w3-container w3-xlarge">
@@ -15,34 +16,27 @@
       </p>
     </header>
 
+    <div class="column">
     <form  action="/friends" method="POST">
-
-      <input type="text" name="search" placeholder="Search"/>
-      {%if not searched_friends%}
-        There is no user by that name!
-      {%endif%}
+      <h1> Add friends here! </h1>
+    </div>
+    <div class="column">
+      <br>
+      <p><b>Add by search:</b></p>
+      <input class="friends" type="text" name="search" placeholder="Search"/>
+      <div id="noResults">
+        {%if not searched_friends%}
+          There is no user by that name!
+        {%endif%}
+      </div>
       {%for friend in searched_friends%}
+      <br>
         <br><input type="checkbox" name={{friend.email}}>{{friend.email}}</input>
       {%endfor%}
 
-      <br>
-      <br>
-      <p><b>Add Friends!</b></p>
-
-      {% for user in all_users %}
-        {% if user != get_current_user.friends %}
-        <br>
-
-      <input type="checkbox" name={{user.email}}> {{user.email}} </input>
-      <br>
-        {% endif %}
-      {% endfor %}
-      <br>
-      <br>
-      <input class="button" type="submit" name="addFriends" Value = "Add Friends">
-
+        <input class="button" type="submit" name="addFriends" Value = "Add">
+      </div>
     </form>
-
   <!-- <script type="text/javascript" src="../scripts/friends.js"></script> -->
   </body>
 </html>

@@ -9,27 +9,32 @@ header {
 
 body {
   margin-left: 45px;
+  margin-bottom: 100px;
   font-size: 30px;
   font-family: "Montserrat", sans-serif;
-<<<<<<< HEAD
   text-align: inherit;
   width: 100wh;
 	height: 90vh;
-	color: black;
+	color: white;
 	background: linear-gradient(-45deg, #ffe8e0, #f79b7c, #ffede3, #ffe8e0);
 	background-size: 800% 800%;
 	-webkit-animation: Gradient 8s ease infinite;
 	-moz-animation: Gradient 8s ease infinite;
 	animation: Gradient 8s ease infinite;
-=======
-  color: white;
+  /* color: white;
   background: linear-gradient(-45deg, #ffe8e0, #f79b7c, #ffede3, #ffe8e0);
 	background-size: 400% 1000%;
 	-webkit-animation: Gradient 15s ease infinite;
 	-moz-animation: Gradient 15s ease infinite;
-	animation: Gradient 15s ease infinite;
->>>>>>> a060a0adb23a68ad523390b7851f715389677cf0
+	animation: Gradient 15s ease infinite; */
+
   }
+
+  #noResults {
+    margin: 10px 0px;
+  }
+
+
   @-webkit-keyframes Gradient {
   	0% {
   		background-position: 0% 50%
@@ -67,7 +72,8 @@ body {
   }
 
 .button {
-  color: black;
+  background-color: Transparent;
+  color: white;
   background-size: 800% 800%;
   -webkit-animation: Gradient 8s ease infinite;
   -moz-animation: Gradient 8s ease infinite;
@@ -76,7 +82,7 @@ body {
   width: 160px;
   border: 2.5px solid #FEB69E;
   padding: 16px 32px;
-  text-align: right;
+  text-align: center;
   text-decoration: none;
   /* display: inline-block; */
   font-size: 17px;
@@ -139,11 +145,11 @@ body {
 }
 
 .friends{
-  height: 30px;
-  width: 150px;
+  height: 26px;
+  width: 200px;
   border: 2.5px solid #FEB69E;
   padding: 7px 9px;
-  text-align: center;
+  text-align: left;
   text-decoration: none;
   font-size: 15px;
   font-family: "Roboto", sans-serif;

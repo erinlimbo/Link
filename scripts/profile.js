@@ -1,11 +1,23 @@
+// const parseDate = (inputString) => {
+//   split_string = inputString.split('-')
+//   index = [1,2,0]
+//   temp = [split_string[x] for x in index]
+//   perm = temp.join('-')
+//   return perm
+// }
+
+
 const createList = (json) => {
   let datesList = document.querySelector('#datesList');
   datesList.innerHTML = '';
   for (let date of json.added_dates){
     let dateItem = document.createElement('li');
     dateItem.innerHTML = date;
+
     let removeButton = document.createElement('button');
     removeButton.innerHTML = 'remove';
+    removeButton.classList.add('remove')
+    removeButton.id = date;
     removeButton.class = 'removeButton';
     removeButton.addEventListener('click', function(){
       createList(json)
@@ -48,6 +60,8 @@ submitButton.addEventListener('click', () => {
     }
   });
 });
+
+
 
 window.onload = () => {
   fetch('/profile', {

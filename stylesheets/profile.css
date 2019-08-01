@@ -91,15 +91,45 @@ body {
   border: 2.5px solid #FEB69E;
   padding: 7px 9px;
   text-align: center;
-  text-decoration: none;
+  color: #f79b7c;
   font-size: 12px;
   font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
   /* margin: 1px; */
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
 
 
 }
+.remove {
+  margin-top: 5px;
+  color: black;
+  background-size: 800% 800%;
+  -webkit-animation: Gradient 8s ease infinite;
+  -moz-animation: Gradient 8s ease infinite;
+  animation: Gradient 8s ease infinite;
+  border: none;
+  height: 25px;
+  width: 80px;
+  border: 2.5px solid #FEB69E;
+  margin-left: 5px;
+  text-align: center;
+  color: #f79b7c;
+  /* display: inline-block; */
+  font-size: 13px;
+  font-family: "Roboto", sans-serif;
+  /* margin: 4px 2px; */
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.remove:hover {
+  background: #FEB69E;
+  border: 3px solid white;
+  color: white;
+}
+
+
 
 .button {
   margin-top: 50px;
@@ -108,13 +138,12 @@ body {
   -webkit-animation: Gradient 8s ease infinite;
   -moz-animation: Gradient 8s ease infinite;
   animation: Gradient 8s ease infinite; /* Green */
-  border: none;
   height: 35px;
   width: 100px;
   border: 2.5px solid #FEB69E;
   padding: 8px 19px;
   text-align: right;
-  text-decoration: none;
+  color: #f79b7c;
   /* display: inline-block; */
   font-size: 13px;
   font-family: "Roboto", sans-serif;

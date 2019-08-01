@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel = "icon" href="images/linklogo.png" type = "image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -24,24 +25,22 @@
     <div class="row">
   <div class="column">
     <h2>Hello {{first_name}}!</h2>
-    <p>You can add your friends here:</p>
-    <br>
-
-    <br>
-    <a href="/friends" class="button button2">Add Friends</a>
     <br>
     <br>
-
-
+    <a href="/schedule" class="button button1">Link Up</a>
+    <br>
+    <br>
   </div>
 
   <div class="column">
-    <h2>Your Schedule</h2>Your availabile dates: </p>
+    <h2>Your Schedule</h2>
     <br>
     <br>
     <a href="/profile" class="button button1">Edit Availability</a>
     <br>
     <br>
+    <br>
+    <p><b> Your availabile dates: </b></p>
     <ul>
       {%for date in user_free_dates%}
       <li>{{date}}</li>
@@ -54,12 +53,14 @@
 
   <div class="column">
     <h2>Friends</h2>
-    <p>List of friends wil be displayed here: </p>
+    <br>
+
+    <br>
+    <a href="/friends" class="button button2">Add Friends</a>
     <br>
     <br>
-    <a href="/schedule" class="button button1">Link Up</a>
     <br>
-    <br>
+    <p><b>Current Friends</b></p>
     <ul>
       {%for friend in friend_list%}
       <li>{{friend.get().first_name}} {{friend.get().last_name}}</li>
