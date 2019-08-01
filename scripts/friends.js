@@ -1,12 +1,12 @@
 
 let allInput = document.getElementsByClassName('input');
+
 const createList = (json) => {
   let friendList = document.querySelector('#friendList');
   datesList.innerHTML = '';
   for (let friend of json.friends){
     let friendItem = document.createElement('li');
     friendItem.innerHTML = friend;
-
     let removeButton = document.createElement('button');
     removeButton.innerHTML = 'remove';
     removeButton.classList.add('remove')

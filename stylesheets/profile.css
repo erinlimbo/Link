@@ -14,6 +14,7 @@ h3 {
 
 body {
   margin-left: 45px;
+  padding: 20px;
   font-family: "Montserrat", sans-serif;
   background: linear-gradient(-45deg, #ffe8e0, #f79b7c, #ffede3, #ffe8e0);
 	background-size: 1500% 1500%;
@@ -22,41 +23,7 @@ body {
 	animation: Gradient 8s ease infinite;
   }
 
-  @-webkit-keyframes Gradient {
-  	0% {
-  		background-position: 0% 50%
-  	}
-  	50% {
-  		background-position: 100% 50%
-  	}
-  	100% {
-  		background-position: 0% 50%
-  	}
-  }
 
-  @-moz-keyframes Gradient {
-  	0% {
-  		background-position: 0% 50%
-  	}
-  	50% {
-  		background-position: 100% 50%
-  	}
-  	100% {
-  		background-position: 0% 50%
-  	}
-  }
-
-  @keyframes Gradient {
-  	0% {
-  		background-position: 0% 50%
-  	}
-  	50% {
-  		background-position: 100% 50%
-  	}
-  	100% {
-  		background-position: 0% 50%
-  	}
-  }
 
 .button1 {
   /* background-color: #4CAF50; /* Green */ */
@@ -157,12 +124,19 @@ body {
 
 .changeHolder{
   background-color: white;
-  width: 75%;
+  width: 70%;
   border-radius: 20px;
-  z-index:1;
+  margin-top: 15px;
+  text-align: center;
+  float: left;
 }
 .changeTextColor {
   background-color: #ffe8e0;
+}
+.changeImage{
+  height: 15px;
+  width: 15px;
+  float:left;
 }
 .changeAnchor{
   float: right;
@@ -209,4 +183,41 @@ body {
   background: #FEB69E;
   border: 3px solid white;
   color: white;
+}
+
+
+@-webkit-keyframes Gradient {
+  0% {
+    background-position: 0% 50%
+  }
+  50% {
+    background-position: 100% 50%
+  }
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+@-moz-keyframes Gradient {
+  0% {
+    background-position: 0% 50%
+  }
+  50% {
+    background-position: 100% 50%
+  }
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%
+  }
+  50% {
+    background-position: 100% 50%
+  }
+  100% {
+    background-position: 0% 50%
+  }
 }

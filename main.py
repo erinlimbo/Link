@@ -17,7 +17,7 @@ jinja_env = jinja2.Environment(
 class APIKey(ndb.Model):
     api_key = ndb.StringProperty(required=True)
 
-api_key = APIKey.query().fetch()[0].api_key
+# api_key = APIKey.query().fetch()[0].api_key
 
 class Profile(ndb.Model):
     first_name = ndb.StringProperty()
