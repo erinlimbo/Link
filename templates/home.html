@@ -40,18 +40,20 @@
   </div>
 
   <div class="column">
-    <h2>Your Schedule</h2>
+    <div id="schedule">
+      <h2>Your Schedule</h2>
+    </div>
+
+    <div class="bottomSpacing">
+      <a href="/profile" class=" button button1">Edit Availability</a>
+    </div>
     <br>
     <br>
-    <a href="/profile" class="button button1">Edit Availability</a>
-    <br>
-    <br>
-    <br>
-    <p><b> Your availabile dates: </b></p>
-    <ul id = "dateList">
-    </ul>
-    <br>
-    <br>
+    <div>
+      <p><b> Your availabile dates: </b></p>
+      <ul id = "dateList">
+      </ul>
+    </div>
 
   </div>
 
@@ -60,7 +62,7 @@
     <br>
 
     <br>
-    <a href="/friends" class="button1">Add Friends</a>
+    <a href="/friends" id="friendsAdd" class="bottomSpacing button1">Add Friends</a>
     <br>
     <br>
     <br>
@@ -77,13 +79,6 @@
       {%endfor%}
     </ul>
     <br>
-
-
-
-
-
-
-
 
 
 

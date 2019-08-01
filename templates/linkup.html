@@ -7,25 +7,43 @@
     <link rel="stylesheet" href="../stylesheets/linkup.css">
     <script type="text/javascript" src="../scripts/ticketmaster-2.0.4.min.js"></script>
     <script type="text/javascript">
-      ticketmaster('{{api_key}}').discovery.v2.event.all({city: 'London', startDateTime: '2019-08-01T00:00:00Z', endDateTime: '2019-09-01T00:00:00Z'})
+      let startDateTime = '{{hangout_date}}' + 'T00:00:00Z'
+      let endDateTime = '{{hangout_date}}' + 'T11:59:59Z'
+      // TODO: fix zipcode/location!!
+      ticketmaster('{{api_key}}').discovery.v2.event.all({city:['London'], startDateTime: startDateTime, endDateTime: endDateTime})
       .then((result) => {
         console.log(result);
         for (let item of result.items){
           let eventElement = document.createElement('div');
           eventElement.classList.add('eventElement'); //to style in CSS later
-          let title = document.createTextNode(item.name);
+          let title = document.createElement('a');
+          title.textContent = item.name;
+          title.href = item.url;
+          title.target = '_blank'
           eventElement.appendChild(title);
           let image = document.createElement('img');
-          // later handle the case when there are no images
-          image.src = item.images[0].url;
+          image.src = item.images[0].url; // later handle the case when there are no images
           eventElement.appendChild(image);
+          let date = new Date(item.dates.start.dateTime)
+          // console.log(date);
+          let parsed_date = date.toLocaleDateString("en-US", {
+            weekday:'long',
+            year:'numeric',
+            month:'long',
+            day:'numeric',
+            hour:'numeric',
+            minute:'numeric',
+            timeZoneName:'short',
+          });
+          // let parsed_date = parseDate(item.dates.start.dateTime);
+          let datetime = document.createTextNode(parsed_date);
+          eventElement.appendChild(datetime);
           document.body.appendChild(eventElement);
         }
       });
     </script>
   </head>
   <body>
-    {{city}}
     <header class="w3-container w3-xlarge">
       <a href="/"><img src="images/linklogo.png" alt="CSGO Howl" style="width:100px;height:100px;float:left";></a>
       <p class="w3-right">
