@@ -3,9 +3,7 @@
   font-family: "Roboto", sans-serif
 }
 
-p {
-  font-size: 30px;
-}
+
 
 
 body {
@@ -38,8 +36,13 @@ body {
   flex-wrap: wrap;
 }
 #availableDates{
-  text-align: center;
+  text-align: left;
   font-size: 25px;
+  margin-top: 40px;
+}
+.padSoft{
+  margin-bottom: 25px;
+  text-align: center;
 }
 .demo-list-two {
   width: 300px;
@@ -48,12 +51,13 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-top: 40px;
 }
 .changeHolder{
   background-color: white;
-  width: 70%;
+  width: 80%;
   border-radius: 20px;
-  margin-top: 15px;
+  margin-top: 10px;
   text-align: center;
   float: left;
   color:black;
@@ -135,7 +139,6 @@ a:hover {
   /* background-color: #4CAF50; /* Green */ */
   background: linear-gradient(-45deg, #ffede3, #f79b7c, #ffe8e0, #ffe8e0);
   margin-bottom: 10px;
-
   height: 5px;
   width: 100px;
   border: 2.5px solid #FEB69E;
@@ -179,7 +182,9 @@ a:hover {
   color: white;
 }
 
-
+#edit {
+  text-align: center;
+}
 /* Create three equal columns that floats next to each other */
 
 /* Clear floats after the columns */
