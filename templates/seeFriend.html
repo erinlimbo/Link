@@ -17,19 +17,28 @@
         <br>
         <a href="/login" style="margin-right:15px;" class="button" href="{{logout_link}}">Logout</a>
       </div>
-  </head>
-    <br>
-    <div id="displayname">
-    <b>{{first_name}}
-    {{last_name}} <br><br><br> is available on: </b>
-  </div>
+    </div>
+
+
+    <div id="container">
+      <div class = "column">
+        <div>
+          <img id="profilePicture" src="../images/{{first_name}}.png"></img>
+      </div>
+      <div id="displayName">
+      <b>{{first_name}} {{last_name}}</b>
+    </div>
+
+
     <div id="displaydate">
     {%for date in dates%}
-    {{date}}
-    <br>
-    <br>
-    <br>
-    {%endfor%}
+    <div class="dates">
+      {{date}}
     </div>
+    {%endfor%}
+  </div>
+  </div>
+
+  </div>
   </body>
 </html>
