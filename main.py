@@ -6,6 +6,8 @@ import json
 from google.appengine.ext import ndb
 from google.appengine.api import users
 from google.appengine.api import search
+# from google.appengine.api import images
+# from google.appengine.ext import blobstore
 from urlparse import urlparse
 from datetime import date
 
@@ -97,6 +99,9 @@ class Home(webapp2.RequestHandler):
         last_name = self.request.get("last_name")
         get_current_user.first_name = first_name
         get_current_user.last_name = last_name
+        # avatar = self.request.get('img')
+        # avatar = images.resize(avatar, 32, 32)
+        # get_current_user.avatar = avatar
         get_current_user.put()
         self.redirect('/?key_query_parameter=%s' % first_name)
 
