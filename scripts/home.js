@@ -1,11 +1,11 @@
-const remove = (m) =>{
-  let number = m
+const remove = (number) =>{
+
   if (number< 10){
     let removed = number.replace(/0/,"");
     return removed
   }
   else {
-    return m
+    return number
   }
 
 }
@@ -13,13 +13,12 @@ const remove = (m) =>{
 
 const parseDate = (inputString) => {
   let splitString = inputString.split('-');
-  splitString[1]=splitString[1].replace(/0/, "");
+  splitString[1] = remove(splitString[1])
   splitString[2]=remove(splitString[2])
   let tempList = [];
   tempList.push(splitString[1]);
   tempList.push(splitString[2]);
   tempList.push(splitString[0]);
-
   let a = parseInt(tempList[0]);
   let b = "";
 
