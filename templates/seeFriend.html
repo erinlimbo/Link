@@ -14,23 +14,22 @@
       <a href="/"><img src="images/linklogo.png" alt="CSGO Howl" style="width:100px;height:100px;float:left";></a>
       <p class="w3-right">
         <div align="right">
-
-        <a href="/login" style="margin-right:40px;" class="button" href="{{logout_link}}">Logout</a>
+        <br>
+        <a href="/login" style="margin-right:15px;" class="button" href="{{logout_link}}">Logout</a>
       </div>
   </head>
     <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    {{first_name}}
-    {{last_name}}
-    <br>
-    <br>
+    <div id="displayname">
+    <b>{{first_name}}
+    {{last_name}} <br><br><br> is available on: </b>
+  </div>
+    <div id="displaydate">
     {%for date in dates%}
     {{date}}
     <br>
     <br>
+    <br>
     {%endfor%}
+    </div>
   </body>
 </html>

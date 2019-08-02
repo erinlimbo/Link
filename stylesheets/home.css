@@ -82,6 +82,13 @@ body {
   border-radius: 100px;
   border: 1px solid black;
 }
+
+#friendSize {
+  line-height: 20px;
+  height: 36px;
+  line-height: 20px;
+
+}
 .changeHolder{
   background-color: white;
   width: 100%;
