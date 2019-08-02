@@ -7,6 +7,7 @@ p {
   font-size: 30px;
 }
 
+
 body {
   color: white;
   margin-top: 100px;
@@ -17,6 +18,7 @@ body {
 	-moz-animation: Gradient 7s ease infinite;
 	animation: Gradient 7s ease infinite;
   }
+
 
 #header{
   background: linear-gradient(-45deg, #ffe8e0, #ffe8e0, #f79b7c, );
@@ -34,6 +36,10 @@ body {
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: wrap;
+}
+#availableDates{
+  text-align: center;
+  font-size: 25px;
 }
 .demo-list-two {
   width: 300px;
@@ -61,6 +67,9 @@ body {
 .changeText {
   font-size: 20px;
 }
+.pad{
+  margin-bottom: 50px;
+}
 
 .changeImage{
   height: 15px;
@@ -87,15 +96,15 @@ body {
   z-index: 3;
   float:right;
 }
-
-
-
-#schedule {
-  padding-bottom: 30px;
+a{
+  color: white;
+  text-decoration: none;
 }
-.bottomSpacing {
-  margin-bottom: 15px;
+a:hover {
+  text-decoration: underline;
+  color:white;
 }
+
 
 .button {
   color: white;
@@ -169,16 +178,14 @@ body {
   border: 3px solid white;
   color: white;
 }
+
+
 /* Create three equal columns that floats next to each other */
 
 /* Clear floats after the columns */
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-@media screen and (max-width:600px) {
-.column {
-  width: 100%;
-  }
-}
+
 
 @-webkit-keyframes Gradient {
   0% {

@@ -32,51 +32,55 @@
     <div id="container">
     <!-- <div class="row"> -->
   <div class="column left">
-    <h2><b>Hello {{first_name}}!</b></h2>
-    <br>
-    <br>
+    <div class="pad">
+      <h2><b>Hello {{first_name}}!</b></h2>
+    </div>
+
     <a href="/schedule" class="button button1">Link Up</a>
     <br>
     <br>
   </div>
 
   <div class="column middle">
-    <div id="schedule">
+    <div class="pad">
       <h2><b>Your Schedule</b></h2>
     </div>
 
-    <div class="bottomSpacing">
+    <div class="pad">
       <a href="/profile" class=" button button1">Edit Availability</a>
     </div>
     <br>
     <br>
-    <div>
+    <div id = "availableDates">
       <p><b> Your availabile dates: </b></p>
-      <div style="text-align:left;">
+    </div>
+    <div>
       <ul id = "dateList">
-      </div>
       </ul>
     </div>
 
   </div>
 
   <div class="column right">
-    <h2><b>Friends</b></h2>
-    <br>
+    <div class="pad">
+      <h2><b>Friends</b></h2>
 
-    <br>
-    <a href="/friends" id="friendsAdd" class="bottomSpacing button1">Add Friends</a>
-    <br>
-    <br>
-    <br>
-    <p><b>Current Friends:</b></p>
+    </div>
+    <div class="pad">
+      <a href="/friends" id="friendsAdd" class="bottomSpacing button1">Add Friends</a>
+      
+    </div>
+
+    <div class="pad">
+      <p><b>Current Friends:</b></p>
+    </div>
     <ul class="demo-list-two mdl-list">
       {%for friend in friend_list%}
       <li class="mdl-list__item mdl-list__item--two-line ">
         <span class="mdl-list__item-primary-content friendSize">
           <i class="material-icons mdl-list__item-avatar">person</i>
-          <span style="color:white">{{friend.get().first_name}} {{friend.get().last_name}}</span>
-          <span style="color:white" class="mdl-list__item-sub-title">15 Dates Free</span>
+          <span style="color:white"><a style="color:white" href="/">{{friend.get().first_name}} {{friend.get().last_name}}</a></span>
+          <span style="color:white" class="mdl-list__item-sub-title"><a style="color:white" href="/{{friend.get().first_name}}%20{{friend.get().last_name }}">{{friend.get().friends|length}} Dates Free</a></span>
         </span>
       </li>
       {%endfor%}
