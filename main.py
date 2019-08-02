@@ -227,6 +227,13 @@ class Schedule(webapp2.RequestHandler):
         template = jinja_env.get_template('templates/linkup.html')
         self.response.write(template.render(template_vars))
 
+class About(webapp2.RequestHandler):
+    def get(self):
+        template_vars = {
+        }
+        template = jinja_env.get_template('templates/about.html')
+        self.response.write(template.render(template_vars))
+
 class populateDatabase(webapp2.RequestHandler):
     def get(self):
         alexa = Profile(
@@ -319,4 +326,5 @@ app=webapp2.WSGIApplication([
     ('/schedule', Schedule),
     ('/populateDatabase', populateDatabase),
     ('/seeFriend', SeeFriend),
+    ('/about', About),
 ], debug=True)
