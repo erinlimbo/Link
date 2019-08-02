@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
     <!-- Material Design icon font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
   </head>
   <body>
     <header class="w3-container w3-xlarge">
@@ -21,47 +22,51 @@
       </div>
       </p>
     </header>
-
-    <div class="column">
       <form  action="/friends" method="POST">
-      <h1> Add Friends Here! </h1>
-    </div>
-    <div class="column">
-      <br>
-      <p><b>Add By Search:</b></p>
-      <input class="friends" type="text" name="search" class="input" placeholder="Search"/>
-      <div id="noResults">
+      <!-- <h1> Add Friends Here! </h1>
+    </div> -->
+    <div id="container">
 
-        {{results}}
-        <br>
-        {%if not searched_friends%}
-          There Is No User By That Name!
-        {%endif%}
+      <div class="column">
+            <br><input class="button" type="submit" id="addFriends" name="addFriends" Value = "Add Friends">
+          {% for friend in all_users %}
+            {% if friend.email not in get_current_user.friends.email %}
+            <br>
+            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="{{friend.email}}">
+              <input type="checkbox"  id="{{friend.email}}" class="mdl-checkbox__input" name={{friend.email}}>
+                <span class="mdl-checkbox__label">{{friend.first_name}} {{friend.last_name}} </span>
+              </input>
+            </label>
+          <br>
+            {% endif %}
+          {% endfor %}
+
+          <ul id="friendList">
+          </ul>
+          </div>
+        </form>
+
+
+        <div class="column">
+            <br>
+            <p><b>Add By Search:</b></p>
+            <input class="friends" type="text" name="search" class="input" placeholder="Search"/>
+            <div id="noResults">
+              {{results}}
+              {%if not searched_friends%}
+                There Is No User By That Name!
+              {%endif%}
+            </div>
+                {%for friend in searched_friends%}
+                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="{{friend.email}}">
+                  <input type="checkbox"  id="{{friend.email}}" class="mdl-checkbox__input" name={{friend.email}}>
+                    <span class="mdl-checkbox__label">{{friend.first_name}} {{friend.last_name}} </span>
+                  </input>
+                </label>
+              </div>
+        {%endfor%}
       </div>
-      {%for friend in searched_friends%}
-        <br><input type="checkbox" id={{friend.email}} name={{friend.email}}>{{friend.first_name}} {{friend.last_name}}</input>
-      {%endfor%}
-
-        <br><input class="button" type="submit" id="addFriends" name="addFriends" Value = "Add Friends">
-      {% for user in all_users %}
-        {% if user.email not in get_current_user.friends.email %}
-        <br>
-        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="{{user.email}}">
-          <input type="checkbox" id="{{user.email}}" class="mdl-checkbox__input" name={{user.email}}>
-            <span class="mdl-checkbox__label">{{user.first_name}} {{user.last_name}} </span>
-          </input>
-        </label>
-      <br>
-        {% endif %}
-      {% endfor %}
-      <br>
-      <br>
-
-
-      <ul id="friendList">
-      </ul>
-      </div>
-    </form>
   <!-- <script type="text/javascript" src="../scripts/friends.js"></script> -->
+
   </body>
 </html>
