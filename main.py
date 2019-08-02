@@ -269,6 +269,7 @@ class populateDatabase(webapp2.RequestHandler):
 class SeeFriend(webapp2.RequestHandler):
     def get(self):
         url_safe_key = self.request.get('friendprof')
+        current_user = get_current_profile();
         friendprof = ndb.Key(urlsafe=url_safe_key).get()
         dates = sorted(friendprof.dates_free)
         cleanDates = []
@@ -304,7 +305,8 @@ class SeeFriend(webapp2.RequestHandler):
         template_vars = {
             'first_name': friendprof.first_name,
             'last_name': friendprof.last_name,
-            'dates': cleanDates
+            'dates': cleanDates,
+            'current_user': current_user,
         }
         template = jinja_env.get_template('templates/seeFriend.html')
         self.response.write(template.render(template_vars))

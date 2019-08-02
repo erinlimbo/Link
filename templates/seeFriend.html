@@ -32,9 +32,15 @@
 
     <div id="displaydate">
     {%for date in dates%}
-    <div class="dates">
-      {{date}}
-    </div>
+      {%if date in current_user.added_dates%}
+      <div class="sameDates">
+        {{date}}
+      </div>
+      {%else%}
+      <div class="dates">
+        {{date}}
+      </div>
+      {%endif%}
     {%endfor%}
   </div>
   </div>

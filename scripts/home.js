@@ -1,7 +1,6 @@
 const parseDate = (inputString) => {
   let splitString = inputString.split('-');
   splitString[1]=splitString[1].replace(/0/, "");
-  splitString[2]=splitString[2].replace(/0/, "");
   let tempList = [];
   tempList.push(splitString[1]);
   tempList.push(splitString[2]);

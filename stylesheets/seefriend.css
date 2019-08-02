@@ -64,6 +64,11 @@ body {
   margin-top: 15px;
   font-size: 25px;
 }
+.sameDates {
+  margin-top: 15px;
+  font-size: 25px;
+  color: yellow;
+}
 .column {
   display: flex;
   flex-direction: column;
