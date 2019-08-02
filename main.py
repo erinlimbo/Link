@@ -266,10 +266,41 @@ class SeeFriend(webapp2.RequestHandler):
     def get(self):
         url_safe_key = self.request.get('friendprof')
         friendprof = ndb.Key(urlsafe=url_safe_key).get()
+        dates = friendprof.dates_free
+        cleanDates = []
+        for date in dates:
+            year = date[0:4]
+            month = date[5:7]
+            day = date[8:10]
+            if month == '01':
+                month = 'January'
+            if month == '02':
+                month = 'February'
+            if month == '03':
+                month = 'March'
+            if month == '04':
+                month = 'April'
+            if month == '05':
+                month = 'May'
+            if month == '06':
+                month = 'June'
+            if month == '07':
+                month = 'July'
+            if month == '08':
+                month = 'August'
+            if month == '09':
+                month = 'September'
+            if month == '10':
+                month = 'October'
+            if month == '11':
+                month = 'November'
+            if month == '12':
+                month = 'December'
+            cleanDates.append(month + " " + day + ", " + year)
         template_vars = {
             'first_name': friendprof.first_name,
             'last_name': friendprof.last_name,
-            'dates': friendprof.dates_free
+            'dates': cleanDates
         }
         template = jinja_env.get_template('templates/seeFriend.html')
         self.response.write(template.render(template_vars))

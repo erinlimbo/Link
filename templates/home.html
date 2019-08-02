@@ -71,9 +71,9 @@
         <span class="mdl-list__item-primary-content friendSize">
           <!-- <i class="material-icons mdl-list__item-avatar">person</i> -->
 
-          <a href=""/seeFriend?friendprof={{friend.urlsafe()}}""><i><img class="mdl-chip__contact material-icons mdl-list__item-avatar" alt="../images/Alexa.png" src="../images/{{friend.get().first_name}}.png"></img></i></a>
+          <a href=""/seeFriend?friendprof={{friend.urlsafe()}}""><i><img class="mdl-chip__contact material-icons mdl-list__item-avatar" src="../images/{{friend.get().first_name}}.png" onerror="src='../images/calendar.png'"></img></i></a>
           <span style="color:white"><a style="color:white" href="/seeFriend?friendprof={{friend.urlsafe()}}">{{friend.get().first_name}} {{friend.get().last_name}}</a></span>
-          <span style="color:white" class="mdl-list__item-sub-title"><a style="color:white" href="/seeFriend?friendprof={{friend.urlsafe()}}">{{friend.get().friends|length}} Dates Free</a></span>
+          <!-- <span style="color:white" class="mdl-list__item-sub-title"><a style="color:white" href="/seeFriend?friendprof={{friend.urlsafe()}}">{{friend.get().friends|length}} Dates Free</a></span> -->
         </span>
       </li>
       {%endfor%}
