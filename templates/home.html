@@ -23,40 +23,47 @@
     <div id="header">
       <a href="/"><img src="images/linklogo.png" alt="CSGO Howl" style="margin-left:10px;margin-top:10px;width:100px;height:100px;float:left";></a>
       <p class="w3-right">
-        <div align="right">
-        <a href="/login" class="button" href="{{logout_link}}">Logout</a>
+        <div id="log">
+        <a href="/login" id='logout' href="{{logout_link}}">Logout</a>
       </div>
       </p>
     </div>
     <div id="container">
-    <!-- <div class="row"> -->
-  <div class="column left">
-    <div class="pad">
-      <h2><b>Hello {{first_name}}!</b></h2>
-    </div>
-    <a href="/schedule" class="button button1">Link Up</a>
-  </div>
+      <div class="column left">
+        <div class="pad">
+          <h2><b>Hello {{first_name}}!</b></h2>
+        </div>
+        <div class="button1">
+          <a href="/schedule" style="color:white">Link Up</a>
 
-  <div class="column middle">
-    <div class="pad">
-      <h2><b>Your Schedule</b></h2>
+        </div>
+        <div>
+          <img id="profilePicture" src="../images/{{first_name}}.png"></img>
+      </div>
     </div>
-    <div id="edit">
-    <a href="/profile"  class="padSoft button1">Edit Availability</a>
-    </div>
-    <!-- <div id= "availableDates" style="font-size: 25px;">
-        Availabile Dates:
-    </div> -->
-    <div>
-      <ul id = "dateList">
-      </ul>
-    </div>
-  </div>
+
+      <div class="column middle">
+        <div class="pad">
+          <h2><b>Your Schedule</b></h2>
+        </div>
+        <div id="edit">
+        <a href="/profile"  class="padSoft button1">Edit Availability</a>
+        </div>
+        <!-- <div id= "availableDates" style="font-size: 25px;">
+            Availabile Dates:
+        </div> -->
+        <div id="dateContainer">
+          <ul id = "dateList">
+          </ul>
+        </div>
+      </div>
+    <!-- <div class="row"> -->
+
+
 
   <div class="column right">
     <div class="pad">
       <h2><b>Friends</b></h2>
-
     </div>
     <div class="pad">
       <a href="/friends" id="friendsAdd" class="bottomSpacing button1">Add Friends</a>
@@ -69,8 +76,6 @@
       {%for friend in friend_list%}
       <li class="mdl-list__item mdl-list__item--two-line ">
         <span class="mdl-list__item-primary-content friendSize">
-          <!-- <i class="material-icons mdl-list__item-avatar">person</i> -->
-
           <a href=""/seeFriend?friendprof={{friend.urlsafe()}}""><i><img class="mdl-chip__contact material-icons mdl-list__item-avatar" alt="../images/Alexa.png" src="../images/{{friend.get().first_name}}.png"></img></i></a>
           <span style="color:white"><a style="color:white" href="/seeFriend?friendprof={{friend.urlsafe()}}">{{friend.get().first_name}} {{friend.get().last_name}}</a></span>
           <span style="color:white" class="mdl-list__item-sub-title"><a style="color:white" href="/seeFriend?friendprof={{friend.urlsafe()}}">{{friend.get().friends|length}} Dates Free</a></span>

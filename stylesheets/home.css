@@ -28,12 +28,32 @@ body {
   height: 130px;
   width: 100%;
 }
+#log{
+  height: 100px;
+  float: right;
+  line-height: 100px;
+}
+#logout{
+  margin-top: 10px;
+  margin-right: 15px;
+  height: 5px;
+  width: 100px;
+  border: 2.5px solid #FEB69E;
+  padding: 20px 40px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+}
+
 #container{
   margin-top: 15px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: wrap;
+  text-align: center;
 }
 #availableDates{
   text-align: left;
@@ -52,10 +72,19 @@ body {
   flex-direction: column;
   justify-content: space-between;
   margin-top: 40px;
+  line-height: 30px;
+
+}
+#profilePicture {
+  margin-top: 40px;
+  height: 150px;
+  width: 150px;
+  border-radius: 100px;
+  border: 1px solid black;
 }
 .changeHolder{
   background-color: white;
-  width: 80%;
+  width: 100%;
   border-radius: 20px;
   margin-top: 10px;
   text-align: center;
@@ -72,7 +101,7 @@ body {
   font-size: 20px;
 }
 .pad{
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .changeImage{
@@ -138,15 +167,15 @@ a:hover {
 .button1 {
   /* background-color: #4CAF50; /* Green */ */
   background: linear-gradient(-45deg, #ffede3, #f79b7c, #ffe8e0, #ffe8e0);
-  margin-bottom: 10px;
-  height: 5px;
-  width: 100px;
+  height: 40px;
+  width: 150px;
   border: 2.5px solid #FEB69E;
   padding: 27px 47px;
+  line-height: 10px;
   color: white;
   text-align: center;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 14px;
   font-family: "Roboto", sans-serif;
   /* margin: 1px; */
   -webkit-transition-duration: 0.4s; /* Safari */
@@ -184,6 +213,19 @@ a:hover {
 
 #edit {
   text-align: center;
+}
+#dateContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 40px;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 /* Create three equal columns that floats next to each other */
 

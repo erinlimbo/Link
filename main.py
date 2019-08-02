@@ -81,7 +81,7 @@ class Home(webapp2.RequestHandler):
                     "first_name": first_name,
                     "user_free_dates": user_free_dates,
                     "logout_link": logout_link,
-                    "friend_list": friend_list
+                    "friend_list": friend_list,
                 }
                 template = jinja_env.get_template('templates/home.html')
                 self.response.write(template.render(template_vars))
@@ -148,10 +148,12 @@ class Friends(webapp2.RequestHandler):
     def get(self):
         current_user = users.get_current_user()
         get_current_user = get_current_profile()
+        friend_list = get_current_profile().friends
         all_users = Profile.query().filter(current_user.email() != Profile.email).fetch()
         template_vars = {
             "all_users": all_users,
-            'get_current_user': get_current_user
+            'get_current_user': get_current_user,
+            "friend_list": friend_list,
         }
         template = jinja_env.get_template('templates/friends.html')
         self.response.write(template.render(template_vars))
@@ -185,6 +187,8 @@ class Friends(webapp2.RequestHandler):
             if if_checked_person == "on":
                 get_current_user.friends.append(person.key)
                 get_current_user.put()
+
+
         template = jinja_env.get_template('templates/friends.html')
         self.response.write(template.render(template_vars))
 
@@ -238,7 +242,7 @@ class populateDatabase(webapp2.RequestHandler):
         ashlee_key = ashlee.put()
 
         sydney = Profile(
-            first_name = 'sydney',
+            first_name = 'Sydney',
             last_name = 'Martinez',
             email = 'sydney@example.com',
             dates_free = ["2019-11-30", "2019-12-11",],

@@ -49,7 +49,6 @@ header {
 .parentElement{
   display: flex;
   flex-direction: row;
-  justify-content: center;
   width: 80%;
   flex-wrap: wrap;
   margin-top: 5px;
@@ -71,6 +70,7 @@ header {
   font-weight: 400;
 }
 .images{
+  float:left;
   height: 200px;
   width: 300px;
 }
