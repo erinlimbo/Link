@@ -256,6 +256,18 @@ class populateDatabase(webapp2.RequestHandler):
 
         self.redirect("/")
 
+class SeeFriend(webapp2.RequestHandler):
+    def get(self):
+        url_safe_key = self.request.get('friendprof')
+        friendprof = ndb.Key(urlsafe=url_safe_key).get()
+        template_vars = {
+            'first_name': friendprof.first_name,
+            'last_name': friendprof.last_name,
+            'dates': friendprof.dates_free
+        }
+        template = jinja_env.get_template('templates/seeFriend.html')
+        self.response.write(template.render(template_vars))
+
 app=webapp2.WSGIApplication([
     ('/login', Login),
     ('/', Home),
@@ -263,4 +275,5 @@ app=webapp2.WSGIApplication([
     ('/friends', Friends),
     ('/schedule', Schedule),
     ('/populateDatabase', populateDatabase),
+    ('/seeFriend', SeeFriend),
 ], debug=True)
