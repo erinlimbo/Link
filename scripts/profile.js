@@ -10,7 +10,7 @@ const remove = (number) =>{
 
 const parseDate = (inputString) => {
   let splitString = inputString.split('-');
-  splitString[1]=splitString[1].replace(/0/, "");
+  splitString[1] = remove(splitString[1])
   splitString[2] = remove(splitString[2])
   let tempList = [];
   tempList.push(splitString[1]);
