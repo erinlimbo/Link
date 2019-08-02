@@ -80,7 +80,6 @@
         <span class="mdl-list__item-primary-content friendSize">
           <i class="material-icons mdl-list__item-avatar">person</i>
           <span style="color:white"><a style="color:white" href="/seeFriend?friendprof={{friend.urlsafe()}}">{{friend.get().first_name}} {{friend.get().last_name}}</a></span>
-          <span style="color:white" class="mdl-list__item-sub-title"><a style="color:white" href="/seeFriend">{{friend.get().friends|length}} Dates Free</a></span>
         </span>
       </li>
       {%endfor%}
