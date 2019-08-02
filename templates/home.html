@@ -23,8 +23,6 @@
       <a href="/"><img src="images/linklogo.png" alt="CSGO Howl" style="margin-left:10px;margin-top:10px;width:100px;height:100px;float:left";></a>
       <p class="w3-right">
         <div align="right">
-          <br>
-          <br>
         <a href="/login" class="button" href="{{logout_link}}">Logout</a>
       </div>
       </p>
@@ -35,30 +33,23 @@
     <div class="pad">
       <h2><b>Hello {{first_name}}!</b></h2>
     </div>
-
     <a href="/schedule" class="button button1">Link Up</a>
-    <br>
-    <br>
   </div>
 
   <div class="column middle">
     <div class="pad">
       <h2><b>Your Schedule</b></h2>
     </div>
-
-    <div class="pad">
-      <a href="/profile" class=" button button1">Edit Availability</a>
+    <div id="edit">
+    <a href="/profile"  class="padSoft button1">Edit Availability</a>
     </div>
-    <br>
-    <br>
-    <div id = "availableDates">
-      <p><b> Your availabile dates: </b></p>
-    </div>
+    <!-- <div id= "availableDates" style="font-size: 25px;">
+        Availabile Dates:
+    </div> -->
     <div>
       <ul id = "dateList">
       </ul>
     </div>
-
   </div>
 
   <div class="column right">
@@ -68,12 +59,11 @@
     </div>
     <div class="pad">
       <a href="/friends" id="friendsAdd" class="bottomSpacing button1">Add Friends</a>
-
     </div>
 
-    <div class="pad">
-      <p><b>Current Friends:</b></p>
-    </div>
+    <!-- <div class="pad">
+       <p><b>Current Friends:</b></p> 
+    </div> -->
     <ul class="demo-list-two mdl-list">
       {%for friend in friend_list%}
       <li class="mdl-list__item mdl-list__item--two-line ">
