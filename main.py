@@ -24,6 +24,7 @@ class Profile(ndb.Model):
     email = ndb.StringProperty()
     dates_free = ndb.StringProperty(repeated=True)
     friends = ndb.KeyProperty(repeated=True, kind='Profile')
+    avatar = ndb.BlobProperty()
 
 def get_current_email():
     return users.get_current_user()
@@ -233,12 +234,12 @@ class populateDatabase(webapp2.RequestHandler):
             last_name = 'Kupor',
             email = 'ashlee@example.com',
             dates_free = ["2019-11-30", "2019-12-11",],
-            friends = []
+            friends = [],
         )
         ashlee_key = ashlee.put()
 
         sydney = Profile(
-            first_name = 'sydney',
+            first_name = 'Sydney',
             last_name = 'Martinez',
             email = 'sydney@example.com',
             dates_free = ["2019-11-30", "2019-12-11",],
