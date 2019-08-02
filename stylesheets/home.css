@@ -108,9 +108,11 @@ body {
   font-size: 20px;
 }
 .pad{
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
-
+.pad1{
+  margin-bottom: 2px;
+}
 .changeImage{
   height: 15px;
   width: 15px;
@@ -174,7 +176,7 @@ a:hover {
 .button1 {
   /* background-color: #4CAF50; /* Green */ */
   background: linear-gradient(-45deg, #ffede3, #f79b7c, #ffe8e0, #ffe8e0);
-  height: 40px;
+  height: 70px;
   width: 150px;
   border: 2.5px solid #FEB69E;
   padding: 27px 47px;
