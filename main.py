@@ -270,7 +270,7 @@ class SeeFriend(webapp2.RequestHandler):
     def get(self):
         url_safe_key = self.request.get('friendprof')
         friendprof = ndb.Key(urlsafe=url_safe_key).get()
-        dates = friendprof.dates_free
+        dates = sorted(friendprof.dates_free)
         cleanDates = []
         for date in dates:
             year = date[0:4]
