@@ -1,6 +1,17 @@
+const remove = (number) =>{
+  if (number< 10){
+    let removed = number.replace(/0/,"");
+    return removed
+  }
+  else {
+    return number
+  }
+}
+
 const parseDate = (inputString) => {
   let splitString = inputString.split('-');
   splitString[1]=splitString[1].replace(/0/, "");
+  splitString[2] = remove(splitString[2])
   let tempList = [];
   tempList.push(splitString[1]);
   tempList.push(splitString[2]);
