@@ -1,3 +1,27 @@
+header {
+  margin-top: -80px;
+  margin-left: 10px;
+  background: linear-gradient(-45deg, #ffe8e0, #ffe8e0, #f79b7c, );
+  /* outline: 5px solid white; */
+	background-size: 400% 600%;
+	-webkit-animation: Gradient 8s ease infinite;
+	-moz-animation: Gradient 8s ease infinite;
+	animation: Gradient 8s ease infinite;
+  height: 130px;
+  width: 100%;
+}
+
+h1 {
+  font-size: 40px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+h2 {
+  text-align: center;
+}
+
 body {
   color: white;
   margin-top: 100px;
