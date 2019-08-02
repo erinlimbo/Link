@@ -16,6 +16,28 @@ body {
   text-align: center;
   }
 
+#header {
+  margin-left: 25px;
+}
+#displayname {
+  margin-left: 280px;
+  margin-top: 120px;
+  text-align: left;
+  font-size: 50px;
+  font-family: "Montserrat", sans-serif;
+}
+
+#displaydate {
+  margin-left: 280px;
+  margin-top: -70px;
+  font-size: 35px;
+  font-family: "Montserrat", sans-serif;
+}
+#avadates {
+  font-size: 40px;
+  font-family: "Montserrat", sans-serif;
+}
+
 .button {
   background-color: Transparent;
   color: white;
